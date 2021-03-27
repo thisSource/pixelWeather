@@ -52,7 +52,7 @@ if (window.innerWidth > 601) {
 // soundbutton.addEventListener('click', playAudio())
   
 let audioCount = 0;
-let audio = new Audio('music/zeldaBeautiful2.mp3')
+let audio = new Audio('music/zeldaHappy.mp3')
 function playAudio(){
   if (audioCount === 0){
       audio.play()
@@ -372,16 +372,16 @@ console.log("Is Night? " + isNight)
 
   if (locationInput === "Stockholm") {
     if (currentMonth <= 3) {
-      cityImage.src = "Images/Locations/Stockholm/StockholmCityAutumnDay.png";
+      cityImage.src = "Images/Locations/Stockholm/stockholmCityAutumnDay.png";
     }
     if (currentMonth > 2 && currentMonth < 9) {
-      cityImage.src = "Images/Locations/Stockholm/StockholmCitySunnyDay.png";
+      cityImage.src = "Images/Locations/Stockholm/stockholmCitySunnyDay.png";
     }
     if (currentMonth > 8 && currentMonth < 12) {
-      cityImage.src = "Images/Locations/Stockholm/StockholmCityAutumnDay.png";
+      cityImage.src = "Images/Locations/Stockholm/stockholmCityAutumnDay.png";
     }
     if (currentMonth === 12) {
-      cityImage.src = "Images/Locations/Stockholm/StockholmCityAutumnDay.png";
+      cityImage.src = "Images/Locations/Stockholm/stockholmCityAutumnDay.png";
     }
 
     cityBlackImage.src = "Images/Locations/Stockholm/StockholmCityBlackBox.png";
