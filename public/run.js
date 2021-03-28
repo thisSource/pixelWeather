@@ -864,7 +864,11 @@ function weatherLight(r,g,b,a){
    //Light vars
    let r,g,b,a;
 
-   weatherId = 615
+
+   //Set thunder bool
+   let isThunder = false
+
+  //  weatherId = 800
 
   //WEATHER TYPES
   //----------------------------------------------------------------------------------------------------------//
@@ -873,7 +877,7 @@ function weatherLight(r,g,b,a){
  //ID 200- 232 Thunderstorm
   //----------------------------------------------------------------------------------------------------------//
   // 200 - Thunderstorm with light rain	
-  if(weatherId === 200){
+  if(weatherId > 199 && weatherId < 233){
  //Clouds
  xSpeedByWindSpeed = xSpeedByWindSpeed * windDirection;
  numberOfClouds = 50;
@@ -893,6 +897,7 @@ function weatherLight(r,g,b,a){
  b = 90;
  a = 0.4;
 
+ isThunder = true
         //Audio
 audio = new Audio('music/zeldaSad.mp3')
   }
@@ -1354,9 +1359,6 @@ audio = new Audio('music/zeldaSad.mp3')
    audio = new Audio('music/zeldaHappy.mp3')
   }
 
-
-
-
   // CLOUDS FUNCTIONS
   //----------------------------------------------------------------------------------------------------------//
 
@@ -1587,12 +1589,86 @@ let cloudAlpha;
 //THUNDER
 //----------------------------------------------------------------------------------------------------------//
 const bolt = new Image()
-bolt.src = 'images/Sky/thunder1.png'
+bolt.src = 'Images/rainandsnow/thunder1.png'
+const bolt2 = new Image()
+bolt2.src = 'Images/rainandsnow/thunder2.png'
+const bolt3 = new Image()
+bolt3.src = 'Images/rainandsnow/thunder3.png'
+const bolt4 = new Image()
+bolt4.src = 'Images/rainandsnow/thunder4.png'
+const bolt5 = new Image()
+bolt5.src = 'Images/rainandsnow/thunder5.png'
+const bolt6 = new Image()
+bolt6.src = 'Images/rainandsnow/thunder6.png'
 
 function drawThunder (){
-  skyCtx.drawImage(bolt,0,0,weatherCanvas.width,weatherCanvas.height)
+  rainCtx.drawImage(bolt,0,0,weatherCanvas.width,weatherCanvas.height)
 }
- 
+function drawThunder2 (){
+  rainCtx.drawImage(bolt2,0,0,weatherCanvas.width,weatherCanvas.height)
+}
+function drawThunder3 (){
+  rainCtx.drawImage(bolt3,0,0,weatherCanvas.width,weatherCanvas.height)
+}
+function drawThunder4 (){
+  rainCtx.drawImage(bolt4,0,0,weatherCanvas.width,weatherCanvas.height)
+}
+function drawThunder5 (){
+  rainCtx.drawImage(bolt5,0,0,weatherCanvas.width,weatherCanvas.height)
+}
+function drawThunder6 (){
+  rainCtx.drawImage(bolt6,0,0,weatherCanvas.width,weatherCanvas.height)
+}
+
+
+let counter = 0
+function runThunder(){
+    counter = counter +1
+if(counter > 100 && counter < 110){
+  drawThunder()
+  rainCtx.fillStyle = 'rgb(255,255,255,0.2)'
+  rainCtx.rect(0,0,rainCanvas.width,rainCanvas.height)
+  rainCtx.fill()
+  }
+
+  if(counter > 200 && counter < 210){
+    drawThunder2()
+    rainCtx.fillStyle = 'rgb(255,255,255,0.3)'
+    rainCtx.rect(0,0,rainCanvas.width,rainCanvas.height)
+    rainCtx.fill()
+    }
+
+    if(counter > 570 && counter < 575){
+      drawThunder3()
+      rainCtx.fillStyle = 'rgb(255,255,255,0.3)'
+      rainCtx.rect(0,0,rainCanvas.width,rainCanvas.height)
+      rainCtx.fill()
+      }
+      if(counter > 590 && counter < 596){
+        drawThunder4()
+        rainCtx.fillStyle = 'rgb(255,255,255,0.3)'
+        rainCtx.rect(0,0,rainCanvas.width,rainCanvas.height)
+        rainCtx.fill()
+        }
+
+        if(counter > 730 && counter < 740){
+          drawThunder5()
+          rainCtx.fillStyle = 'rgb(255,255,255,0.3)'
+          rainCtx.rect(0,0,rainCanvas.width,rainCanvas.height)
+          rainCtx.fill()
+          }
+          if(counter > 930 && counter < 935){
+            drawThunder6()
+            rainCtx.fillStyle = 'rgb(255,255,255,0.3)'
+            rainCtx.rect(0,0,rainCanvas.width,rainCanvas.height)
+            rainCtx.fill()
+            }
+
+
+  if (counter > 1000){
+    counter = 0
+  }
+}
 
 //----------------------------------------------------------------------------------------------------------//
 //BIRD ANIMATION
@@ -1694,7 +1770,11 @@ function birdUpdate(){
   //----------------------------------------------------------------------------------------------------------//
   //SETUP
   //----------------------------------------------------------------------------------------------------------//
- 
+
+
+
+
+
   //----------------------------------------------------------------------------------------------------------//
   //UPDATE / DRAW / ANIMATE
   //----------------------------------------------------------------------------------------------------------//
@@ -1719,6 +1799,10 @@ function birdUpdate(){
     }
     runBirds()
     birdUpdate()
+    if(isThunder === true){
+      runThunder()
+
+    }
 
     //RUN CITY
     cityDrawMain();
@@ -1741,8 +1825,8 @@ function birdUpdate(){
       snowParticlesArray[i].updateSnow();
       snowParticlesArray[i].drawSnow();
      }
-    // drawThunder ()
-   
+
+
 
     requestAnimationFrame(update);
   })();
