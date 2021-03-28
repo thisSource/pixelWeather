@@ -864,7 +864,7 @@ function weatherLight(r,g,b,a){
    //Light vars
    let r,g,b,a;
 
-  //  weatherId = 311
+   weatherId = 615
 
   //WEATHER TYPES
   //----------------------------------------------------------------------------------------------------------//
@@ -1056,6 +1056,32 @@ audio = new Audio('music/zeldaSad.mp3')
 
   }
 
+    // 503 - 531 extreme and shower intensity rain
+    if (weatherId > 502 && weatherId < 532) {
+      //Clouds
+      xSpeedByWindSpeed = xSpeedByWindSpeed * windDirection;
+      numberOfClouds = 100;
+      cloudSizeMuliply = 1;
+      setCloudBrightness = 50;
+       //Clouds
+       cloud1.src = 'Images/Clouds/stormcloud1.png'
+       cloud2.src = 'Images/Clouds/stormcloud2.png'
+       cloud3.src = 'Images/Clouds/stormcloud3.png'
+       cloud4.src = 'Images/Clouds/stormcloud4.png'
+       cloud5.src = 'Images/Clouds/stormcloud5.png'
+       //Rain 
+      numberOfRainDrops = 400;
+  
+      r = 30;
+      g = 30;
+      b = 90;
+      a = 0.5;
+  
+         //Audio
+     audio = new Audio('music/zeldaSad.mp3')
+  
+    }
+
    //ID 600- 622 SNOW
   //----------------------------------------------------------------------------------------------------------//
    // 600 - Light Snow
@@ -1066,10 +1092,20 @@ audio = new Audio('music/zeldaSad.mp3')
     cloudSizeMuliply = 1;
     setCloudBrightness = 50;
      //Clouds
-     cloudImage.src = "Images/Clouds/stormcloud1.png";
-     cloudImg = cloudImage;
+         //Clouds
+         cloud1.src = 'Images/Clouds/stormcloud1.png'
+         cloud2.src = 'Images/Clouds/stormcloud2.png'
+         cloud3.src = 'Images/Clouds/stormcloud3.png'
+         cloud4.src = 'Images/Clouds/stormcloud4.png'
+         cloud5.src = 'Images/Clouds/stormcloud5.png'
      //Snow 
     numberOfSnowFlakes = 50;
+    r = 30;
+    g = 30;
+    b = 90;
+    a = 0.5;
+
+
 
            //Audio
    audio = new Audio('music/zeldaSad.mp3')
@@ -1077,38 +1113,123 @@ audio = new Audio('music/zeldaSad.mp3')
 
      // 601 - Snow
      if (weatherId === 601) {
-      //Clouds
       xSpeedByWindSpeed = xSpeedByWindSpeed * windDirection;
-      numberOfClouds = 50;
-      cloudSizeMuliply = 1;
-      setCloudBrightness = 10;
-       //Clouds
-       cloudImage.src = "Images/Clouds/stormcloud1.png";
-       cloudImg = cloudImage;
-       //Snow 
-      numberOfSnowFlakes = 200;
-
-             //Audio
-   audio = new Audio('music/zeldaSad.mp3')
-    }
-
-   // 615 Light Snow and Rain
-   if (weatherId === 615) {
-    //Clouds
-    xSpeedByWindSpeed = xSpeedByWindSpeed * windDirection;
-    numberOfClouds = 50;
+    numberOfClouds = 100;
     cloudSizeMuliply = 1;
     setCloudBrightness = 50;
      //Clouds
-     cloudImage.src = "Images/Clouds/cloud1.png";
-     cloudImg = cloudImage;
+         //Clouds
+         cloud1.src = 'Images/Clouds/stormcloud1.png'
+         cloud2.src = 'Images/Clouds/stormcloud2.png'
+         cloud3.src = 'Images/Clouds/stormcloud3.png'
+         cloud4.src = 'Images/Clouds/stormcloud4.png'
+         cloud5.src = 'Images/Clouds/stormcloud5.png'
+     //Snow 
+    numberOfSnowFlakes = 100;
+    r = 30;
+    g = 30;
+    b = 90;
+    a = 0.5;
+           //Audio
+   audio = new Audio('music/zeldaSad.mp3')
+    }
+
+      // 602 - Heavy Snow
+      if (weatherId === 602) {
+        xSpeedByWindSpeed = xSpeedByWindSpeed * windDirection;
+      numberOfClouds = 100;
+      cloudSizeMuliply = 1;
+      setCloudBrightness = 50;
+       //Clouds
+           //Clouds
+           cloud1.src = 'Images/Clouds/stormcloud1.png'
+           cloud2.src = 'Images/Clouds/stormcloud2.png'
+           cloud3.src = 'Images/Clouds/stormcloud3.png'
+           cloud4.src = 'Images/Clouds/stormcloud4.png'
+           cloud5.src = 'Images/Clouds/stormcloud5.png'
+       //Snow 
+      numberOfSnowFlakes = 400;
+      r = 30;
+      g = 30;
+      b = 90;
+      a = 0.5;
+             //Audio
+     audio = new Audio('music/zeldaSad.mp3')
+      }
+
+       // 620-622 - Heavy Snow
+       if (weatherId > 619 && weatherId < 623) {
+        xSpeedByWindSpeed = xSpeedByWindSpeed * windDirection;
+        numberOfClouds = 100;
+        cloudSizeMuliply = 1;
+        setCloudBrightness = 50;
+       //Clouds
+           //Clouds
+           cloud1.src = 'Images/Clouds/stormcloud1.png'
+           cloud2.src = 'Images/Clouds/stormcloud2.png'
+           cloud3.src = 'Images/Clouds/stormcloud3.png'
+           cloud4.src = 'Images/Clouds/stormcloud4.png'
+           cloud5.src = 'Images/Clouds/stormcloud5.png'
+          //Snow 
+          numberOfSnowFlakes = 300;
+          r = 30;
+          g = 30;
+          b = 90;
+          a = 0.5;
+                //Audio
+        audio = new Audio('music/zeldaSad.mp3')
+      }
+
+   // 615 Light Snow and Rain
+   if (weatherId > 610 && weatherId < 617) {
+    xSpeedByWindSpeed = xSpeedByWindSpeed * windDirection;
+    numberOfClouds = 100;
+    cloudSizeMuliply = 1;
+    setCloudBrightness = 50;
+   //Clouds
+       //Clouds
+       cloud1.src = 'Images/Clouds/stormcloud1.png'
+       cloud2.src = 'Images/Clouds/stormcloud2.png'
+       cloud3.src = 'Images/Clouds/stormcloud3.png'
+       cloud4.src = 'Images/Clouds/stormcloud4.png'
+       cloud5.src = 'Images/Clouds/stormcloud5.png'
+
+       r = 30;
+       g = 30;
+       b = 90;
+       a = 0.5;
      //Rain 
     numberOfRainDrops = 50;
      //Snow 
-    numberOfSnowFlakes = 50;
+    numberOfSnowFlakes = 100;
 
            //Audio
    audio = new Audio('music/zeldaSad.mp3')
+  }
+
+  // ID 700 - 781 Atmosphere
+  //----------------------------------------------------------------------------------------------------------//
+  if (weatherId > 699 && weatherId < 782) {
+    //Clouds
+    xSpeedByWindSpeed = xSpeedByWindSpeed * windDirection;
+
+    numberOfClouds = 100;
+    cloudSizeMuliply = 1;
+    setCloudBrightness = 50;
+     //Clouds
+     cloud1.src = 'Images/Clouds/cloud1.png'
+     cloud2.src = 'Images/Clouds/cloud2.png'
+     cloud3.src = 'Images/Clouds/cloud3.png'
+     cloud4.src = 'Images/Clouds/cloud4.png'
+     cloud5.src = 'Images/Clouds/cloud5.png'
+
+     r = 200
+     g = 200
+     b = 220
+     a = 0.5
+
+        //Audio
+   audio = new Audio('music/zeldaHappy.mp3')
   }
 
 
@@ -1343,14 +1464,14 @@ let cloudAlpha;
   let dropImage = new Image();
 
   if(isMorning === true){
-    dropImage.src = "Images/rainandsnow/rain11.png"
+    dropImage.src = "Images/rainandsnow/rain13.png"
   }
   if(isDay === true){
-    dropImage.src = "Images/rainandsnow/rain11.png"
+    dropImage.src = "Images/rainandsnow/rain13.png"
 
   }
   if(isNight === true){
-    dropImage.src = "Images/rainandsnow/rain11.png"
+    dropImage.src = "Images/rainandsnow/rain13.png"
   }
   
   
@@ -1361,7 +1482,7 @@ let cloudAlpha;
     constructor(x, y) {
       this.x = x;
       this.y = y;
-      this.size = Math.random() * 3 + 1 - drizzleVar;
+      this.size = Math.random() * 6 + 1 - drizzleVar;
       this.weight = Math.random() * 0.5 + 1;
       this.directionX = Math.random() *  xSpeedByWindSpeed * 2; // insert wind direction
       // this.r =  Math.random() * 255
@@ -1414,13 +1535,13 @@ let cloudAlpha;
 
   let snowImage = new Image();
   if(isMorning === true){
-    snowImage.src = "PlaceHolderImagesv1/snowflakes.png"
+    snowImage.src = "Images/rainandsnow/snowflake3.png"
   }
   if(isDay === true){
-    snowImage.src = "PlaceHolderImagesv1/snowflakes.png"
+    snowImage.src = "Images/rainandsnow/snowflake3.png"
   }
   if(isNight === true){
-    snowImage.src = "PlaceHolderImagesv1/snowflakes.png"
+    snowImage.src = "Images/rainandsnow/snowflake3.png"
   }
   
     
@@ -1428,8 +1549,8 @@ let cloudAlpha;
     constructor(x, y) {
       this.x = x;
       this.y = y;
-      this.size = Math.random() * 8 + 2;
-      this.weight = Math.random() * 0.1 + 0.15;
+      this.size = Math.random() * 3 + 2;
+      this.weight = Math.random() * 0.05 + 0.15;
       this.directionX = Math.random() *  xSpeedByWindSpeed * 2; // insert wind direction
       this.r =  Math.random() * 255
       this.g = Math.random() * 255
@@ -1485,7 +1606,7 @@ let bird3 = new Image();
 bird3.src = 'Images/Locations/Stockholm/birdspritesheet3.png';
 
 
-const scale = 1;
+const scale = 1.5;
 const width = 16;
 const height = 18;
 const scaledWidth = scale * width;
