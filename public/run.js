@@ -35,7 +35,7 @@ if (window.innerWidth > 601) {
   optHeight = 768;
 } else {
   optWidth = 560;
-  optHeight = 750;
+  optHeight = 760;
 }
 
 (function setResponsiveSize() {
@@ -648,7 +648,7 @@ console.log("Is Night? " + isNight)
       cityImage.naturalHeight,
       0,
       cityHeight - 650 * relHeight,
-      cityWidth,
+      cityWidth -1 * relWidth,
       cityHeight - 110 * relHeight
     );
   }
@@ -662,7 +662,7 @@ console.log("Is Night? " + isNight)
       cityWindows.naturalHeight,
       0,
       cityHeight - 650 * relHeight,
-      cityWidth,
+      cityWidth -1 * relWidth,
       cityHeight - 110 * relHeight
     );
   }
@@ -679,7 +679,7 @@ console.log("Is Night? " + isNight)
       cityBlackImage.naturalHeight,
       0,
       cityBlackHeight - 650 * relHeight,
-      cityBlackWidth,
+      cityBlackWidth -1 * relWidth,
       cityBlackHeight - 110 * relHeight
     );
 
