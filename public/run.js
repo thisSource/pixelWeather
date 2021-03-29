@@ -639,6 +639,15 @@ console.log("Is Night? " + isNight)
     skyCtx.fill()
   }
 
+  // Night color to sky
+  function nightColor(){
+    cityCtx.fillStyle = 'rgb(31, 15, 187,0.3)'
+    cityCtx.rect(0,0,window.innerWidth, window.innerHeight)
+    cityCtx.fill()
+  }
+
+
+
   //----------------------------------------------------------------------------------------------------------//
   // CITY FUNCTIONS
   //----------------------------------------------------------------------------------------------------------//
@@ -828,10 +837,10 @@ forcastSelector.addEventListener("change", setForecastorCurrent)
   xSpeedByWindSpeed = 0.1;
  }
   if (windSpeed > 3) {
-    xSpeedByWindSpeed = 0.3;
+    xSpeedByWindSpeed = 0.2;
   }
   if (windSpeed > 7) {
-    xSpeedByWindSpeed = 0.5;
+    xSpeedByWindSpeed = 0.3;
   } 
 
 
@@ -1373,9 +1382,6 @@ audio = new Audio('music/zeldaSad.mp3')
 let cloudArray = []
 let numOfClouds = numberOfClouds
 
- 
-
-
 class Cloud{
 constructor(xPos, yPos, length, height){
   this.xPos = xPos * relWidth;
@@ -1410,8 +1416,6 @@ weatherCtx.drawImage(cloud5,this.xPos, this.yPos,this.length,this.height)
 }
 
   //Clouds initialize/setup
-
-
 
 function initClouds(){
   for(let i = 0; i < numOfClouds; i++){
@@ -1675,6 +1679,75 @@ if(counter > 100 && counter < 110){
   }
 }
 
+
+  // Leafs FUNCTIONS
+  //----------------------------------------------------------------------------------------------------------//
+  let leaf1 = new Image()
+  leaf1.src = 'Images/Locations/Stockholm/leaves1.png'
+  let leaf2 = new Image()
+  leaf2.src = 'Images/Locations/Stockholm/leaves2.png'
+  
+  let numberOfLeafs = 3
+  // Leaf as class
+  
+  let leafArray = []
+  let numOfLeafs = numberOfLeafs
+  
+  
+  class Leaf{
+  constructor(xPos, yPos, length, height){
+    this.xPos = xPos * relWidth;
+    this.yPos = yPos * relHeight;
+    this.length = length * relWidth
+    this.height = height * relHeight
+    this.speed = xSpeedByWindSpeed * randomInt(2,3)
+    this.leafTurnSpeedHeight = randomInt(-1,2)
+    this.randomNum = Math.random()*2
+  }
+  
+  leafUpdate(){
+
+    this.xPos = this.xPos + this.speed
+    this.height = this.height + this.leafTurnSpeedHeight
+
+
+    if(this.height > 20){
+      this.leafTurnSpeedHeight = this.leafTurnSpeedHeight * -1
+    }
+
+    if(this.height < -20){
+      this.leafTurnSpeedHeight = this.leafTurnSpeedHeight * -1
+    }
+  
+    if(this.xPos > cityCanvas2.width){
+      this.xPos = -20
+    }
+    if(this.xPos < -310){
+      this.xPos = cityCanvas2.width
+    }
+    
+  }
+  
+  leafDraw () {
+    // leafCtx.drawImage(leaf1,this.xPos + 50, this.yPos -50,this.length,this.height)
+    cityCtx.drawImage(leaf2,this.xPos + 60, this.yPos -70 ,this.length,this.height)
+
+    }
+  }
+    //Leafs initialize/setup
+  
+  function initLeafs(){
+    for(let i = 0; i < numOfLeafs; i++){
+      let xPos = Math.random() * weatherCanvas.width*2;
+      let yPos = (Math.random() * weatherCanvas.height*2)+400;
+      let length = randomInt(20, 20)
+      let height = randomInt(20, 20)
+      leafArray.push(new Leaf(xPos,yPos, length, height))
+    }
+  }
+  initLeafs()
+       
+
 //----------------------------------------------------------------------------------------------------------//
 //BIRD ANIMATION
 //----------------------------------------------------------------------------------------------------------//
@@ -1776,13 +1849,11 @@ function birdUpdate(){
   //SETUP
   //----------------------------------------------------------------------------------------------------------//
 
-  function nightColor(){
-    cityCtx.fillStyle = 'rgb(31, 15, 187,0.3)'
-    cityCtx.rect(0,0,window.innerWidth, window.innerHeight)
-    cityCtx.fill()
-  }
 
 
+
+
+ 
 
 
   //----------------------------------------------------------------------------------------------------------//
@@ -1817,6 +1888,13 @@ function birdUpdate(){
     cityDrawMain();
     cityBlackDraw();
     cityWindowsDraw()
+
+ // RUN LEAVES
+ for(let i = 0; i < leafArray.length; i++){
+  leafArray[i].leafUpdate();
+  leafArray[i].leafDraw();
+}
+
 
   
     // Set light of city according to weather.
