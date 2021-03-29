@@ -1442,7 +1442,7 @@ let cloudAlpha;
       0,
       currentSunRiseTimeInMinutes,
       0,
-      0.5 
+      0,5
     );
   }
 
@@ -1455,11 +1455,11 @@ let cloudAlpha;
       currentTimeInMinutes,
       currentSunSetTimeInMinutes,
       1440,
-      0.5,
-      0
+      0.15,
+      0.1
     );
   }
-
+console.log(cloudAlpha)
   weatherCtx.globalAlpha = cloudAlpha;
 
   //RAIN
@@ -1776,6 +1776,11 @@ function birdUpdate(){
   //SETUP
   //----------------------------------------------------------------------------------------------------------//
 
+  function nightColor(){
+    cityCtx.fillStyle = 'rgb(31, 15, 187,0.3)'
+    cityCtx.rect(0,0,window.innerWidth, window.innerHeight)
+    cityCtx.fill()
+  }
 
 
 
@@ -1806,7 +1811,6 @@ function birdUpdate(){
     birdUpdate()
     if(isThunder === true){
       runThunder()
-
     }
 
     //RUN CITY
@@ -1817,6 +1821,10 @@ function birdUpdate(){
   
     // Set light of city according to weather.
     weatherLight(r,g,b,a)
+    // Set time light
+    if(isNight === true){
+      nightColor()
+    }
 
      // RUN RAIN
      for(let i = 0; i < particlesArray.length; i++){
