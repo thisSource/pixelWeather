@@ -12,6 +12,11 @@ window.onresize = function () {
   location.reload();
 };
 
+//Disable zoom
+document.addEventListener('gesturestart', function (e) {
+  e.preventDefault();
+});
+
 // DEVICE
 // device detection
 //TBA
