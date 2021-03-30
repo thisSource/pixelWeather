@@ -49,25 +49,8 @@ if (window.innerWidth > 601) {
 })();
 
 
-   //----------------------------------------------------------------------------------------------------------//
-  //AUDIO FUNCTIONS
 
 
-// const soundbutton = document.getElementById('soundbutton')
-// soundbutton.addEventListener('click', playAudio())
-  
-let audioCount = 0;
-let audio = new Audio('music/zeldaHappy.mp3')
-function playAudio(){
-  if (audioCount === 0){
-      audio.play()
-
-      audioCount = 1
-  } else {
-    audioCount = 0
-    audio.pause();
-  }
-}
 
 //WindowSize detection
 // CROP IMAGE
@@ -749,6 +732,9 @@ console.log("Is Night? " + isNight)
 forcastSelector.addEventListener("change", setForecastorCurrent)
 
   function setForecastorCurrent (e){
+
+
+
     let weatherSelectText = "Today"
     let selectedWeatherDescription;
     let selectedTemp;
@@ -785,7 +771,6 @@ forcastSelector.addEventListener("change", setForecastorCurrent)
             //Set weather id to tomorrow at 12.00
 
     if(selectedItemForcast === "tomorrowAt12") {
-  
       weatherId = forecast_Plus1D_At_1200_WeatherId
       weatherSelectText = "Tomorrow at 12.00";
       selectedWeatherDescription = forecast_Plus1D_At_1200_Description;
@@ -798,7 +783,6 @@ forcastSelector.addEventListener("change", setForecastorCurrent)
     } 
 
     if(selectedItemForcast === "dayaftertomorrowAt12") {
-  
       weatherId = forecast_Plus2D_At_1200_WeatherId
       weatherSelectText = "Day after tomorrow ";
       selectedWeatherDescription = forecast_Plus2D_At_1200_Description;
@@ -807,8 +791,7 @@ forcastSelector.addEventListener("change", setForecastorCurrent)
       selectedWindSpeed = forecast_Plus2D_At_1200_WindSpeed;    
       currentTimeInMinutes = 720 //Sets the time to 12.00
       skyImage.src = "Images/Sky/skySunny.png";
-
-
+      isDay = true
     } 
   
     weatherLocation.textContent = locationInputSelect
@@ -912,8 +895,7 @@ function weatherLight(r,g,b,a){
  a = 0.4;
 
  isThunder = true
-        //Audio
-audio = new Audio('music/zeldaSad.mp3')
+
   }
 
 
@@ -942,8 +924,7 @@ audio = new Audio('music/zeldaSad.mp3')
     b = 90;
     a = 0.3;
 
-           //Audio
-   audio = new Audio('music/zeldaSad.mp3')
+
   }
   // 301 Drizzle
   if (weatherId === 301) {
@@ -968,7 +949,6 @@ audio = new Audio('music/zeldaSad.mp3')
     a = 0.4;
 
            //Audio
-   audio = new Audio('music/zeldaSad.mp3')
   }
   //302 - 321 Heavy dizzle
   if (weatherId > 301 && weatherId < 322) {
@@ -993,7 +973,6 @@ audio = new Audio('music/zeldaSad.mp3')
     a = 0.4;
 
            //Audio
-   audio = new Audio('music/zeldaSad.mp3')
   }
 
 
@@ -1021,7 +1000,6 @@ audio = new Audio('music/zeldaSad.mp3')
     a = 0.3;
 
            //Audio
-   audio = new Audio('music/zeldaSad.mp3')
   }
 
   // 501 - Moderate Rain
@@ -1046,7 +1024,6 @@ audio = new Audio('music/zeldaSad.mp3')
     a = 0.4;
 
            //Audio
-   audio = new Audio('music/zeldaSad.mp3')
   }
 
    // 502 - heavy intensity rain
@@ -1071,7 +1048,6 @@ audio = new Audio('music/zeldaSad.mp3')
     a = 0.4;
 
        //Audio
-   audio = new Audio('music/zeldaSad.mp3')
 
   }
 
@@ -1097,7 +1073,6 @@ audio = new Audio('music/zeldaSad.mp3')
       a = 0.5;
   
          //Audio
-     audio = new Audio('music/zeldaSad.mp3')
   
     }
 
@@ -1127,7 +1102,6 @@ audio = new Audio('music/zeldaSad.mp3')
 
 
            //Audio
-   audio = new Audio('music/zeldaSad.mp3')
   }
 
      // 601 - Snow
@@ -1150,7 +1124,6 @@ audio = new Audio('music/zeldaSad.mp3')
     b = 90;
     a = 0.5;
            //Audio
-   audio = new Audio('music/zeldaSad.mp3')
     }
 
       // 602 - Heavy Snow
@@ -1173,7 +1146,6 @@ audio = new Audio('music/zeldaSad.mp3')
       b = 90;
       a = 0.5;
              //Audio
-     audio = new Audio('music/zeldaSad.mp3')
       }
 
        // 620-622 - Heavy Snow
@@ -1196,7 +1168,6 @@ audio = new Audio('music/zeldaSad.mp3')
           b = 90;
           a = 0.5;
                 //Audio
-        audio = new Audio('music/zeldaSad.mp3')
       }
 
    // 615 Light Snow and Rain
@@ -1223,7 +1194,6 @@ audio = new Audio('music/zeldaSad.mp3')
     numberOfSnowFlakes = 100;
 
            //Audio
-   audio = new Audio('music/zeldaSad.mp3')
   }
 
   // ID 700 - 781 Atmosphere
@@ -1248,7 +1218,6 @@ audio = new Audio('music/zeldaSad.mp3')
      a = 0.5
 
         //Audio
-   audio = new Audio('music/zeldaHappy.mp3')
   }
 
 
@@ -1276,7 +1245,6 @@ audio = new Audio('music/zeldaSad.mp3')
    a = 0
 
       //Audio
-      audio = new Audio('music/zeldaHappy.mp3')
   }
 
   // 801 - Few clouds
@@ -1299,7 +1267,6 @@ audio = new Audio('music/zeldaSad.mp3')
    a = 0
 
       //Audio
-      audio = new Audio('music/zeldaHappy.mp3')
   }
   // 802
   if (weatherId === 802) {
@@ -1339,15 +1306,12 @@ audio = new Audio('music/zeldaSad.mp3')
    cloud5.src = 'Images/Clouds/cloud5.png'
    
    //Audio
-   audio = new Audio('music/zeldaHappy.mp3')
 
    r = 0
    g = 0
    b = 0
    a = 0
 
-      //Audio
-      audio = new Audio('music/zeldaHappy.mp3')
   }
   // 804
   if (weatherId === 804) {
@@ -1369,8 +1333,6 @@ audio = new Audio('music/zeldaSad.mp3')
      b = 0
      a = 0
 
-        //Audio
-   audio = new Audio('music/zeldaHappy.mp3')
   }
 
   // CLOUDS FUNCTIONS
@@ -1687,7 +1649,7 @@ if(counter > 100 && counter < 110){
   let leaf2 = new Image()
   leaf2.src = 'Images/Locations/Stockholm/leaves2.png'
   
-  let numberOfLeafs = 3
+  let numberOfLeafs = 1
   // Leaf as class
   
   let leafArray = []
@@ -1700,7 +1662,7 @@ if(counter > 100 && counter < 110){
     this.yPos = yPos * relHeight;
     this.length = length * relWidth
     this.height = height * relHeight
-    this.speed = xSpeedByWindSpeed * randomInt(2,3)
+    this.speed = xSpeedByWindSpeed * randomInt(4,5)
     this.leafTurnSpeedHeight = randomInt(-1,2)
     this.randomNum = Math.random()*2
   }
@@ -1710,14 +1672,15 @@ if(counter > 100 && counter < 110){
     this.xPos = this.xPos + this.speed
     this.height = this.height + this.leafTurnSpeedHeight
 
-
-    if(this.height > 20){
+    if(this.height > 23){
       this.leafTurnSpeedHeight = this.leafTurnSpeedHeight * -1
     }
 
-    if(this.height < -20){
+    if(this.height < -23){
       this.leafTurnSpeedHeight = this.leafTurnSpeedHeight * -1
     }
+
+
   
     if(this.xPos > cityCanvas2.width){
       this.xPos = -20
@@ -1739,9 +1702,12 @@ if(counter > 100 && counter < 110){
   function initLeafs(){
     for(let i = 0; i < numOfLeafs; i++){
       let xPos = Math.random() * weatherCanvas.width*2;
-      let yPos = (Math.random() * weatherCanvas.height*2)+400;
-      let length = randomInt(20, 20)
-      let height = randomInt(20, 20)
+      // let yPos = (Math.random() * weatherCanvas.height*2)+400;
+      console.log(window.innerHeight)
+      let yPos = window.innerHeight+200
+console.log(yPos)
+      let length = randomInt(10, 20)
+      let height = randomInt(10, 20)
       leafArray.push(new Leaf(xPos,yPos, length, height))
     }
   }
@@ -1785,10 +1751,9 @@ const cycleLoop =
 
 let currentLoopIndex = 0;
 
-let birdStartPosX = 300 * relWidth
+let birdStartPosX = 100 * relWidth
 let birdStartPosY = 450 * relHeight
-console.log(birdStartPosX)
-console.log(birdStartPosY)
+
 let birdX = birdStartPosX
 let birdY = birdStartPosY
 let birdX1 = birdStartPosX
@@ -1848,8 +1813,6 @@ function birdUpdate(){
   //----------------------------------------------------------------------------------------------------------//
   //SETUP
   //----------------------------------------------------------------------------------------------------------//
-
-
 
 
 
@@ -1925,3 +1888,20 @@ function birdUpdate(){
 
 })(); //LAST LINE OF WEATHER AND TIME SYSTEM
 } // LAST LINE SET LOCATION
+
+
+       //----------------------------------------------------------------------------------------------------------//
+  //AUDIO FUNCTIONS
+  const soundbutton = document.getElementById('soundbutton')
+
+  let audio = new Audio('music/zeldaHappy.mp3')
+  soundbutton.addEventListener("click", function(){
+  if(audio.paused){
+    audio.play();
+    soundbutton.innerHTML = "Pause";
+  } else {
+    audio.pause();
+    soundbutton.innerHTML = "Play";
+    audio.currentTime = 0
+  }
+});
