@@ -469,7 +469,7 @@ console.log("Is Night? " + isNight)
   }
 
   if (currentMoonPhase === 5) {
-    moonA.src = "Images/moonandsun/mooncrescent.png";
+    moonA.src = "Images/moonandsun/moonfull.png";
   }
   if (currentMoonPhase < 8 && currentMoonPhase > 5) {
     moonA.src = "Images/moonandsun/moonhalf.png";
@@ -754,6 +754,25 @@ forcastSelector.addEventListener("change", setForecastorCurrent)
       selectedWinddirection = currentWindDirectionDegrees;
       selectedWindSpeed = currentWindSpeedMs;
       currentTimeInMinutes = Number(currentHour) * 60 + Number(currentMinutes); //reset time
+
+      if (currentTimeInMinutes <= currentSunRiseTimeInMinutes) {
+        isMorning = true;
+        isDay = false;
+        isNight = false;
+       }
+       
+       if (currentTimeInMinutes > currentSunRiseTimeInMinutes && currentTimeInMinutes < currentSunSetTimeInMinutes ) {
+         isMorning = false;
+         isDay = true;
+         isNight = false;
+       }
+       
+       if (currentTimeInMinutes > currentSunSetTimeInMinutes) {
+         isMorning = false;
+         isDay = false;
+         isNight = true;
+       }
+       
       if(isMorning === true){
         skyImage.src = "Images/Sky/morningSky.png";
       }
@@ -780,6 +799,7 @@ forcastSelector.addEventListener("change", setForecastorCurrent)
       currentTimeInMinutes = 720 //Sets the time to 12.00
       skyImage.src = "Images/Sky/skySunny.png";
       isDay = true
+
     } 
 
     if(selectedItemForcast === "dayaftertomorrowAt12") {
@@ -1425,7 +1445,6 @@ let cloudAlpha;
       0.1
     );
   }
-console.log(cloudAlpha)
   weatherCtx.globalAlpha = cloudAlpha;
 
   //RAIN
@@ -1703,9 +1722,7 @@ if(counter > 100 && counter < 110){
     for(let i = 0; i < numOfLeafs; i++){
       let xPos = Math.random() * weatherCanvas.width*2;
       // let yPos = (Math.random() * weatherCanvas.height*2)+400;
-      console.log(window.innerHeight)
       let yPos = window.innerHeight+200
-console.log(yPos)
       let length = randomInt(10, 20)
       let height = randomInt(10, 20)
       leafArray.push(new Leaf(xPos,yPos, length, height))
@@ -1863,7 +1880,10 @@ function birdUpdate(){
     // Set light of city according to weather.
     weatherLight(r,g,b,a)
     // Set time light
-    if(isNight === true){
+    console.log(isNight)
+    console.log(isDay)
+
+    if(isNight === true && isDay !== true){
       nightColor()
     }
 
