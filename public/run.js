@@ -885,7 +885,7 @@ function weatherLight(r,g,b,a){
    //Set thunder bool
    let isThunder = false
 
-  //  weatherId = 800
+  //  weatherId = 602
 
   //WEATHER TYPES
   //----------------------------------------------------------------------------------------------------------//
