@@ -139,16 +139,27 @@ let windSpeedText = document.getElementById("windSpeedAndDirection");
 
 function setLocation (e){
   let locationInputSelect
+  let locationInputSelectLongitude;
+  let locationInputSelectLatitude;
   if( localStorage.Location === undefined){
     locationInputSelect = "Stockholm"
-  } else locationInputSelect = localStorage.Location
+    locationInputSelectLongitude =  18.110014
+    locationInputSelectLatitude = 59.336889
+
+  } else {locationInputSelect = localStorage.Location
+          locationInputSelectLatitude = localStorage.Latitude
+          locationInputSelectLongitude = localStorage.Longitude}
  
   let locationInputCountrySelect = "Sweden";
   let selectedLocation = e.target.value;
 
   if(selectedLocation === "karlshamn") {
    localStorage.setItem("Location", "Karlshamn")
+   localStorage.setItem("Latitude", 56.172825)
+    localStorage.setItem("Longitude", 14.863209)
     locationInputSelect = localStorage.Location
+    locationInputSelectLongitude = localStorage.Longitude
+    locationInputSelectLatitude = localStorage.Latitude
     locationInputCountrySelect = "Sweden"
     location.reload()
     
@@ -156,21 +167,74 @@ function setLocation (e){
 
   if(selectedLocation === "stockholm") {
     localStorage.setItem("Location", "Stockholm")
+    localStorage.setItem("Latitude", 59.336889)
+    localStorage.setItem("Longitude", 18.110014)
     locationInputSelect = localStorage.Location
+    locationInputSelectLongitude = localStorage.Longitude
+    locationInputSelectLatitude = localStorage.Latitude
     locationInputCountrySelect = "Sweden"
     location.reload()
   } 
 
+    if (selectedLocation === 'mylocation'){
+      getLocation()
+
+      function getLocation() {
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(showPosition);
+        } else {
+       console.log("your location is unavailable")  
+        }
+      }
+      
+      function showPosition(position) {
+        let navLat =position.coords.latitude
+        let navLong = position.coords.longitude
+        localStorage.setItem("Location", "mylocation")
+        localStorage.setItem("Latitude", navLat)
+        localStorage.setItem("Longitude", navLong);
+        locationInputSelect = localStorage.Location
+        locationInputSelectLongitude = localStorage.Longitude
+        locationInputSelectLatitude = localStorage.Latitude
+         location.reload()
+      }
+    }
+
+
+
   // Set text to the selected location
   locationSelector.options[locationSelector.selectedIndex].textContent = locationInputSelect;
-
 
 //----------------------------------------------------------------------------------------------------------//
 //WEATHER & TIME API // GET DATA
 //----------------------------------------------------------------------------------------------------------//
-let apiKeyWeather = "ef834ba6b77d78c6f0324aee2e241488";
 let locationInput = locationInputSelect;
 let locationCountryInput = locationInputCountrySelect;
+
+//POST TO SERVER // LOCATION
+
+const data = {location: locationInput,
+              latitude: locationInputSelectLatitude,
+              longitude: locationInputSelectLongitude};
+
+fetch('/', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify(data),
+})
+.then(response => response.json())
+.then(data => {
+  console.log('Success:', data);
+})
+.catch((error) => {
+  console.error('Error:', error);
+});
+
+
+
+
 
 let currentWeatherURL = '/current'
   // "http://api.openweathermap.org/data/2.5/weather?q=" +
@@ -184,11 +248,11 @@ let forcastURL = '/forecast'
   // apiKeyWeather;
 
 
-const currentTimeData =
-  "https://api.ipgeolocation.io/timezone?apiKey=f200af9f73d84b7abdcdaae87831b563&location=" +
-  locationInput +
-  "," +
-  locationCountryInput;
+const currentTimeData = '/time';
+  // "https://api.ipgeolocation.io/timezone?apiKey=xxxxx&location=" +
+  // locationInput +
+  // "," +
+  // locationCountryInput;
 
 
 
@@ -197,7 +261,7 @@ const currentTimeData =
   //Fetch current Weather
   let responseCurrentWeather = await fetch(currentWeatherURL);
   let jsonCurrentWeather = await responseCurrentWeather.json();
-
+  weatherLocation.textContent = jsonCurrentWeather.name
   //CURRENT WEATHER
   //current weather reusltus
   let currentWeatherId = jsonCurrentWeather.weather[0].id;
@@ -354,9 +418,12 @@ console.log("Is Night? " + isNight)
   //----------------------------------------------------------------------------------------------------------//
   //Load city elements
 
+
+
   const cityImage = new Image();
   const cityBlackImage = new Image();
-  // const windows = new Image();
+
+  console.log(locationInput)
 
   if (locationInput === "Stockholm") {
     if (currentMonth <= 3) {
@@ -383,22 +450,39 @@ console.log("Is Night? " + isNight)
 
   if (locationInput === "Karlshamn") {
     if (currentMonth <= 3) {
-      cityImage.src = "PlaceHolderImagesv1/Karlshamn/cityKarlshamnWinter2.png";
+      cityImage.src = "Images/Locations/MyLocation/mylocationCitySunnyDay.png";
     }
     if (currentMonth > 2 && currentMonth < 9) {
-      cityImage.src = "PlaceHolderImagesv1/Karlshamn/cityKarlshamnSummer2.png";
+      cityImage.src = "Images/Locations/MyLocation/mylocationCitySunnyDay.png";
     }
     if (currentMonth > 8 && currentMonth < 12) {
-      cityImage.src = "PlaceHolderImagesv1/Karlshamn/cityKarlshamnWAutumn2.png";
+      cityImage.src = "Images/Locations/MyLocation/mylocationCitySunnyDay.png";
     }
     if (currentMonth === 12) {
-      cityImage.src = "PlaceHolderImagesv1/Karlshamn/cityKarlshamnWinter2.png";
+      cityImage.src = "Images/Locations/MyLocation/mylocationCitySunnyDay.png";
     }
 
-    cityBlackImage.src = "PlaceHolderImagesv1//Karlshamn/cityKarlshamnBlack2.png";
+    cityBlackImage.src = "Images/Locations/MyLocation/mylocationCityBlackBox.png";
     // windows.src = "PlaceHolderImagesv1/windows.png";
   }
 
+  if (locationInput === "mylocation") {
+    if (currentMonth <= 3) {
+      cityImage.src = "Images/Locations/MyLocation/mylocationCitySunnyDay.png";
+    }
+    if (currentMonth > 2 && currentMonth < 9) {
+      cityImage.src = "Images/Locations/MyLocation/mylocationCitySunnyDay.png";
+    }
+    if (currentMonth > 8 && currentMonth < 12) {
+      cityImage.src = "Images/Locations/MyLocation/mylocationCitySunnyDay.png";
+    }
+    if (currentMonth === 12) {
+      cityImage.src = "Images/Locations/MyLocation/mylocationCitySunnyDay.png";
+    }
+
+    cityBlackImage.src = "Images/Locations/MyLocation/mylocationCityBlackBox.png";
+    // windows.src = "PlaceHolderImagesv1/windows.png";
+  }
 
 
   //Load sky
@@ -791,7 +875,7 @@ forcastSelector.addEventListener("change", setForecastorCurrent)
 
     if(selectedItemForcast === "tomorrowAt12") {
       weatherId = forecast_Plus1D_At_1200_WeatherId
-      weatherSelectText = "Tomorrow at 12.00";
+      weatherSelectText = "Tomorrow";
       selectedWeatherDescription = forecast_Plus1D_At_1200_Description;
       selectedTemp = forecast_Plus1D_At_1200_TemperatureInCelsius;
       selectedWinddirection = forecast_Plus1D_At_1200_DirectionDegrees;
@@ -814,7 +898,8 @@ forcastSelector.addEventListener("change", setForecastorCurrent)
       isDay = true
     } 
   
-    weatherLocation.textContent = locationInputSelect
+    // weatherLocation.textContent = locationInputSelect
+   
     weatherDescription.textContent = selectedWeatherDescription;
     temperature.textContent = selectedTemp + " °C"
     weatherDay.textContent = "Weather " + weatherSelectText;
@@ -1880,8 +1965,6 @@ function birdUpdate(){
     // Set light of city according to weather.
     weatherLight(r,g,b,a)
     // Set time light
-    console.log(isNight)
-    console.log(isDay)
 
     if(isNight === true && isDay !== true){
       nightColor()

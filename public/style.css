@@ -85,11 +85,11 @@ z-index: 1;
 #textOverlayLocation {
   font-size: medium;
   position: absolute;
-  z-index: -2;
+  z-index: +1;
   left: 100px;
-  top: 20px;
+  top: 100px;
   width: 100px;
   height: 20px;
   color: black;
-  display: none;
+  /* display: none; */
 }
