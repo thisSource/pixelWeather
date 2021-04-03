@@ -38,6 +38,10 @@ select{
   color: white;
   border: 0;
 } 
+
+select.active{
+  color: red;
+}
 #textOverlayForcast {
 position: absolute;
 top: 5%;
@@ -46,7 +50,12 @@ z-index: 1;
 
 } 
 
-
+#textOverlayLocation {
+  position: absolute;
+  top: 11%;
+  left: 5%;
+  z-index: 1;
+}
 
 #textOverlayWeather {
   font-size: medium;
@@ -81,15 +90,4 @@ z-index: 1;
   color: white;
   border: 0;
 
-}
-#textOverlayLocation {
-  font-size: medium;
-  position: absolute;
-  z-index: +1;
-  left: 100px;
-  top: 100px;
-  width: 100px;
-  height: 20px;
-  color: black;
-  /* display: none; */
 }
