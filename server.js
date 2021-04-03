@@ -74,6 +74,6 @@ console.log(responseLatitude);
 
 
 
-app.listen(80, () => {
+app.listen(process.env.PORT || 80, () => {
   console.log("listening in port 80...");
 });
