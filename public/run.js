@@ -203,7 +203,7 @@ function setLocation (e){
 
 
   // Set text to the selected location
-  locationSelector.options[locationSelector.selectedIndex].textContent = locationInputSelect;
+  // locationSelector.options[locationSelector.selectedIndex].textContent = locationInputSelect;
 
 //----------------------------------------------------------------------------------------------------------//
 //WEATHER & TIME API // GET DATA

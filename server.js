@@ -1,3 +1,4 @@
+require('dotenv').config()
 const { response } = require("express");
 const express = require("express");
 const request = require("request");
@@ -25,7 +26,7 @@ console.log(responseLatitude);
         app.get("/current", (req, res) => {
           request(
             
-            `http://api.openweathermap.org/data/2.5/weather?lat=${responseLatitude}&lon=${responseLongitude}&appid=ef834ba6b77d78c6f0324aee2e241488`,
+            `http://api.openweathermap.org/data/2.5/weather?lat=${responseLatitude}&lon=${responseLongitude}&appid=${process.env.WEATHER_API_KEY}`,
             (error, response, body) => {
               if (error) {
                 console.log("Error");
@@ -41,7 +42,7 @@ console.log(responseLatitude);
 
       app.get("/forecast", (req, res) => {
         request(
-          `http://api.openweathermap.org/data/2.5/forecast?lat=${responseLatitude}&lon=${responseLongitude}&appid=ef834ba6b77d78c6f0324aee2e241488`,
+          `http://api.openweathermap.org/data/2.5/forecast?lat=${responseLatitude}&lon=${responseLongitude}&appid=${process.env.WEATHER_API_KEY}`,
           (error, response, body) => {
             if (error) {
               console.log("Error");
@@ -57,7 +58,7 @@ console.log(responseLatitude);
     
     app.get("/time", (req, res) => {
       request(
-        `https://api.ipgeolocation.io/timezone?apiKey=f200af9f73d84b7abdcdaae87831b563&location=${responseRecieved}`,
+        `https://api.ipgeolocation.io/timezone?apiKey=${process.env.TIME_API_KEY}&location=${responseRecieved}`,
         (error, response, body) => {
           if (error) {
             console.log("Error");
