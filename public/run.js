@@ -391,23 +391,43 @@ let isMorning;
 let isDay;
 let isNight;
 
-if (currentTimeInMinutes <= currentSunRiseTimeInMinutes) {
- isMorning = true;
- isDay = false;
- isNight = false;
-}
 
-if (currentTimeInMinutes > currentSunRiseTimeInMinutes && currentTimeInMinutes < currentSunSetTimeInMinutes ) {
-  isMorning = false;
-  isDay = true;
-  isNight = false;
-}
-
-if (currentTimeInMinutes > currentSunSetTimeInMinutes) {
-  isMorning = false;
+if (currentTimeInMinutes <= 350) {
+  isMorning = true;
   isDay = false;
-  isNight = true;
-}
+  isNight = false;
+ }
+ 
+ if (currentTimeInMinutes > 350 && currentTimeInMinutes < 1000 ) {
+   isMorning = false;
+   isDay = true;
+   isNight = false;
+ }
+ 
+ if (currentTimeInMinutes > 1000) {
+   isMorning = false;
+   isDay = false;
+   isNight = true;
+ }
+
+
+// if (currentTimeInMinutes <= currentSunRiseTimeInMinutes) {
+//  isMorning = true;
+//  isDay = false;
+//  isNight = false;
+// }
+
+// if (currentTimeInMinutes > currentSunRiseTimeInMinutes && currentTimeInMinutes < currentSunSetTimeInMinutes ) {
+//   isMorning = false;
+//   isDay = true;
+//   isNight = false;
+// }
+
+// if (currentTimeInMinutes > currentSunSetTimeInMinutes) {
+//   isMorning = false;
+//   isDay = false;
+//   isNight = true;
+// }
 
 console.log("Is morning? " + isMorning)
 console.log("Is day? " + isDay)
