@@ -217,6 +217,8 @@ const data = {location: locationInput,
               latitude: locationInputSelectLatitude,
               longitude: locationInputSelectLongitude};
 
+
+              console.log(data)
 fetch('/', {
   method: 'POST',
   headers: {
@@ -314,32 +316,32 @@ const currentTimeData = '/time';
   let jsonForcastWeather = await responseForcastWeather.json();
   //Forcast +1 day AT 12.00
   let forecast_Plus1D_At_1200_WeatherId =
-    jsonForcastWeather.list[9].weather[0].id;
+    jsonForcastWeather.list[16].weather[0].id;
   let forecast_Plus1D_At_1200_Description =
-    jsonForcastWeather.list[9].weather[0].description;
+    jsonForcastWeather.list[16].weather[0].description;
   let forecast_Plus1D_At_1200_TemperatureInKelvin =
-    jsonForcastWeather.list[9].main.temp;
+    jsonForcastWeather.list[16].main.temp;
   let forecast_Plus1D_At_1200_TemperatureInCelsius = (
     forecast_Plus1D_At_1200_TemperatureInKelvin - 273.15
   ).toFixed(1);
-  let forecast_Plus1D_At_1200_WindSpeed = jsonForcastWeather.list[9].wind.speed;
+  let forecast_Plus1D_At_1200_WindSpeed = jsonForcastWeather.list[16].wind.speed;
   let forecast_Plus1D_At_1200_DirectionDegrees =
-    jsonForcastWeather.list[9].wind.deg;
+    jsonForcastWeather.list[16].wind.deg;
 
 
   // Forcast +2 day AT 12.00
   let forecast_Plus2D_At_1200_WeatherId =
-    jsonForcastWeather.list[19].weather[0].id;
+    jsonForcastWeather.list[24].weather[0].id;
   let forecast_Plus2D_At_1200_Description =
-    jsonForcastWeather.list[19].weather[0].description;
+    jsonForcastWeather.list[24].weather[0].description;
   let forecast_Plus2D_At_1200_TemperatureInKelvin =
-    jsonForcastWeather.list[19].main.temp;
+    jsonForcastWeather.list[24].main.temp;
   let forecast_Plus2D_At_1200_TemperatureInCelsius = (
     forecast_Plus1D_At_1200_TemperatureInKelvin - 273.15
   ).toFixed(1);
-  let forecast_Plus2D_At_1200_WindSpeed = jsonForcastWeather.list[19].wind.speed;
+  let forecast_Plus2D_At_1200_WindSpeed = jsonForcastWeather.list[24].wind.speed;
   let forecast_Plus2D_At_1200_DirectionDegrees =
-    jsonForcastWeather.list[19].wind.deg;
+    jsonForcastWeather.list[24].wind.deg;
 
 
 
@@ -970,7 +972,7 @@ function weatherLight(r,g,b,a){
    //Set thunder bool
    let isThunder = false
 
-  //  weatherId = 602
+   weatherId = 804
 
   //WEATHER TYPES
   //----------------------------------------------------------------------------------------------------------//
