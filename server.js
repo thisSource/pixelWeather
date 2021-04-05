@@ -38,11 +38,11 @@ console.log(responseLatitude);
           );
 
         });
-    
-
+        // `http://api.openweathermap.org/data/2.5/forecast?lat=${responseLatitude}&lon=${responseLongitude}&appid=${process.env.WEATHER_API_KEY}`
+        https://api.openweathermap.org/data/2.5/onecall?lat=${responseLatitude}&lon=${responseLongitude}&exclude=current,minutely,hourly,alerts&appid=${process.env.WEATHER_API_KEY}
       app.get("/forecast", (req, res) => {
         request(
-          `http://api.openweathermap.org/data/2.5/forecast?lat=${responseLatitude}&lon=${responseLongitude}&appid=${process.env.WEATHER_API_KEY}`,
+          `  https://api.openweathermap.org/data/2.5/onecall?lat=${responseLatitude}&lon=${responseLongitude}&exclude=current,minutely,hourly,alerts&appid=${process.env.WEATHER_API_KEY}`,
           (error, response, body) => {
             if (error) {
               console.log("Error");

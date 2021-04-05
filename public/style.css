@@ -1,13 +1,13 @@
 /* @font-face {
   src: url(Fonts/ARCADECLASSIC.ttf);
-  font-family: Arial, Helvetica, sans-serif;
-} */
+  font-family: 'ARCADECLASSIC'; */
+/* } */
 
 body {
   margin: 0px;
   margin-bottom: 0px;
   font-family: Arial, Helvetica, sans-serif;
-  touch-action: pan-x pan-y;
+    touch-action: pan-x pan-y;
 
 
 
@@ -32,62 +32,71 @@ body {
 select{
   font-family: Arial, Helvetica, sans-serif;
   box-shadow: 0 10px 20px rgba(100,100,100,0.2);
-  font-size: 13px;
-  padding: 0.5em 1em 0.5em 1.5em;
-  background: rgba(100,100,100,0.2);
-  color: white;
-  border: 0;
+  font-size: 11px;
+  font-weight: bold;
+  padding: 0.5em 0em 0.5em 1.5em;
+  background: rgba(255,255,255,0.5);
+  color: rgba(20,20,20,1);
+  border: 2px solid   rgba(20,20,20,1);
+  ;
 } 
 
-select.active{
-  color: red;
+
+#locationSelector {
+  position: absolute;
+  font-weight: bold;
+  padding: 0.5em 2em 0.5em 1.5em;
+  top: 5%;
+  left: 5%;
+  z-index: 1;
 }
+
 #textOverlayForcast {
 position: absolute;
-top: 5%;
+top: 12%;
 left: 5%;
 z-index: 1;
 
 } 
 
-#textOverlayLocation {
-  position: absolute;
-  top: 11%;
-  left: 5%;
-  z-index: 1;
-}
 
 #textOverlayWeather {
   font-size: medium;
   position: absolute;
   z-index: 1;
-  left: 10%;
+  left: 5%;
   top: 65%;
   font-size: 0.7em;
+  font-weight: 500;
   width: 300px;
   height: 10px;
-  color: white;
+  color: black;
   opacity: 80%;
-  text-shadow: #000000 1px 0 10px;
+  text-shadow: white 1px 0 5px;
 }
 
+#weatherLocation{
+  font-weight: bold;
+}
 #soundButtonOverlay{
-  position: relative;
+  position: absolute;
+  top: 5%;
+  right: 5%;
+
   z-index: 1;
 
 }
 
 #soundbutton {
-  position: absolute;
-  top: 30px;
-  right: 5%;
   z-index: 1;
-
+  font-family: Arial, Helvetica, sans-serif;
   box-shadow: 0 10px 20px rgba(100,100,100,0.2);
-  font-size: 13px;
+  font-size: 11px;
+  font-weight: bold;
   padding: 0.5em 1em 0.5em 1.5em;
-  background: rgba(100,100,100,0.2);
-  color: white;
-  border: 0;
+  background: rgba(255,255,255,0.5);
+  color: rgba(20,20,20,1);
+  border: 2px solid rgba(20,20,20,1);
+  ;
 
 }

@@ -313,34 +313,37 @@ const currentTimeData = '/time';
   //Fetch 5-day 3h Weather forcast
   let responseForcastWeather = await fetch(forcastURL);
   let jsonForcastWeather = await responseForcastWeather.json();
+
   //Forcast +1 day AT 12.00
+
   let forecast_Plus1D_At_1200_WeatherId =
-    jsonForcastWeather.list[16].weather[0].id;
-  let forecast_Plus1D_At_1200_Description =
-    jsonForcastWeather.list[16].weather[0].description;
-  let forecast_Plus1D_At_1200_TemperatureInKelvin =
-    jsonForcastWeather.list[16].main.temp;
-  let forecast_Plus1D_At_1200_TemperatureInCelsius = (
-    forecast_Plus1D_At_1200_TemperatureInKelvin - 273.15
-  ).toFixed(1);
-  let forecast_Plus1D_At_1200_WindSpeed = jsonForcastWeather.list[16].wind.speed;
-  let forecast_Plus1D_At_1200_DirectionDegrees =
-    jsonForcastWeather.list[16].wind.deg;
+  jsonForcastWeather.daily[1].weather[0].id;
+let forecast_Plus1D_At_1200_Description =
+  jsonForcastWeather.daily[1].weather[0].description;
+let forecast_Plus1D_At_1200_TemperatureInKelvin =
+  jsonForcastWeather.daily[1].temp.day;
+let forecast_Plus1D_At_1200_TemperatureInCelsius = (
+  forecast_Plus1D_At_1200_TemperatureInKelvin - 273.15
+).toFixed(1);
+let forecast_Plus1D_At_1200_WindSpeed = jsonForcastWeather.daily[1].wind_speed;
+let forecast_Plus1D_At_1200_DirectionDegrees =
+  jsonForcastWeather.daily[1].wind_deg;
+ 
 
 
   // Forcast +2 day AT 12.00
   let forecast_Plus2D_At_1200_WeatherId =
-    jsonForcastWeather.list[24].weather[0].id;
-  let forecast_Plus2D_At_1200_Description =
-    jsonForcastWeather.list[24].weather[0].description;
-  let forecast_Plus2D_At_1200_TemperatureInKelvin =
-    jsonForcastWeather.list[24].main.temp;
-  let forecast_Plus2D_At_1200_TemperatureInCelsius = (
-    forecast_Plus1D_At_1200_TemperatureInKelvin - 273.15
-  ).toFixed(1);
-  let forecast_Plus2D_At_1200_WindSpeed = jsonForcastWeather.list[24].wind.speed;
-  let forecast_Plus2D_At_1200_DirectionDegrees =
-    jsonForcastWeather.list[24].wind.deg;
+  jsonForcastWeather.daily[2].weather[0].id;
+let forecast_Plus2D_At_1200_Description =
+  jsonForcastWeather.daily[2].weather[0].description;
+let forecast_Plus2D_At_1200_TemperatureInKelvin =
+  jsonForcastWeather.daily[2].temp.day;
+let forecast_Plus2D_At_1200_TemperatureInCelsius = (
+  forecast_Plus1D_At_1200_TemperatureInKelvin - 273.15
+).toFixed(1);
+let forecast_Plus2D_At_1200_WindSpeed = jsonForcastWeather.daily[2].wind_speed;
+let forecast_Plus2D_At_1200_DirectionDegrees =
+  jsonForcastWeather.daily[2].wind_deg;
 
 
 
@@ -371,8 +374,7 @@ const currentTimeData = '/time';
 
 
   let currentTimeInMinutes = Number(currentHour) * 60 + Number(currentMinutes);
-  // let currentTimeInMinutes = 300
-
+  // let currentTimeInMinutes = 1200
   console.log(
     "current year " + currentYear,
     "current month: " + currentMonth,
@@ -443,10 +445,12 @@ console.log("Is Night? " + isNight)
 
   const cityImage = new Image();
   const cityBlackImage = new Image();
+  const cityWindows = new Image();
 
   console.log(locationInput)
 
   if (locationInput === "Stockholm") {
+     // Load window
     if (currentMonth <= 3) {
       cityImage.src = "Images/Locations/Stockholm/stockholmCityAutumnDay.png";
     }
@@ -461,12 +465,10 @@ console.log("Is Night? " + isNight)
     }
 
     cityBlackImage.src = "Images/Locations/Stockholm/StockholmCityBlackBox.png";
-    // windows.src = "PlaceHolderImagesv1/windows.png";
+    cityWindows.src = "Images/Locations/Stockholm/windows.png";
   }
 
-  // Load window
-  const cityWindows = new Image();
-  cityWindows.src = "Images/Locations/Stockholm/windows.png";
+ 
 
 
   if (locationInput === "Karlshamn") {
@@ -484,7 +486,6 @@ console.log("Is Night? " + isNight)
     }
 
     cityBlackImage.src = "Images/Locations/MyLocation/mylocationCityBlackBox.png";
-    // windows.src = "PlaceHolderImagesv1/windows.png";
   }
 
   if (locationInput === "mylocation") {
@@ -502,7 +503,6 @@ console.log("Is Night? " + isNight)
     }
 
     cityBlackImage.src = "Images/Locations/MyLocation/mylocationCityBlackBox.png";
-    // windows.src = "PlaceHolderImagesv1/windows.png";
   }
 
 
@@ -679,7 +679,7 @@ console.log("Is Night? " + isNight)
     );
   }
   function runMoon() {
-    sunAndMoonCtx.drawImage(moonA, moonXPos, 150, 50, 50);
+    sunAndMoonCtx.drawImage(moonA, moonXPos, 150, 55, 55);
   
   }
 
@@ -859,7 +859,7 @@ forcastSelector.addEventListener("change", setForecastorCurrent)
       selectedWinddirection = currentWindDirectionDegrees;
       selectedWindSpeed = currentWindSpeedMs;
       currentTimeInMinutes = Number(currentHour) * 60 + Number(currentMinutes); //reset time
-
+      // currentTimeInMinutes = 1200
       if (currentTimeInMinutes <= currentSunRiseTimeInMinutes) {
         isMorning = true;
         isDay = false;
@@ -889,7 +889,7 @@ forcastSelector.addEventListener("change", setForecastorCurrent)
       if(isNight === true){
         skyImage.src = "Images/Sky/nightSky.png";
       }
-      // currentTimeInMinutes = 300
+      
     }
 
             //Set weather id to tomorrow at 12.00
@@ -991,7 +991,7 @@ function weatherLight(r,g,b,a){
    //Set thunder bool
    let isThunder = false
 
-   weatherId = 804
+  //  weatherId = 804
 
   //WEATHER TYPES
   //----------------------------------------------------------------------------------------------------------//
