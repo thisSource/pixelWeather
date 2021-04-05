@@ -30,7 +30,64 @@ select{
   background: rgba(255,255,255,0.5);
   color: rgba(20,20,20,1);
   border: 2px solid rgba(20,20,20,1);
+  appearance: none;
 } 
+
+.custom-arrowLocation{
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: block;
+  background: rgba(100,100,100,0);
+  height: 100%;
+  width: 1em;
+  pointer-events: none;
+}
+
+.custom-arrowLocation::before,
+.custom-arrowLocation::after{
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+  left: 10%;
+  transform: translate(-10%, -40%);
+}
+
+.custom-arrowLocation::after{
+  border-left: 0.3em solid transparent;
+  border-right: 0.3em solid transparent;
+  border-top: 0.4em solid black;
+  top: 50%;
+}
+
+.custom-arrow {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: block;
+  background: rgba(100,100,100,0);
+  height: 100%;
+  width: 1em;
+  pointer-events: none;
+}
+
+.custom-arrow::before,
+.custom-arrow::after{
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+  left: 10%;
+  transform: translate(-10%, -40%);
+}
+
+.custom-arrow::after{
+  border-left: 0.3em solid transparent;
+  border-right: 0.3em solid transparent;
+  border-top: 0.4em solid black;
+  top: 30%;
+}
 
 
 #textOverlayLocation {
