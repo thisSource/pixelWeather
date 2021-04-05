@@ -359,6 +359,7 @@ let forecast_Plus2D_At_1200_DirectionDegrees =
   //Fetch current time
   let currentTimeandDate = await fetch(currentTimeData);
   let jsonCurrenTimeandDate = await currentTimeandDate.json();
+  console.log(jsonCurrenTimeandDate)
   //Current date reuslt
   //Current month
   let currentYear = jsonCurrenTimeandDate.year;
@@ -374,6 +375,7 @@ let forecast_Plus2D_At_1200_DirectionDegrees =
 
 
   let currentTimeInMinutes = Number(currentHour) * 60 + Number(currentMinutes);
+  console.log(currentTimeInMinutes)
   // let currentTimeInMinutes = 1200
   console.log(
     "current year " + currentYear,
@@ -445,7 +447,6 @@ console.log("Is Night? " + isNight)
 
   const cityImage = new Image();
   const cityBlackImage = new Image();
-  const cityWindows = new Image();
 
   console.log(locationInput)
 
@@ -465,10 +466,10 @@ console.log("Is Night? " + isNight)
     }
 
     cityBlackImage.src = "Images/Locations/Stockholm/StockholmCityBlackBox.png";
-    cityWindows.src = "Images/Locations/Stockholm/windows.png";
   }
+  const cityWindows = new Image();
+  cityWindows.src = "Images/Locations/Stockholm/windows.png";
 
- 
 
 
   if (locationInput === "Karlshamn") {
