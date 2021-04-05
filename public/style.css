@@ -1,8 +1,3 @@
-/* @font-face {
-  src: url(Fonts/ARCADECLASSIC.ttf);
-  font-family: 'ARCADECLASSIC'; */
-/* } */
-
 body {
   margin: 0px;
   margin-bottom: 0px;
@@ -31,20 +26,23 @@ select{
   box-shadow: 0 10px 20px rgba(100,100,100,0.2);
   font-size: 11px;
   font-weight: bold;
-  padding: 0.5em 0em 0.5em 1.5em;
+  padding: 0.5em 1em 0.5em 1.5em;
   background: rgba(255,255,255,0.5);
   color: rgba(20,20,20,1);
-  border: 2px solid   rgba(20,20,20,1);
+  border: 2px solid rgba(20,20,20,1);
 } 
 
 
-#locationSelector {
+#textOverlayLocation {
   position: absolute;
   font-weight: bold;
-  padding: 0.5em 2em 0.5em 1.5em;
   top: 5%;
   left: 5%;
   z-index: 1;
+}
+
+#locationSelector {
+  padding: 0.5em 3em 0.5em 1.5em;
 }
 
 #textOverlayForcast {

@@ -217,7 +217,6 @@ const data = {location: locationInput,
               latitude: locationInputSelectLatitude,
               longitude: locationInputSelectLongitude};
 
-console.log(data)
 fetch('/', {
   method: 'POST',
   headers: {
@@ -359,7 +358,6 @@ let forecast_Plus2D_At_1200_DirectionDegrees =
   //Fetch current time
   let currentTimeandDate = await fetch(currentTimeData);
   let jsonCurrenTimeandDate = await currentTimeandDate.json();
-  console.log(jsonCurrenTimeandDate)
   //Current date reuslt
   //Current month
   let currentYear = jsonCurrenTimeandDate.year;
