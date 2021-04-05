@@ -218,7 +218,6 @@ const data = {location: locationInput,
               longitude: locationInputSelectLongitude};
 
 
-              console.log(data)
 fetch('/', {
   method: 'POST',
   headers: {

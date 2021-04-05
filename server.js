@@ -54,11 +54,12 @@ console.log(responseLatitude);
         );
       });
  
-
+console.log(responseRecieved
+  )
     
     app.get("/time", (req, res) => {
       request(
-        `https://api.ipgeolocation.io/timezone?apiKey=${process.env.TIME_API_KEY}&location=${responseRecieved}`,
+        `https://api.ipgeolocation.io/timezone?apiKey=${process.env.TIME_API_KEY}&lat=${responseLatitude}&long=${responseLongitude}`,
         (error, response, body) => {
           if (error) {
             console.log("Error");
