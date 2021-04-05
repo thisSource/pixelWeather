@@ -3,6 +3,9 @@ body {
   margin-bottom: 0px;
   font-family: Arial, Helvetica, sans-serif;
   touch-action: pan-x pan-y;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+
 }
 
 #wrapper {
@@ -31,6 +34,8 @@ select{
   color: rgba(20,20,20,1);
   border: 2px solid rgba(20,20,20,1);
   appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
 } 
 
 .custom-arrowLocation{
