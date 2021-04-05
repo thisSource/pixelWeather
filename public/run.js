@@ -188,8 +188,8 @@ function setLocation (e){
       }
       
       function showPosition(position) {
-        let navLat =position.coords.latitude
-        let navLong = position.coords.longitude
+        let navLat =position.coords.latitude.toFixed(6)
+        let navLong = position.coords.longitude.toFixed(6)
         localStorage.setItem("Location", "mylocation")
         localStorage.setItem("Latitude", navLat)
         localStorage.setItem("Longitude", navLong);
@@ -217,7 +217,7 @@ const data = {location: locationInput,
               latitude: locationInputSelectLatitude,
               longitude: locationInputSelectLongitude};
 
-
+console.log(data)
 fetch('/', {
   method: 'POST',
   headers: {
