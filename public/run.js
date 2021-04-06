@@ -1404,7 +1404,7 @@ function weatherLight(r,g,b,a){
   if (weatherId === 802) {
     //Clouds
     xSpeedByWindSpeed = xSpeedByWindSpeed * windDirection;
-    numberOfClouds =  7;
+    numberOfClouds =  11;
     cloudSizeMuliply = 1;
     setCloudBrightness = 15;
     //Clouds
