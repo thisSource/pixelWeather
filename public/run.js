@@ -393,13 +393,13 @@ let isDay;
 let isNight;
 
 
-if (currentTimeInMinutes <= 350) {
+if (currentTimeInMinutes <= 450) {
   isMorning = true;
   isDay = false;
   isNight = false;
  }
  
- if (currentTimeInMinutes > 350 && currentTimeInMinutes < 1000 ) {
+ if (currentTimeInMinutes > 450 && currentTimeInMinutes < 1000 ) {
    isMorning = false;
    isDay = true;
    isNight = false;
@@ -445,6 +445,7 @@ console.log("Is Night? " + isNight)
 
   const cityImage = new Image();
   const cityBlackImage = new Image();
+  const cityWindows = new Image();
 
   console.log(locationInput)
 
@@ -462,11 +463,10 @@ console.log("Is Night? " + isNight)
     if (currentMonth === 12) {
       cityImage.src = "Images/Locations/Stockholm/stockholmCityAutumnDay.png";
     }
+    cityWindows.src = "Images/Locations/Stockholm/windows.png";
 
     cityBlackImage.src = "Images/Locations/Stockholm/StockholmCityBlackBox.png";
   }
-  const cityWindows = new Image();
-  cityWindows.src = "Images/Locations/Stockholm/windows.png";
 
 
 
@@ -500,7 +500,7 @@ console.log("Is Night? " + isNight)
     if (currentMonth === 12) {
       cityImage.src = "Images/Locations/MyLocation/mylocationCitySunnyDay.png";
     }
-
+    cityWindows.src = "Images/Locations/MyLocation/emptyWindows.png";
     cityBlackImage.src = "Images/Locations/MyLocation/mylocationCityBlackBox.png";
   }
 
@@ -733,6 +733,13 @@ console.log("Is Night? " + isNight)
     cityCtx.fill()
   }
 
+  
+  // Night color to sky
+  function morningColor(){
+    cityCtx.fillStyle = 'rgb(255, 0, 255,0.1)'
+    cityCtx.rect(0,0,window.innerWidth, window.innerHeight)
+    cityCtx.fill()
+  }
 
 
   //----------------------------------------------------------------------------------------------------------//
@@ -1413,8 +1420,7 @@ function weatherLight(r,g,b,a){
    b = 0
    a = 0
 
-      //Audio
-      audio = new Audio('music/zeldaHappy.mp3')
+  
   }
    // 803
    if (weatherId === 803) {
@@ -1532,8 +1538,8 @@ let cloudAlpha;
       currentTimeInMinutes,
       0,
       currentSunRiseTimeInMinutes,
-      0,
-      0,5
+      0.1,
+      0.2
     );
   }
 
@@ -1985,11 +1991,13 @@ function birdUpdate(){
     // Set light of city according to weather.
     weatherLight(r,g,b,a)
     // Set time light
-
     if(isNight === true && isDay !== true){
       nightColor()
     }
 
+    if (isMorning === true && isDay !== true){
+      morningColor()
+    }
      // RUN RAIN
      for(let i = 0; i < particlesArray.length; i++){
       particlesArray[i].update();
@@ -2017,7 +2025,7 @@ function birdUpdate(){
   //AUDIO FUNCTIONS
   const soundbutton = document.getElementById('soundbutton')
 
-  let audio = new Audio('music/zeldaHappy.mp3')
+  let audio = new Audio('music/mood.mp3')
   soundbutton.addEventListener("click", function(){
   if(audio.paused){
     audio.play();
