@@ -36,10 +36,10 @@ let cropWidthEnd;
 
 //SET OPT WIDTH AND HEIGHT IF SCREEN IS SMALL
 if (window.innerWidth > 601) {
-  optWidth = 1366;
+  optWidth = 1366; 
   optHeight = 768;
 } else {
-  optWidth = 560;
+  optWidth = 360;
   optHeight = 760;
 }
 
@@ -57,9 +57,10 @@ if (window.innerWidth > 601) {
 if (window.innerWidth > 601) {
   croptWidthStart = 0;
   croptWidthEnd = 1;
-} else {
-  croptWidthStart = 0.3;
-  croptWidthEnd = 0.6;
+} 
+else {
+  croptWidthStart = 0.43;
+  croptWidthEnd = 0.42;
 }
 
 //----------------------------------------------------------------------------------------------------------//
@@ -104,6 +105,26 @@ let cityWidth = optWidth * relWidth;
 let cityHeight = optHeight * relHeight;
 cityCanvas2.width = cityWidth;
 cityCanvas2.height = cityHeight;
+
+//Set CANVAS ,argin if with over 1100
+let textOverlayLocation = document.getElementById('textOverlayLocation')
+let textOverlayForcast = document.getElementById('textOverlayForcast')
+let textOverlayWeather = document.getElementById('textOverlayWeather')
+let soundButtonOverlay = document.getElementById('soundButtonOverlay')
+
+if (window.innerWidth > 1100){
+cityCanvas2.style.width = '80%'
+cityCanvas2.style.height = '100%'
+cityCanvas2.style.marginLeft = '10%';
+weatherCanvas.style.width = '80%'
+weatherCanvas.style.height = '100%'
+weatherCanvas.style.marginLeft = '10%';
+}
+textOverlayLocation.style.left = '12%'
+textOverlayForcast.style.left = '12%'
+textOverlayWeather.style.left = '12%'
+soundButtonOverlay.style.right = '12%'
+
 
 //SUN AND MOON CANVAS
 let sunAndMoonCanvas = document.getElementById("sunAndMoonCanvas");
@@ -373,7 +394,6 @@ let forecast_Plus2D_At_1200_DirectionDegrees =
 
 
   let currentTimeInMinutes = Number(currentHour) * 60 + Number(currentMinutes);
-  console.log(currentTimeInMinutes)
   // let currentTimeInMinutes = 1200
   console.log(
     "current year " + currentYear,
@@ -749,15 +769,7 @@ console.log("Is Night? " + isNight)
   //DRAW CITY
   function cityDrawMain() {
     cityCtx.drawImage(
-      cityImage,
-      cityImage.naturalWidth * croptWidthStart,
-      0,
-      cityImage.naturalWidth * croptWidthEnd,
-      cityImage.naturalHeight,
-      0,
-      cityHeight - 650 * relHeight,
-      cityWidth -1 * relWidth,
-      cityHeight - 110 * relHeight
+      cityImage,cityImage.naturalWidth * croptWidthStart,0,cityImage.naturalWidth * croptWidthEnd, cityImage.naturalHeight, 0, cityHeight - 650 * relHeight, cityWidth -1 * relWidth, cityHeight - 110 * relHeight
     );
   }
 
@@ -1009,8 +1021,8 @@ function weatherLight(r,g,b,a){
   if(weatherId > 199 && weatherId < 233){
  //Clouds
  xSpeedByWindSpeed = xSpeedByWindSpeed * windDirection;
- numberOfClouds = 50;
- cloudSizeMuliply = 1;
+ numberOfClouds = 20;
+ cloudSizeMuliply = 2.5;
  setCloudBrightness = 50;
   //Clouds
   cloud1.src = 'Images/Clouds/stormcloud1.png'
@@ -1019,7 +1031,7 @@ function weatherLight(r,g,b,a){
   cloud4.src = 'Images/Clouds/stormcloud4.png'
   cloud5.src = 'Images/Clouds/stormcloud5.png'
   //Rain 
- numberOfRainDrops = 100;
+ numberOfRainDrops = 70;
 
  r = 30;
  g = 30;
@@ -1038,8 +1050,8 @@ function weatherLight(r,g,b,a){
   if (weatherId === 300) {
     //Clouds
     xSpeedByWindSpeed = xSpeedByWindSpeed * windDirection;
-    numberOfClouds = 50;
-    cloudSizeMuliply = 1;
+    numberOfClouds = 30;
+    cloudSizeMuliply = 2.5;
     setCloudBrightness = 50;
     drizzleVar = 2
      //Clouds
@@ -1062,8 +1074,8 @@ function weatherLight(r,g,b,a){
   if (weatherId === 301) {
     //Clouds
     xSpeedByWindSpeed = xSpeedByWindSpeed * windDirection;
-    numberOfClouds = 70;
-    cloudSizeMuliply = 1;
+    numberOfClouds = 40;
+    cloudSizeMuliply = 2.5;
     setCloudBrightness = 50;
     drizzleVar = 1.5
      //Clouds
@@ -1086,8 +1098,8 @@ function weatherLight(r,g,b,a){
   if (weatherId > 301 && weatherId < 322) {
     //Clouds
     xSpeedByWindSpeed = xSpeedByWindSpeed * windDirection;
-    numberOfClouds = 100;
-    cloudSizeMuliply = 1;
+    numberOfClouds = 40;
+    cloudSizeMuliply = 2.5;
     setCloudBrightness = 50;
     drizzleVar = 1
      //Clouds
@@ -1114,8 +1126,8 @@ function weatherLight(r,g,b,a){
   if (weatherId === 500) {
     //Clouds
     xSpeedByWindSpeed = xSpeedByWindSpeed * windDirection;
-    numberOfClouds = 50;
-    cloudSizeMuliply = 1;
+    numberOfClouds = 40;
+    cloudSizeMuliply = 2.5;
     setCloudBrightness = 50;
      //Clouds
      cloud1.src = 'Images/Clouds/stormcloud1.png'
@@ -1138,8 +1150,8 @@ function weatherLight(r,g,b,a){
   if (weatherId === 501) {
     //Clouds
     xSpeedByWindSpeed = xSpeedByWindSpeed * windDirection;
-    numberOfClouds = 50;
-    cloudSizeMuliply = 1;
+    numberOfClouds = 40;
+    cloudSizeMuliply = 2.5;
     setCloudBrightness = 50;
      //Clouds
      cloud1.src = 'Images/Clouds/stormcloud1.png'
@@ -1162,8 +1174,8 @@ function weatherLight(r,g,b,a){
    if (weatherId === 502) {
     //Clouds
     xSpeedByWindSpeed = xSpeedByWindSpeed * windDirection;
-    numberOfClouds = 100;
-    cloudSizeMuliply = 1;
+    numberOfClouds = 40;
+    cloudSizeMuliply = 2.5;
     setCloudBrightness = 50;
      //Clouds
      cloud1.src = 'Images/Clouds/stormcloud1.png'
@@ -1187,8 +1199,8 @@ function weatherLight(r,g,b,a){
     if (weatherId > 502 && weatherId < 532) {
       //Clouds
       xSpeedByWindSpeed = xSpeedByWindSpeed * windDirection;
-      numberOfClouds = 100;
-      cloudSizeMuliply = 1;
+      numberOfClouds = 40;
+      cloudSizeMuliply = 2.5;
       setCloudBrightness = 50;
        //Clouds
        cloud1.src = 'Images/Clouds/stormcloud1.png'
@@ -1214,8 +1226,8 @@ function weatherLight(r,g,b,a){
    if (weatherId === 600) {
     //Clouds
     xSpeedByWindSpeed = xSpeedByWindSpeed * windDirection;
-    numberOfClouds = 50;
-    cloudSizeMuliply = 1;
+    numberOfClouds = 40;
+    cloudSizeMuliply = 2.5;
     setCloudBrightness = 50;
      //Clouds
          //Clouds
@@ -1239,8 +1251,8 @@ function weatherLight(r,g,b,a){
      // 601 - Snow
      if (weatherId === 601) {
       xSpeedByWindSpeed = xSpeedByWindSpeed * windDirection;
-    numberOfClouds = 100;
-    cloudSizeMuliply = 1;
+    numberOfClouds = 40;
+    cloudSizeMuliply = 2.5;
     setCloudBrightness = 50;
      //Clouds
          //Clouds
@@ -1261,8 +1273,8 @@ function weatherLight(r,g,b,a){
       // 602 - Heavy Snow
       if (weatherId === 602) {
         xSpeedByWindSpeed = xSpeedByWindSpeed * windDirection;
-      numberOfClouds = 100;
-      cloudSizeMuliply = 1;
+      numberOfClouds = 40;
+      cloudSizeMuliply = 2.5;
       setCloudBrightness = 50;
        //Clouds
            //Clouds
@@ -1283,8 +1295,8 @@ function weatherLight(r,g,b,a){
        // 620-622 - Heavy Snow
        if (weatherId > 619 && weatherId < 623) {
         xSpeedByWindSpeed = xSpeedByWindSpeed * windDirection;
-        numberOfClouds = 100;
-        cloudSizeMuliply = 1;
+        numberOfClouds = 40;
+        cloudSizeMuliply = 2.5;
         setCloudBrightness = 50;
        //Clouds
            //Clouds
@@ -1305,8 +1317,8 @@ function weatherLight(r,g,b,a){
    // 615 Light Snow and Rain
    if (weatherId > 610 && weatherId < 617) {
     xSpeedByWindSpeed = xSpeedByWindSpeed * windDirection;
-    numberOfClouds = 100;
-    cloudSizeMuliply = 1;
+    numberOfClouds = 40;
+    cloudSizeMuliply = 2.5;
     setCloudBrightness = 50;
    //Clouds
        //Clouds
@@ -1334,8 +1346,8 @@ function weatherLight(r,g,b,a){
     //Clouds
     xSpeedByWindSpeed = xSpeedByWindSpeed * windDirection;
 
-    numberOfClouds = 100;
-    cloudSizeMuliply = 1;
+    numberOfClouds = 40;
+    cloudSizeMuliply = 2.5;
     setCloudBrightness = 50;
      //Clouds
      cloud1.src = 'Images/Clouds/cloud1.png'
@@ -1360,8 +1372,8 @@ function weatherLight(r,g,b,a){
    if (weatherId === 800) {
     //Clouds
     xSpeedByWindSpeed = xSpeedByWindSpeed * windDirection;
-    numberOfClouds = 20;
-    cloudSizeMuliply = 0.3;
+    numberOfClouds = 10;
+    cloudSizeMuliply = 0.5;
     setCloudBrightness = 0;
     //Clouds
     cloud1.src = 'Images/Clouds/cloud1.png'
@@ -1383,7 +1395,7 @@ function weatherLight(r,g,b,a){
   if (weatherId === 801) {
     //Clouds
     xSpeedByWindSpeed = xSpeedByWindSpeed * windDirection;
-    numberOfClouds = 5;
+    numberOfClouds = 10;
     cloudSizeMuliply = 1;
     setCloudBrightness = 0;
     //Clouds
@@ -1404,7 +1416,7 @@ function weatherLight(r,g,b,a){
   if (weatherId === 802) {
     //Clouds
     xSpeedByWindSpeed = xSpeedByWindSpeed * windDirection;
-    numberOfClouds =  11;
+    numberOfClouds =  20;
     cloudSizeMuliply = 1;
     setCloudBrightness = 15;
     //Clouds
@@ -1426,8 +1438,8 @@ function weatherLight(r,g,b,a){
    if (weatherId === 803) {
     //Clouds
     xSpeedByWindSpeed = xSpeedByWindSpeed * windDirection;
-    numberOfClouds = 15;
-    cloudSizeMuliply = 1;
+    numberOfClouds = 20;
+    cloudSizeMuliply = 2;
     setCloudBrightness = 25;
    //Clouds
    cloud1.src = 'Images/Clouds/cloud1.png'
@@ -1450,7 +1462,7 @@ function weatherLight(r,g,b,a){
     xSpeedByWindSpeed = xSpeedByWindSpeed * windDirection;
 
     numberOfClouds = 50;
-    cloudSizeMuliply = 1;
+    cloudSizeMuliply = 2;
     setCloudBrightness = 50;
      //Clouds
      cloud1.src = 'Images/Clouds/cloud1.png'
@@ -1499,7 +1511,7 @@ cloudUpdate(){
 drawCloud () {
 
 weatherCtx.drawImage(cloud1,this.xPos + 50, this.yPos -50,this.length,this.height)
-weatherCtx.drawImage(cloud2,this.xPos + 60, this.yPos -70,this.length,this.height)
+// weatherCtx.drawImage(cloud2,this.xPos + 60, this.yPos -70,this.length,this.height)
 weatherCtx.drawImage(cloud3,this.xPos-50, this.yPos+50,this.length,this.height)
 weatherCtx.drawImage(cloud4,this.xPos-70, this.yPos+70,this.length,this.height)
 weatherCtx.drawImage(cloud5,this.xPos, this.yPos,this.length,this.height)
