@@ -111,6 +111,10 @@ let textOverlayLocation = document.getElementById('textOverlayLocation')
 let textOverlayForcast = document.getElementById('textOverlayForcast')
 let textOverlayWeather = document.getElementById('textOverlayWeather')
 let soundButtonOverlay = document.getElementById('soundButtonOverlay')
+let creditsButtonOverlay = document.getElementById('creditsButtonOverlay')
+let creditsBox= document.getElementById('creditsBox')
+let closeCredits = document.getElementById('closeCredits')
+
 
 if (window.innerWidth > 1100){
 cityCanvas2.style.width = '80%'
@@ -124,6 +128,8 @@ textOverlayLocation.style.left = '12%'
 textOverlayForcast.style.left = '12%'
 textOverlayWeather.style.left = '12%'
 soundButtonOverlay.style.right = '12%'
+creditsButtonOverlay.style.right = '12%'
+
 
 
 //SUN AND MOON CANVAS
@@ -2048,3 +2054,9 @@ function birdUpdate(){
     audio.currentTime = 0
   }
 });
+
+
+//GIVE CREDIT
+
+creditsButtonOverlay.addEventListener('click', giveCredit)
+closeCredits.addEventListener('click',closeCreditsFunc)

@@ -2,19 +2,31 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
     <title>PixelWeatherWorld</title>
     <link rel="stylesheet" href="style.css" />
-    <link rel="icon" type="image/png" href="https://www.favicon.cc/logo3d/400500.png"/>
+    <link
+      rel="icon"
+      type="image/png"
+      href="https://www.favicon.cc/logo3d/400500.png"
+    />
     <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-RW5BV9ES22"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-RW5BV9ES22"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
 
-  gtag('config', 'G-RW5BV9ES22');
-</script>
+      gtag("config", "G-RW5BV9ES22");
+    </script>
   </head>
   <body>
     <div id="textOverlayLocation">
@@ -33,29 +45,57 @@
           <option label="Forecast" value="forcast">Forecast</option>
           <option label="Current weather" value="today">Current weather</option>
           <option label="Tomorrow" value="tomorrowAt12">Tomorrow</option>
-          <option label="Day after Tomorrow" value="dayaftertomorrowAt12">Day after Tomorrow</option>
+          <option label="Day after Tomorrow" value="dayaftertomorrowAt12">
+            Day after Tomorrow
+          </option>
         </select>
         <span class="custom-arrow"></span>
       </div>
       <!-- Buttons for auto click -->
       <p id="buttonCurrentWeather" class="buttonClass"></p>
       <p id="buttonTomorrowWeather" class="buttonClass"></p>
-
     </div>
-    <div id=soundButtonOverlay>
-
+    <div id="soundButtonOverlay">
       <button id="soundbutton">Sound on/off</button>
     </div>
 
     <div id="textOverlayWeather">
       <span id="weatherLocation">location</span>
       <span id="weatherDay">day</span>
-      <br>
+      <br />
       <span id="weatherDescription">descriptiom</span>
-      <br>
+      <br />
       <span id="temperature">temp</span>
-      <br>
+      <br />
       <span id="windSpeedAndDirection">wind</span>
+    </div>
+
+    <div id="creditsButtonOverlay">
+      <button id="creditButton">Credits</button>
+    </div>
+
+    <div id="creditsBoxOverlay">
+      <div id="creditsBox">
+        <button id="closeCredits">close [x]</button>
+        <p>
+          Music:
+          <a target="_blank" href="https://soundcloud.com/antoningvarsson"
+            >Anton</a
+          >
+        </p>
+        <p>
+          Stockholm artwork:
+          <a target="_blank" href="https://www.instagram.com/TofuPixels/"
+            >Tofupixel</a
+          >
+        </p>
+        <p>
+          Add art or music?
+          <a target="_blank" href="https://www.instagram.com/alxndrhglnd/"
+            >contact here</a
+          >
+        </p>
+      </div>
     </div>
 
     <div id="wrapper">
@@ -65,11 +105,10 @@
       <canvas id="cityCanvasMain"></canvas>
       <canvas id="cityCanvasBlack"></canvas>
       <canvas id="rainCanvas"></canvas>
-   
-
     </div>
 
     <script src="weather.js"></script>
+    <script src="credit.js"></script>
     <script src="run.js"></script>
   </body>
 </html>
