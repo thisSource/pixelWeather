@@ -106,29 +106,7 @@ let cityHeight = optHeight * relHeight;
 cityCanvas2.width = cityWidth;
 cityCanvas2.height = cityHeight;
 
-//Set CANVAS ,argin if with over 1100
-let textOverlayLocation = document.getElementById('textOverlayLocation')
-let textOverlayForcast = document.getElementById('textOverlayForcast')
-let textOverlayWeather = document.getElementById('textOverlayWeather')
-let soundButtonOverlay = document.getElementById('soundButtonOverlay')
-let creditsButtonOverlay = document.getElementById('creditsButtonOverlay')
-let creditsBox= document.getElementById('creditsBox')
-let closeCredits = document.getElementById('closeCredits')
 
-
-if (window.innerWidth > 1100){
-cityCanvas2.style.width = '80%'
-cityCanvas2.style.height = '100%'
-cityCanvas2.style.marginLeft = '10%';
-weatherCanvas.style.width = '80%'
-weatherCanvas.style.height = '100%'
-weatherCanvas.style.marginLeft = '10%';
-}
-textOverlayLocation.style.left = '12%'
-textOverlayForcast.style.left = '12%'
-textOverlayWeather.style.left = '12%'
-soundButtonOverlay.style.right = '12%'
-creditsButtonOverlay.style.right = '12%'
 
 
 
@@ -140,6 +118,33 @@ let sunAndMoonHeight = optHeight * relHeight;
 sunAndMoonCanvas.width = sunAndMoonWidth;
 sunAndMoonCanvas.height = sunAndMoonHeight;
 
+//Set CANVAS ,argin if with over 1100
+let textOverlayLocation = document.getElementById('textOverlayLocation')
+let textOverlayForcast = document.getElementById('textOverlayForcast')
+let textOverlayWeather = document.getElementById('textOverlayWeather')
+let soundButtonOverlay = document.getElementById('soundButtonOverlay')
+let creditsButtonOverlay = document.getElementById('creditsButtonOverlay')
+let creditsBox= document.getElementById('creditsBox')
+let closeCredits = document.getElementById('closeCredits')
+
+
+if (window.innerWidth > 1450){
+cityCanvas2.style.width = '80%'
+cityCanvas2.style.height = '100%'
+cityCanvas2.style.marginLeft = '10%';
+weatherCanvas.style.width = '80%'
+weatherCanvas.style.height = '100%'
+weatherCanvas.style.marginLeft = '10%';
+sunAndMoonCanvas.style.width = '80%'
+sunAndMoonCanvas.style.height = '100%'
+sunAndMoonCanvas.style.marginLeft = '10%';
+
+}
+textOverlayLocation.style.left = '12%'
+textOverlayForcast.style.left = '12%'
+textOverlayWeather.style.left = '12%'
+soundButtonOverlay.style.right = '12%'
+creditsButtonOverlay.style.right = '12%'
 
 //DOM BUTTON ELEMENTS 
 //SELECT LOCATION
