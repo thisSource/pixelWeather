@@ -3,6 +3,7 @@
 //----------------------------------------------------------------------------------------------------------//
 
 
+
 //----------------------------------------------------------------------------------------------------------//
 //RESPONSIVNESS
 //----------------------------------------------------------------------------------------------------------//
@@ -66,6 +67,20 @@ else {
 //----------------------------------------------------------------------------------------------------------//
 //DOM ELEMENTS
 //----------------------------------------------------------------------------------------------------------//
+//ICONS
+let currentForcastOverlay = document.getElementById('currentForcastOverlay')
+let plus3 = document.getElementById('plus3')
+let plus6 = document.getElementById('plus6')
+let plus9 = document.getElementById('plus9')
+let plus12 = document.getElementById('plus12')
+
+
+let iconCanvas = document.getElementById('iconCanvas')
+let iconCtx = iconCanvas.getContext('2d')
+iconCanvas.width = window.innerWidth
+iconCanvas.height = window.innerHeight
+
+
 //SKY DOM
 let skyCanvas = document.getElementById("skyCanvas");
 let skyCtx = skyCanvas.getContext("2d");
@@ -105,7 +120,6 @@ let cityWidth = optWidth * relWidth;
 let cityHeight = optHeight * relHeight;
 cityCanvas2.width = cityWidth;
 cityCanvas2.height = cityHeight;
-
 
 
 
@@ -262,7 +276,7 @@ fetch('/', {
 })
 .catch((error) => {
   console.error('Error:', error);
-});
+}); 
 
 
 
@@ -340,10 +354,174 @@ const currentTimeData = '/time';
 
 
 
-  //FORECAST
+
   //Fetch 5-day 3h Weather forcast
   let responseForcastWeather = await fetch(forcastURL);
   let jsonForcastWeather = await responseForcastWeather.json();
+
+
+  //FORECAST
+//Fetch h forcast
+let responseHCast = await fetch('/forcastCurrent')
+let jsonHCast = await responseHCast.json()
+
+let hCast_3_time = jsonHCast.hourly[3].dt 
+let hCast_3_time_zone = hCast_3_time + jsonHCast.timezone_offset
+let hCast_6_time = jsonHCast.hourly[8].dt 
+let hCast_6_time_zone = hCast_6_time + jsonHCast.timezone_offset
+let hCast_9_time = jsonHCast.hourly[13].dt 
+let hCast_9_time_zone = hCast_9_time + jsonHCast.timezone_offset
+let forcastTime_3;
+let forcastTime_6;
+let forcastTime_9;
+
+
+
+let forCastTimeRaw_3 = new Date(hCast_3_time_zone*1000)
+if(forCastTimeRaw_3.getHours() < 10){
+  forcastTime_3 = `0${forCastTimeRaw_3.getHours()}:00`
+} else forcastTime_3 = `${forCastTimeRaw_3.getHours()}:00`
+
+let forCastTimeRaw_6 = new Date(hCast_6_time_zone*1000)
+if(forCastTimeRaw_6.getHours() < 10){
+  forcastTime_6 = `0${forCastTimeRaw_6.getHours()}:00`
+} else forcastTime_6 = `${forCastTimeRaw_6.getHours()}:00`
+
+
+let forCastTimeRaw_9 = new Date(hCast_9_time_zone*1000)
+if(forCastTimeRaw_9.getHours() < 10){
+  forcastTime_9 = `0${forCastTimeRaw_9.getHours()}:00`
+} else forcastTime_9 = `${forCastTimeRaw_9.getHours()}:00`
+
+
+
+
+//forecast current Weather IDs
+let hCast_3_id = jsonHCast.hourly[3].weather[0].id
+let hCast_6_id = jsonHCast.hourly[8].weather[0].id
+let hCast_9_id = jsonHCast.hourly[13].weather[0].id
+
+
+
+//forecast current Temps
+let hCast_3_temp = `${(jsonHCast.hourly[3].temp -273.15).toFixed(0)}°C`
+let hCast_6_temp = `${(jsonHCast.hourly[8].temp -273.15).toFixed(0)}°C`
+let hCast_9_temp = `${(jsonHCast.hourly[13].temp -273.15).toFixed(0)}°C`
+
+
+
+let iconImgA = new Image()
+let iconImgB = new Image()
+let iconImgC = new Image()
+
+//200 --> 233
+if(hCast_3_id > 199 & hCast_3_id < 233){
+  iconImgA.src = "http://openweathermap.org/img/wn/11n@2x.png"
+}
+if(hCast_6_id > 199 & hCast_6_id < 233){
+  iconImgB.src = "http://openweathermap.org/img/wn/11n@2x.png"
+}
+if(hCast_9_id > 199 & hCast_9_id < 233){
+  iconImgC.src = "http://openweathermap.org/img/wn/11n@2x.png"
+}
+
+//300 --> 321
+if(hCast_3_id > 299 & hCast_3_id < 322){
+  iconImgA.src = "http://openweathermap.org/img/wn/09n@2x.png"
+}
+if(hCast_6_id > 299 & hCast_6_id < 322){
+  iconImgB.src = "http://openweathermap.org/img/wn/09n@2x.png"
+}
+if(hCast_9_id > 299 & hCast_9_id < 322){
+  iconImgC.src = "http://openweathermap.org/img/wn/09n@2x.png"
+}
+//500 --> 531
+if(hCast_3_id > 499 & hCast_3_id < 522){
+  iconImgA.src = "http://openweathermap.org/img/wn/09n@2x.png"
+}
+if(hCast_6_id > 499 & hCast_6_id < 522){
+  iconImgB.src = "http://openweathermap.org/img/wn/09n@2x.png"
+}
+if(hCast_9_id > 499 & hCast_9_id < 522){
+  iconImgC.src = "http://openweathermap.org/img/wn/09n@2x.png"
+}
+
+
+//600 --> 631
+if(hCast_3_id > 599 & hCast_3_id < 622){
+  iconImgA.src = "http://openweathermap.org/img/wn/13n@2x.png"
+}
+if(hCast_6_id > 599 & hCast_6_id < 622){
+  iconImgB.src = "http://openweathermap.org/img/wn/13n@2x.png"
+}
+if(hCast_9_id > 599 & hCast_9_id < 622){
+  iconImgC.src = "http://openweathermap.org/img/wn/13n@2x.png"
+}
+
+//700 --> 781
+if(hCast_3_id > 699 & hCast_3_id < 782){
+  iconImgA.src = "http://openweathermap.org/img/wn/50n@2x.png"
+}
+if(hCast_6_id > 699 & hCast_6_id < 782){
+  iconImgB.src = "http://openweathermap.org/img/wn/50n@2x.png"
+}
+if(hCast_9_id > 699 & hCast_9_id < 782){
+  iconImgC.src = "http://openweathermap.org/img/wn/50n@2x.png"
+}
+
+//800 --> 800
+if(hCast_3_id === 800){
+  iconImgA.src = "http://openweathermap.org/img/wn/09n@2x.png"}
+if(hCast_6_id === 800){
+    iconImgB.src = "http://openweathermap.org/img/wn/09n@2x.png"}
+if(hCast_9_id === 800){
+  iconImgC.src = "http://openweathermap.org/img/wn/09n@2x.png"}
+
+
+//801 --> 806
+if(hCast_3_id > 800 & hCast_3_id  < 806){
+  iconImgA.src = "http://openweathermap.org/img/wn/02n@2x.png"
+}
+if(hCast_6_id > 800 & hCast_6_id  < 806){
+  iconImgB.src = "http://openweathermap.org/img/wn/02n@2x.png"
+}
+if(hCast_9_id > 800 & hCast_9_id  < 806){
+  iconImgC.src = "http://openweathermap.org/img/wn/02n@2x.png"
+}
+
+
+
+
+// DRAWING ICONS
+// -----------------------------------------------------------------------------------------------------------------------------------//
+function drawIcons(){
+
+  iconCtx.drawImage(iconImgA,iconCanvas.width/9 ,520*relHeight,40,40)
+  iconCtx.drawImage(iconImgB,iconCanvas.width/9 + 50 ,520*relHeight,40,40)
+  iconCtx.drawImage(iconImgC,iconCanvas.width/9 + 100 ,520*relHeight,40,40)
+
+  iconCtx.shadowColor ="white"
+  iconCtx.shadowBlur=7;
+  iconCtx.lineWidth=1;
+  iconCtx.font = "12px Arial";
+  iconCtx.fillText(forcastTime_3,iconCanvas.width/9+5 ,(520 + 70)*relHeight)
+  iconCtx.fillText(forcastTime_6,iconCanvas.width/9+55 ,(520 + 70)*relHeight)
+  iconCtx.fillText(forcastTime_9,iconCanvas.width/9+105 ,(520 + 70)*relHeight)
+
+  iconCtx.fillText(hCast_3_temp,iconCanvas.width/9+5 ,(520 + 90)*relHeight)
+  iconCtx.fillText(hCast_6_temp,iconCanvas.width/9+55 ,(520 + 90)*relHeight)
+  iconCtx.fillText(hCast_9_temp,iconCanvas.width/9+105 ,(520 + 90)*relHeight)
+
+  iconCtx.shadowBlur=0;
+  iconCtx.fillStyle = "black"
+  iconCtx.fillText(forcastTime_3,iconCanvas.width/9+5 ,(520 + 70)*relHeight)
+  iconCtx.fillText(forcastTime_6,iconCanvas.width/9+55 ,(520 + 70)*relHeight)
+  iconCtx.fillText(forcastTime_9,iconCanvas.width/9+105 ,(520 + 70)*relHeight)
+}
+
+
+
+
 
   //Forcast +1 day AT 12.00
 
@@ -415,6 +593,7 @@ let forecast_Plus2D_At_1200_DirectionDegrees =
     "current miuntes: " + currentMinutes,
     "current time in minutes: " + currentTimeInMinutes
   );
+
 
 
 // IS MORNING DAY OR NIGHT
@@ -877,6 +1056,7 @@ forcastSelector.addEventListener("change", setForecastorCurrent)
     let selectedItemForcast = e.target.value;
     let clickedItemForcast = e.target.id;
     let weatherId = currentWeatherId;        
+    let isToday = true
 
        
           //Set weather id to current
@@ -888,6 +1068,8 @@ forcastSelector.addEventListener("change", setForecastorCurrent)
       selectedWinddirection = currentWindDirectionDegrees;
       selectedWindSpeed = currentWindSpeedMs;
       currentTimeInMinutes = Number(currentHour) * 60 + Number(currentMinutes); //reset time
+      isToday = true
+
       // currentTimeInMinutes = 1200
       if (currentTimeInMinutes <= currentSunRiseTimeInMinutes) {
         isMorning = true;
@@ -933,6 +1115,7 @@ forcastSelector.addEventListener("change", setForecastorCurrent)
       currentTimeInMinutes = 720 //Sets the time to 12.00
       skyImage.src = "Images/Sky/skySunny.png";
       isDay = true
+      isToday = false
 
     } 
 
@@ -946,14 +1129,25 @@ forcastSelector.addEventListener("change", setForecastorCurrent)
       currentTimeInMinutes = 720 //Sets the time to 12.00
       skyImage.src = "Images/Sky/skySunny.png";
       isDay = true
+      isToday = false
     } 
   
+
+
+
+
+
+
+
+//Manually change location --->
     // weatherLocation.textContent = locationInputSelect
    
     weatherDescription.textContent = selectedWeatherDescription;
     temperature.textContent = selectedTemp + " °C"
     weatherDay.textContent = "Weather " + weatherSelectText;
     windSpeedText.textContent = "Wind speed " + selectedWindSpeed + " m/s"
+
+
 
 
   // WIND VARIABELS
@@ -980,6 +1174,13 @@ forcastSelector.addEventListener("change", setForecastorCurrent)
   if (windSpeed > 7) {
     xSpeedByWindSpeed = 0.3;
   } 
+
+
+
+
+
+
+
 
 
   //Load weather images (clouds)
@@ -1033,7 +1234,7 @@ function weatherLight(r,g,b,a){
  //Clouds
  xSpeedByWindSpeed = xSpeedByWindSpeed * windDirection;
  numberOfClouds = 20;
- cloudSizeMuliply = 2.5;
+ cloudSizeMuliply = 1.5;
  setCloudBrightness = 50;
   //Clouds
   cloud1.src = 'Images/Clouds/stormcloud1.png'
@@ -1062,7 +1263,7 @@ function weatherLight(r,g,b,a){
     //Clouds
     xSpeedByWindSpeed = xSpeedByWindSpeed * windDirection;
     numberOfClouds = 30;
-    cloudSizeMuliply = 2.5;
+    cloudSizeMuliply = 1.5;
     setCloudBrightness = 50;
     drizzleVar = 2
      //Clouds
@@ -1086,7 +1287,7 @@ function weatherLight(r,g,b,a){
     //Clouds
     xSpeedByWindSpeed = xSpeedByWindSpeed * windDirection;
     numberOfClouds = 40;
-    cloudSizeMuliply = 2.5;
+    cloudSizeMuliply = 1.5;
     setCloudBrightness = 50;
     drizzleVar = 1.5
      //Clouds
@@ -1110,7 +1311,7 @@ function weatherLight(r,g,b,a){
     //Clouds
     xSpeedByWindSpeed = xSpeedByWindSpeed * windDirection;
     numberOfClouds = 40;
-    cloudSizeMuliply = 2.5;
+    cloudSizeMuliply = 1.5;
     setCloudBrightness = 50;
     drizzleVar = 1
      //Clouds
@@ -1138,7 +1339,7 @@ function weatherLight(r,g,b,a){
     //Clouds
     xSpeedByWindSpeed = xSpeedByWindSpeed * windDirection;
     numberOfClouds = 40;
-    cloudSizeMuliply = 2.5;
+    cloudSizeMuliply = 1.5;
     setCloudBrightness = 50;
      //Clouds
      cloud1.src = 'Images/Clouds/stormcloud1.png'
@@ -1162,7 +1363,7 @@ function weatherLight(r,g,b,a){
     //Clouds
     xSpeedByWindSpeed = xSpeedByWindSpeed * windDirection;
     numberOfClouds = 40;
-    cloudSizeMuliply = 2.5;
+    cloudSizeMuliply = 1.5;
     setCloudBrightness = 50;
      //Clouds
      cloud1.src = 'Images/Clouds/stormcloud1.png'
@@ -1186,7 +1387,7 @@ function weatherLight(r,g,b,a){
     //Clouds
     xSpeedByWindSpeed = xSpeedByWindSpeed * windDirection;
     numberOfClouds = 40;
-    cloudSizeMuliply = 2.5;
+    cloudSizeMuliply = 1.5;
     setCloudBrightness = 50;
      //Clouds
      cloud1.src = 'Images/Clouds/stormcloud1.png'
@@ -1211,7 +1412,7 @@ function weatherLight(r,g,b,a){
       //Clouds
       xSpeedByWindSpeed = xSpeedByWindSpeed * windDirection;
       numberOfClouds = 40;
-      cloudSizeMuliply = 2.5;
+      cloudSizeMuliply = 1.5;
       setCloudBrightness = 50;
        //Clouds
        cloud1.src = 'Images/Clouds/stormcloud1.png'
@@ -1238,7 +1439,7 @@ function weatherLight(r,g,b,a){
     //Clouds
     xSpeedByWindSpeed = xSpeedByWindSpeed * windDirection;
     numberOfClouds = 40;
-    cloudSizeMuliply = 2.5;
+    cloudSizeMuliply = 1.5;
     setCloudBrightness = 50;
      //Clouds
          //Clouds
@@ -1263,7 +1464,7 @@ function weatherLight(r,g,b,a){
      if (weatherId === 601) {
       xSpeedByWindSpeed = xSpeedByWindSpeed * windDirection;
     numberOfClouds = 40;
-    cloudSizeMuliply = 2.5;
+    cloudSizeMuliply = 1.5;
     setCloudBrightness = 50;
      //Clouds
          //Clouds
@@ -1285,7 +1486,7 @@ function weatherLight(r,g,b,a){
       if (weatherId === 602) {
         xSpeedByWindSpeed = xSpeedByWindSpeed * windDirection;
       numberOfClouds = 40;
-      cloudSizeMuliply = 2.5;
+      cloudSizeMuliply = 1.5;
       setCloudBrightness = 50;
        //Clouds
            //Clouds
@@ -1307,7 +1508,7 @@ function weatherLight(r,g,b,a){
        if (weatherId > 619 && weatherId < 623) {
         xSpeedByWindSpeed = xSpeedByWindSpeed * windDirection;
         numberOfClouds = 40;
-        cloudSizeMuliply = 2.5;
+        cloudSizeMuliply = 1.5;
         setCloudBrightness = 50;
        //Clouds
            //Clouds
@@ -1329,7 +1530,7 @@ function weatherLight(r,g,b,a){
    if (weatherId > 610 && weatherId < 617) {
     xSpeedByWindSpeed = xSpeedByWindSpeed * windDirection;
     numberOfClouds = 40;
-    cloudSizeMuliply = 2.5;
+    cloudSizeMuliply = 1.5;
     setCloudBrightness = 50;
    //Clouds
        //Clouds
@@ -1358,7 +1559,7 @@ function weatherLight(r,g,b,a){
     xSpeedByWindSpeed = xSpeedByWindSpeed * windDirection;
 
     numberOfClouds = 40;
-    cloudSizeMuliply = 2.5;
+    cloudSizeMuliply = 1.5;
     setCloudBrightness = 50;
      //Clouds
      cloud1.src = 'Images/Clouds/cloud1.png'
@@ -1383,7 +1584,7 @@ function weatherLight(r,g,b,a){
    if (weatherId === 800) {
     //Clouds
     xSpeedByWindSpeed = xSpeedByWindSpeed * windDirection;
-    numberOfClouds = 10;
+    numberOfClouds = 3;
     cloudSizeMuliply = 0.5;
     setCloudBrightness = 0;
     //Clouds
@@ -1450,7 +1651,7 @@ function weatherLight(r,g,b,a){
     //Clouds
     xSpeedByWindSpeed = xSpeedByWindSpeed * windDirection;
     numberOfClouds = 20;
-    cloudSizeMuliply = 2;
+    cloudSizeMuliply = 1;
     setCloudBrightness = 25;
    //Clouds
    cloud1.src = 'Images/Clouds/cloud1.png'
@@ -1473,7 +1674,7 @@ function weatherLight(r,g,b,a){
     xSpeedByWindSpeed = xSpeedByWindSpeed * windDirection;
 
     numberOfClouds = 50;
-    cloudSizeMuliply = 2;
+    cloudSizeMuliply = 1;
     setCloudBrightness = 50;
      //Clouds
      cloud1.src = 'Images/Clouds/cloud1.png'
@@ -1967,7 +2168,8 @@ function birdUpdate(){
 
 
 
- 
+  
+
 
 
   //----------------------------------------------------------------------------------------------------------//
@@ -1980,12 +2182,13 @@ function birdUpdate(){
     cityCtx.clearRect(0, 0, window.innerWidth, window.innerHeight);
     cityBlackCtx.clearRect(0, 0, window.innerWidth, window.innerHeight);
     skyCtx.clearRect(0,0, window.innerWidth, window.innerHeight)
-
+    iconCtx.clearRect(0,0, window.innerWidth, window.innerHeight)
+    //SET ICON
     //RUN SKY
     runSky();
     //RUN WEATHER
  // RUN MOON AND SUN
- sunAndMoon();
+    sunAndMoon();
 
 
     for(let i = 0; i < cloudArray.length; i++){
@@ -2035,10 +2238,18 @@ function birdUpdate(){
      }
 
 
+      if(isToday === true){
+        drawIcons()
+      }
+
 
     requestAnimationFrame(update);
   })();
 } // LAST LINE SET FORECAST TRUE OR FALSE
+// SET ICON
+
+
+
 
 })(); //LAST LINE OF WEATHER AND TIME SYSTEM
 } // LAST LINE SET LOCATION

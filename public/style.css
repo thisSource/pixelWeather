@@ -17,7 +17,8 @@ body {
 #cityCanvasBlack,
 #cityCanvasMain,
 #sunAndMoonCanvas,
-#rainCanvas {
+#rainCanvas,
+#iconCanvas {
   position: absolute;
   top: 0px;
   left: 0px;
@@ -103,6 +104,7 @@ select{
   z-index: 1;
 }
 
+
 #locationSelector {
   padding: 0.5em 3em 0.5em 1.5em;
 }
@@ -120,7 +122,28 @@ z-index: 1;
   position: absolute;
   z-index: 1;
   left: 5%;
-  top: 65%;
+  top: 55%;
+  font-size: 0.9em;
+  font-weight: 500;
+  width: 300px;
+  height: 10px;
+  color: black;
+  opacity: 80%;
+  text-shadow: white 1px 0 5px;
+  font-weight: bold;
+
+}
+
+
+#weatherLocation{
+  font-weight: bold;
+}
+
+#currentForcastOverlay{
+  font-size: medium;
+  position: absolute;
+  z-index: 1;
+  top: 990%;
   font-size: 0.9em;
   font-weight: 500;
   width: 300px;
@@ -130,15 +153,22 @@ z-index: 1;
   text-shadow: white 1px 0 5px;
 }
 
-#weatherLocation{
-  font-weight: bold;
+.iconText{
+  font-size: x-small;
+  /* margin-left: 15px; */
+  padding-right: 15px;
 }
+
 #soundButtonOverlay{
   position: absolute;
   top: 5%;
   right: 5%;
   z-index: 1;
 }
+
+
+
+
 
 
 
