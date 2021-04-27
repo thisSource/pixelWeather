@@ -10,7 +10,7 @@
 
 // RESIZE update
 window.onresize = function () {
-  location.reload();
+  setTimeout(window.location.reload(),1000)
 };
 
 //Disable zoom
@@ -34,6 +34,8 @@ let relHeight;
 
 let cropWidthStart;
 let cropWidthEnd;
+
+
 
 //SET OPT WIDTH AND HEIGHT IF SCREEN IS SMALL
 if (window.innerWidth > 601) {
@@ -413,114 +415,6 @@ let hCast_6_temp = `${(jsonHCast.hourly[8].temp -273.15).toFixed(0)}°C`
 let hCast_9_temp = `${(jsonHCast.hourly[13].temp -273.15).toFixed(0)}°C`
 
 
-let iconImgA = new Image()
-let iconImgB = new Image()
-let iconImgC = new Image()
-
-//200 --> 233
-if(hCast_3_id > 199 & hCast_3_id < 233){
-  iconImgA.src = "http://openweathermap.org/img/wn/11n@2x.png"
-}
-if(hCast_6_id > 199 & hCast_6_id < 233){
-  iconImgB.src = "http://openweathermap.org/img/wn/11n@2x.png"
-}
-if(hCast_9_id > 199 & hCast_9_id < 233){
-  iconImgC.src = "http://openweathermap.org/img/wn/11n@2x.png"
-}
-
-//300 --> 321
-if(hCast_3_id > 299 & hCast_3_id < 322){
-  iconImgA.src = "http://openweathermap.org/img/wn/09n@2x.png"
-}
-if(hCast_6_id > 299 & hCast_6_id < 322){
-  iconImgB.src = "http://openweathermap.org/img/wn/09n@2x.png"
-}
-if(hCast_9_id > 299 & hCast_9_id < 322){
-  iconImgC.src = "http://openweathermap.org/img/wn/09n@2x.png"
-}
-//500 --> 531
-if(hCast_3_id > 499 & hCast_3_id < 522){
-  iconImgA.src = "http://openweathermap.org/img/wn/09n@2x.png"
-}
-if(hCast_6_id > 499 & hCast_6_id < 522){
-  iconImgB.src = "http://openweathermap.org/img/wn/09n@2x.png"
-}
-if(hCast_9_id > 499 & hCast_9_id < 522){
-  iconImgC.src = "http://openweathermap.org/img/wn/09n@2x.png"
-}
-
-
-//600 --> 631
-if(hCast_3_id > 599 & hCast_3_id < 622){
-  iconImgA.src = "http://openweathermap.org/img/wn/13n@2x.png"
-}
-if(hCast_6_id > 599 & hCast_6_id < 622){
-  iconImgB.src = "http://openweathermap.org/img/wn/13n@2x.png"
-}
-if(hCast_9_id > 599 & hCast_9_id < 622){
-  iconImgC.src = "http://openweathermap.org/img/wn/13n@2x.png"
-}
-
-//700 --> 781
-if(hCast_3_id > 699 & hCast_3_id < 782){
-  iconImgA.src = "http://openweathermap.org/img/wn/50n@2x.png"
-}
-if(hCast_6_id > 699 & hCast_6_id < 782){
-  iconImgB.src = "http://openweathermap.org/img/wn/50n@2x.png"
-}
-if(hCast_9_id > 699 & hCast_9_id < 782){
-  iconImgC.src = "http://openweathermap.org/img/wn/50n@2x.png"
-}
-
-//800 --> 800
-if(hCast_3_id === 800){
-  iconImgA.src = "http://openweathermap.org/img/wn/09n@2x.png"}
-if(hCast_6_id === 800){
-    iconImgB.src = "http://openweathermap.org/img/wn/09n@2x.png"}
-if(hCast_9_id === 800){
-  iconImgC.src = "http://openweathermap.org/img/wn/09n@2x.png"}
-
-
-//801 --> 806
-if(hCast_3_id > 800 & hCast_3_id  < 806){
-  iconImgA.src = "http://openweathermap.org/img/wn/02n@2x.png"
-}
-if(hCast_6_id > 800 & hCast_6_id  < 806){
-  iconImgB.src = "http://openweathermap.org/img/wn/02n@2x.png"
-}
-if(hCast_9_id > 800 & hCast_9_id  < 806){
-  iconImgC.src = "http://openweathermap.org/img/wn/02n@2x.png"
-}
-
-
-
-
-// DRAWING ICONS
-// -----------------------------------------------------------------------------------------------------------------------------------//
-function drawIcons(){
-
-  iconCtx.drawImage(iconImgA,iconCanvas.width/9 ,520*relHeight,40,40)
-  iconCtx.drawImage(iconImgB,iconCanvas.width/9 + 50 ,520*relHeight,40,40)
-  iconCtx.drawImage(iconImgC,iconCanvas.width/9 + 100 ,520*relHeight,40,40)
-
-  iconCtx.shadowColor ="white"
-  iconCtx.shadowBlur=7;
-  iconCtx.lineWidth=1;
-  iconCtx.font = "12px Arial";
-  iconCtx.fillText(forcastTime_3,iconCanvas.width/9+5 ,(520 + 70)*relHeight)
-  iconCtx.fillText(forcastTime_6,iconCanvas.width/9+55 ,(520 + 70)*relHeight)
-  iconCtx.fillText(forcastTime_9,iconCanvas.width/9+105 ,(520 + 70)*relHeight)
-
-  iconCtx.fillText(hCast_3_temp,iconCanvas.width/9+5 ,(520 + 90)*relHeight)
-  iconCtx.fillText(hCast_6_temp,iconCanvas.width/9+55 ,(520 + 90)*relHeight)
-  iconCtx.fillText(hCast_9_temp,iconCanvas.width/9+105 ,(520 + 90)*relHeight)
-
-  iconCtx.shadowBlur=0;
-  iconCtx.fillStyle = "black"
-  iconCtx.fillText(forcastTime_3,iconCanvas.width/9+5 ,(520 + 70)*relHeight)
-  iconCtx.fillText(forcastTime_6,iconCanvas.width/9+55 ,(520 + 70)*relHeight)
-  iconCtx.fillText(forcastTime_9,iconCanvas.width/9+105 ,(520 + 70)*relHeight)
-}
 
 
 
@@ -605,6 +499,7 @@ let isMorning;
 let isDay;
 let isNight;
 
+console.log(currentTimeInMinutes)
 
 if (currentTimeInMinutes <= 450) {
   isMorning = true;
@@ -612,36 +507,18 @@ if (currentTimeInMinutes <= 450) {
   isNight = false;
  }
  
- if (currentTimeInMinutes > 450 && currentTimeInMinutes < 1000 ) {
+ if (currentTimeInMinutes > 450 && currentTimeInMinutes < 1200 ) {
    isMorning = false;
    isDay = true;
    isNight = false;
  }
  
- if (currentTimeInMinutes > 1000) {
+ if (currentTimeInMinutes > 1200) {
    isMorning = false;
    isDay = false;
    isNight = true;
  }
 
-
-// if (currentTimeInMinutes <= currentSunRiseTimeInMinutes) {
-//  isMorning = true;
-//  isDay = false;
-//  isNight = false;
-// }
-
-// if (currentTimeInMinutes > currentSunRiseTimeInMinutes && currentTimeInMinutes < currentSunSetTimeInMinutes ) {
-//   isMorning = false;
-//   isDay = true;
-//   isNight = false;
-// }
-
-// if (currentTimeInMinutes > currentSunSetTimeInMinutes) {
-//   isMorning = false;
-//   isDay = false;
-//   isNight = true;
-// }
 
 console.log("Is morning? " + isMorning)
 console.log("Is day? " + isDay)
@@ -652,6 +529,140 @@ console.log("Is Night? " + isNight)
   //----------------------------------------------------------------------------------------------------------//
   //LOAD MATERIAL
   //----------------------------------------------------------------------------------------------------------//
+
+  //Load icons
+  //----------------------------------------------------------------------------------------------------//
+  let iconImgA = new Image()
+  let iconImgB = new Image()
+  let iconImgC = new Image()
+  
+  
+    //200 --> 233
+    if(hCast_3_id > 199 & hCast_3_id < 233){
+      iconImgA.src = "http://openweathermap.org/img/wn/11d@2x.png"
+    }
+    if(hCast_6_id > 199 & hCast_6_id < 233){
+      iconImgB.src = "http://openweathermap.org/img/wn/11d@2x.png"
+    }
+    if(hCast_9_id > 199 & hCast_9_id < 233){
+      iconImgC.src = "http://openweathermap.org/img/wn/11d@2x.png"
+    }
+    
+    //300 --> 321
+    if(hCast_3_id > 299 & hCast_3_id < 322){
+      iconImgA.src = "http://openweathermap.org/img/wn/09d@2x.png"
+    }
+    if(hCast_6_id > 299 & hCast_6_id < 322){
+      iconImgB.src = "http://openweathermap.org/img/wn/09d@2x.png"
+    }
+    if(hCast_9_id > 299 & hCast_9_id < 322){
+      iconImgC.src = "http://openweathermap.org/img/wn/09d@2x.png"
+    }
+    //500 --> 531
+    if(hCast_3_id > 499 & hCast_3_id < 522){
+      iconImgA.src = "http://openweathermap.org/img/wn/09d@2x.png"
+    }
+    if(hCast_6_id > 499 & hCast_6_id < 522){
+      iconImgB.src = "http://openweathermap.org/img/wn/09d@2x.png"
+    }
+    if(hCast_9_id > 499 & hCast_9_id < 522){
+      iconImgC.src = "http://openweathermap.org/img/wn/09d@2x.png"
+    }
+    
+    
+    //600 --> 631
+    if(hCast_3_id > 599 & hCast_3_id < 622){
+      iconImgA.src = "http://openweathermap.org/img/wn/13d@2x.png"
+    }
+    if(hCast_6_id > 599 & hCast_6_id < 622){
+      iconImgB.src = "http://openweathermap.org/img/wn/13d@2x.png"
+    }
+    if(hCast_9_id > 599 & hCast_9_id < 622){
+      iconImgC.src = "http://openweathermap.org/img/wn/13d@2x.png"
+    }
+    
+    //700 --> 781
+    if(hCast_3_id > 699 & hCast_3_id < 782){
+      iconImgA.src = "http://openweathermap.org/img/wn/50d@2x.png"
+    }
+    if(hCast_6_id > 699 & hCast_6_id < 782){
+      iconImgB.src = "http://openweathermap.org/img/wn/50d@2x.png"
+    }
+    if(hCast_9_id > 699 & hCast_9_id < 782){
+      iconImgC.src = "http://openweathermap.org/img/wn/50d@2x.png"
+    }
+    
+    //800 --> 800
+    if(hCast_3_id === 800){
+      if(forCastTimeRaw_3.getHours() > 5 && forCastTimeRaw_3.getHours() < 22 ){
+        iconImgA.src = "Images/Icons/01d@2x.png"
+      } else  {iconImgA.src = "Images/Icons/01n@2x.png" }
+    }
+
+    if(hCast_6_id === 800){
+      if(forCastTimeRaw_6.getHours() > 5 && forCastTimeRaw_6.getHours() < 22 ){
+        iconImgB.src = "Images/Icons/01d@2x.png"
+      } else  {iconImgB.src = "Images/Icons/01n@2x.png" }
+    }
+
+    if(hCast_9_id === 800){
+      if(forCastTimeRaw_9.getHours() > 5 && forCastTimeRaw_9.getHours() < 22 ){
+        iconImgC.src = "Images/Icons/01d@2x.png"
+      } else  {iconImgC.src = "Images/Icons/01n@2x.png" }
+    }
+    
+    
+    //801 --> 806
+    console.log(forCastTimeRaw_3)
+    if(hCast_3_id > 800 & hCast_3_id  < 806){
+      if(forCastTimeRaw_3.getHours() > 5 && forCastTimeRaw_3.getHours() < 22 ){
+        iconImgA.src = "Images/Icons/02d@2x.png"
+      } else  {iconImgA.src = "Images/Icons/02n@2x.png" }
+    }
+    if(hCast_6_id > 800 & hCast_6_id  < 806){
+      if(forCastTimeRaw_6.getHours() > 5 && forCastTimeRaw_6.getHours() < 22 ){
+        iconImgB.src = "Images/Icons/02d@2x.png"
+      } else  {iconImgB.src = "Images/Icons/02n@2x.png" }
+    }
+    if(hCast_9_id > 800 & hCast_9_id  < 806){
+      if(forCastTimeRaw_9.getHours() > 5 && forCastTimeRaw_9.getHours() < 22 ){
+        iconImgC.src = "Images/Icons/02d@2x.png"
+      } else  {iconImgC.src = "Images/Icons/02n@2x.png" }
+    }
+   
+  
+  // DRAWING ICONS
+  // -----------------------------------------------------------------------------------------------------------------------------------//
+  function drawIcons(){
+  
+    iconCtx.drawImage(iconImgA,iconCanvas.width/9 ,520*relHeight,40,40)
+    iconCtx.drawImage(iconImgB,iconCanvas.width/9 + 50 ,520*relHeight,40,40)
+    iconCtx.drawImage(iconImgC,iconCanvas.width/9 + 100 ,520*relHeight,40,40)
+  
+    iconCtx.shadowColor ="white"
+    iconCtx.shadowBlur=7;
+    iconCtx.lineWidth=1;
+    iconCtx.font = "12px Arial";
+    iconCtx.fillText(forcastTime_3,iconCanvas.width/9+5 ,(520 + 70)*relHeight)
+    iconCtx.fillText(forcastTime_6,iconCanvas.width/9+55 ,(520 + 70)*relHeight)
+    iconCtx.fillText(forcastTime_9,iconCanvas.width/9+105 ,(520 + 70)*relHeight)
+  
+    iconCtx.fillText(hCast_3_temp,iconCanvas.width/9+5 ,(520 + 90)*relHeight)
+    iconCtx.fillText(hCast_6_temp,iconCanvas.width/9+55 ,(520 + 90)*relHeight)
+    iconCtx.fillText(hCast_9_temp,iconCanvas.width/9+105 ,(520 + 90)*relHeight)
+  
+    iconCtx.shadowBlur=0;
+    iconCtx.fillStyle = "black"
+    iconCtx.fillText(forcastTime_3,iconCanvas.width/9+5 ,(520 + 70)*relHeight)
+    iconCtx.fillText(forcastTime_6,iconCanvas.width/9+55 ,(520 + 70)*relHeight)
+    iconCtx.fillText(forcastTime_9,iconCanvas.width/9+105 ,(520 + 70)*relHeight)
+  }
+  
+
+
+
+
+
   //Load city elements
 
 
