@@ -187,37 +187,37 @@ function setLocation (e){
   let locationInputSelect
   let locationInputSelectLongitude;
   let locationInputSelectLatitude;
-  if( localStorage.Location === undefined){
+  if( sessionStorage.Location === undefined){
     locationInputSelect = "Stockholm"
     locationInputSelectLongitude =  18.110014
     locationInputSelectLatitude = 59.336889
 
-  } else {locationInputSelect = localStorage.Location
-          locationInputSelectLatitude = localStorage.Latitude
-          locationInputSelectLongitude = localStorage.Longitude}
+  } else {locationInputSelect = sessionStorage.Location
+          locationInputSelectLatitude = sessionStorage.Latitude
+          locationInputSelectLongitude = sessionStorage.Longitude}
  
   let locationInputCountrySelect = "Sweden";
   let selectedLocation = e.target.value;
 
   if(selectedLocation === "karlshamn") {
-   localStorage.setItem("Location", "Karlshamn")
-   localStorage.setItem("Latitude", 56.172825)
-    localStorage.setItem("Longitude", 14.863209)
-    locationInputSelect = localStorage.Location
-    locationInputSelectLongitude = localStorage.Longitude
-    locationInputSelectLatitude = localStorage.Latitude
+   sessionStorage.setItem("Location", "Karlshamn")
+   sessionStorage.setItem("Latitude", 56.172825)
+    sessionStorage.setItem("Longitude", 14.863209)
+    locationInputSelect = sessionStorage.Location
+    locationInputSelectLongitude = sessionStorage.Longitude
+    locationInputSelectLatitude = sessionStorage.Latitude
     locationInputCountrySelect = "Sweden"
     location.reload()
     
   }
 
   if(selectedLocation === "stockholm") {
-    localStorage.setItem("Location", "Stockholm")
-    localStorage.setItem("Latitude", 59.336889)
-    localStorage.setItem("Longitude", 18.110014)
-    locationInputSelect = localStorage.Location
-    locationInputSelectLongitude = localStorage.Longitude
-    locationInputSelectLatitude = localStorage.Latitude
+    sessionStorage.setItem("Location", "Stockholm")
+    sessionStorage.setItem("Latitude", 59.336889)
+    sessionStorage.setItem("Longitude", 18.110014)
+    locationInputSelect = sessionStorage.Location
+    locationInputSelectLongitude = sessionStorage.Longitude
+    locationInputSelectLatitude = sessionStorage.Latitude
     locationInputCountrySelect = "Sweden"
     location.reload()
   } 
@@ -236,12 +236,12 @@ function setLocation (e){
       function showPosition(position) {
         let navLat =position.coords.latitude.toFixed(6)
         let navLong = position.coords.longitude.toFixed(6)
-        localStorage.setItem("Location", "mylocation")
-        localStorage.setItem("Latitude", navLat)
-        localStorage.setItem("Longitude", navLong);
-        locationInputSelect = localStorage.Location
-        locationInputSelectLongitude = localStorage.Longitude
-        locationInputSelectLatitude = localStorage.Latitude
+        sessionStorage.setItem("Location", "mylocation")
+        sessionStorage.setItem("Latitude", navLat)
+        sessionStorage.setItem("Longitude", navLong);
+        locationInputSelect = sessionStorage.Location
+        locationInputSelectLongitude = sessionStorage.Longitude
+        locationInputSelectLatitude = sessionStorage.Latitude
          location.reload()
       }
     }
@@ -365,6 +365,8 @@ const currentTimeData = '/time';
 let responseHCast = await fetch('/forcastCurrent')
 let jsonHCast = await responseHCast.json()
 
+
+
 let hCast_3_time = jsonHCast.hourly[3].dt 
 let hCast_3_time_zone = hCast_3_time + jsonHCast.timezone_offset
 let hCast_6_time = jsonHCast.hourly[8].dt 
@@ -401,13 +403,14 @@ let hCast_3_id = jsonHCast.hourly[3].weather[0].id
 let hCast_6_id = jsonHCast.hourly[8].weather[0].id
 let hCast_9_id = jsonHCast.hourly[13].weather[0].id
 
-
+console.log(hCast_3_id)
+console.log(hCast_6_id)
+console.log(hCast_9_id)
 
 //forecast current Temps
 let hCast_3_temp = `${(jsonHCast.hourly[3].temp -273.15).toFixed(0)}°C`
 let hCast_6_temp = `${(jsonHCast.hourly[8].temp -273.15).toFixed(0)}°C`
 let hCast_9_temp = `${(jsonHCast.hourly[13].temp -273.15).toFixed(0)}°C`
-
 
 
 let iconImgA = new Image()
@@ -915,7 +918,7 @@ console.log("Is Night? " + isNight)
         currentTimeInMinutes,
         currentSunRiseTimeInMinutes,
         500,
-        0.4,
+        0.6,
         0
       );
     }
@@ -925,7 +928,7 @@ console.log("Is Night? " + isNight)
         1000,
         1440,
         0,
-        1
+        0.6
       );
     }
 
@@ -1005,7 +1008,7 @@ console.log("Is Night? " + isNight)
         currentTimeInMinutes,
         0,
         currentSunRiseTimeInMinutes+100,
-        1,
+        0.8,
         0 
       );
     }
