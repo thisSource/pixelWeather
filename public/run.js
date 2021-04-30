@@ -155,23 +155,23 @@ let creditsBox= document.getElementById('creditsBox')
 let closeCredits = document.getElementById('closeCredits')
 
 
-if (window.innerWidth > 1450){
-  skyCanvas.style.width = '80%'
-  skyCanvas.style.height = '100%'
-  skyCanvas.style.marginLeft = '10%';
-cityCanvas2.style.width = '80%'
-cityCanvas2.style.height = '100%'
-cityCanvas2.style.marginLeft = '10%';
-cityBlackCanvas.style.width = '80%'
-cityBlackCanvas.style.height = '100%'
-cityBlackCanvas.style.marginLeft = '10%';
-weatherCanvas.style.width = '80%'
-weatherCanvas.style.height = '100%'
-weatherCanvas.style.marginLeft = '10%';
-sunAndMoonCanvas.style.width = '80%'
-sunAndMoonCanvas.style.height = '100%'
-sunAndMoonCanvas.style.marginLeft = '10%';
-}
+// if (window.innerWidth > 1450){
+//   skyCanvas.style.width = '80%'
+//   skyCanvas.style.height = '100%'
+//   skyCanvas.style.marginLeft = '10%';
+// cityCanvas2.style.width = '80%'
+// cityCanvas2.style.height = '100%'
+// cityCanvas2.style.marginLeft = '10%';
+// cityBlackCanvas.style.width = '80%'
+// cityBlackCanvas.style.height = '100%'
+// cityBlackCanvas.style.marginLeft = '10%';
+// weatherCanvas.style.width = '80%'
+// weatherCanvas.style.height = '100%'
+// weatherCanvas.style.marginLeft = '10%';
+// sunAndMoonCanvas.style.width = '80%'
+// sunAndMoonCanvas.style.height = '100%'
+// sunAndMoonCanvas.style.marginLeft = '10%';
+// }
 textOverlayLocation.style.left = '12%'
 textOverlayForcast.style.left = '12%'
 textOverlayWeather.style.left = '12%'

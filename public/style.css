@@ -244,3 +244,39 @@ z-index: 1;
   border: 1px solid rgba(20,20,20,1);
 }
 
+.marquee {
+  position: absolute;
+  z-index: 1;
+overflow: hidden;
+  /* width: 100%; */
+  white-space: nowrap;
+
+  -moz-transform:translateX(-100%);
+  -webkit-transform:translateX(-100%);	
+  transform:translateX(-100%);
+  /* Apply animation to this element */	
+  -moz-animation: example2 15s linear infinite;
+  -webkit-animation: example2 15s linear infinite;
+  animation: example2 15s linear infinite;
+ }
+ /* Move it (define the animation) */
+ @-moz-keyframes example2 {
+  0%   { -moz-transform: translateX(-100%); }
+  100% { -moz-transform: translateX(100%); }
+ }
+ @-webkit-keyframes example2 {
+  0%   { -webkit-transform: translateX(-100%); }
+  100% { -webkit-transform: translateX(100%); }
+ }
+ @keyframes example2 {
+  0%   { 
+  -moz-transform: translateX(-100%); /* Firefox bug fix */
+  -webkit-transform: translateX(-100%); /* Firefox bug fix */
+  transform: translateX(-100%); 		
+  }
+  100% { 
+  -moz-transform: translateX(100%); /* Firefox bug fix */
+  -webkit-transform: translateX(100%); /* Firefox bug fix */
+  transform: translateX(100%); 
+  }
+}
