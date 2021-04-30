@@ -21,6 +21,7 @@ app.post("/", function (req, res) {
 console.log(responseRecieved);
 console.log(responseLongitude);
 console.log(responseLatitude);
+console.log( `https://api.openweathermap.org/data/2.5/onecall?lat=${responseLatitude}&lon=${responseLongitude}&exclude=current,minutely,alerts,daily&appid=${process.env.WEATHER_API_KEY}`)
 
 
         app.get("/current", (req, res) => {
@@ -39,7 +40,6 @@ console.log(responseLatitude);
         // `http://api.openweathermap.org/data/2.5/forecast?lat=${responseLatitude}&lon=${responseLongitude}&appid=${process.env.WEATHER_API_KEY}`
         https://api.openweathermap.org/data/2.5/onecall?lat=${responseLatitude}&lon=${responseLongitude}&exclude=current,minutely,hourly,alerts&appid=${process.env.WEATHER_API_KEY}
      
-
 
         app.get("/forcastCurrent", (req, res) => {
           request(

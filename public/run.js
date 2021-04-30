@@ -9,9 +9,20 @@
 //----------------------------------------------------------------------------------------------------------//
 
 // RESIZE update
-window.onresize = function () {
-  setTimeout(window.location.reload(),1000)
-};
+// window.onresize = function () {
+//   refresh()
+// };
+
+
+// function refresh() {
+//   var url = location.origin;
+//   var pathname = location.pathname;
+//   var hash = location.hash;
+
+//   location = url + pathname + '?application_refresh=' + (Math.random() * 100000) + hash;
+// }
+
+
 
 //Disable zoom
 document.addEventListener('gesturestart', function (e) {
@@ -145,16 +156,21 @@ let closeCredits = document.getElementById('closeCredits')
 
 
 if (window.innerWidth > 1450){
+  skyCanvas.style.width = '80%'
+  skyCanvas.style.height = '100%'
+  skyCanvas.style.marginLeft = '10%';
 cityCanvas2.style.width = '80%'
 cityCanvas2.style.height = '100%'
 cityCanvas2.style.marginLeft = '10%';
+cityBlackCanvas.style.width = '80%'
+cityBlackCanvas.style.height = '100%'
+cityBlackCanvas.style.marginLeft = '10%';
 weatherCanvas.style.width = '80%'
 weatherCanvas.style.height = '100%'
 weatherCanvas.style.marginLeft = '10%';
 sunAndMoonCanvas.style.width = '80%'
 sunAndMoonCanvas.style.height = '100%'
 sunAndMoonCanvas.style.marginLeft = '10%';
-
 }
 textOverlayLocation.style.left = '12%'
 textOverlayForcast.style.left = '12%'
@@ -405,9 +421,9 @@ let hCast_3_id = jsonHCast.hourly[3].weather[0].id
 let hCast_6_id = jsonHCast.hourly[8].weather[0].id
 let hCast_9_id = jsonHCast.hourly[13].weather[0].id
 
-console.log(hCast_3_id)
-console.log(hCast_6_id)
-console.log(hCast_9_id)
+// console.log(hCast_3_id)
+// console.log(hCast_6_id)
+// console.log(hCast_9_id)
 
 //forecast current Temps
 let hCast_3_temp = `${(jsonHCast.hourly[3].temp -273.15).toFixed(0)}°C`
@@ -499,7 +515,7 @@ let isMorning;
 let isDay;
 let isNight;
 
-console.log(currentTimeInMinutes)
+// console.log(currentTimeInMinutes)
 
 if (currentTimeInMinutes <= 450) {
   isMorning = true;
@@ -1598,7 +1614,7 @@ function weatherLight(r,g,b,a){
    if (weatherId === 800) {
     //Clouds
     xSpeedByWindSpeed = xSpeedByWindSpeed * windDirection;
-    numberOfClouds = 3;
+    numberOfClouds = 6;
     cloudSizeMuliply = 0.5;
     setCloudBrightness = 0;
     //Clouds
@@ -2271,19 +2287,39 @@ function birdUpdate(){
 
        //----------------------------------------------------------------------------------------------------------//
   //AUDIO FUNCTIONS
-  const soundbutton = document.getElementById('soundbutton')
 
-  let audio = new Audio('music/mood.mp3')
-  soundbutton.addEventListener("click", function(){
-  if(audio.paused){
-    audio.play();
-    soundbutton.innerHTML = "Pause";
-  } else {
-    audio.pause();
-    soundbutton.innerHTML = "Play";
-    audio.currentTime = 0
-  }
-});
+  const soundbutton = document.getElementById("soundbutton");
+  const songInfo = document.getElementById('songInfo')
+  
+  let musicA = new Audio("songs/unknown -Soul Prod Music .mp3");
+  let isPlaying = false;
+  
+      soundbutton.addEventListener("click", function () {
+          if (isPlaying === false) {
+            isPlaying = true;
+            soundbutton.style.background = "rgba(255, 153, 204, 0.5)"
+            songInfo.style.display = "block"
+            musicA.play()
+            songInfo.textContent = "unknown - Soul Prod Music"
+             musicA.addEventListener('ended',()=>{
+              musicA = new Audio("songs/Pathogen - California Redbud Boombap.mp3");
+                      musicA.load()
+                      musicA.play()
+                      songInfo.textContent ="Pathogen - California Redbud Boombap"
+        
+                     
+              
+ 
+                })
+          } else {
+            isPlaying = false;
+            soundbutton.style.background = "rgba(255,255,255,0.5)"
+            songInfo.style.display = "none"
+            musicA.pause()
+          }
+        
+        });
+  
 
 
 //GIVE CREDIT
