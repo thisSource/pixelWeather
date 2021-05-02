@@ -6,6 +6,9 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
     />
+
+    <meta property="og:image" content="Images/meta.jpeg" />
+    <meta name="description" content="LoFi Weather Forcast." />
     <title>PixelWeatherWorld</title>
     <link rel="stylesheet" href="style.css" />
     <link
@@ -33,7 +36,7 @@
       <select name="locationSelector" id="locationSelector">
         <option value="location">Select Location</option>
         <option value="mylocation">My location</option>
-        <!-- <option value="karlshamn">Karlshamn</option> -->
+        <!-- <option value="karlshamn">Hong Kong</option> -->
         <option value="stockholm">Stockholm</option>
       </select>
       <span class="custom-arrowLocation"></span>
@@ -57,13 +60,7 @@
     </div>
     <div id="soundButtonOverlay">
       <button id="soundbutton">Sound on/off</button>
-     
-    
     </div>
-
-    <div class="marquee">
-      <p id="songInfo"></p>
-      </div>
 
     <div id="textOverlayWeather">
       <span id="weatherLocation">location</span>
@@ -75,17 +72,14 @@
       <br />
       <span id="windSpeedAndDirection">wind</span>
 
-
       <div id="currentForcastOverlay">
-        <span class='iconText' id="plus3" ></span>
-        <span class='iconText' id="plus6"> </span>
-        <span class='iconText' id="plus9"></span>
-        <span class='iconText' id="plus12"></span>
+        <span class="iconText" id="plus3"></span>
+        <span class="iconText" id="plus6"> </span>
+        <span class="iconText" id="plus9"></span>
+        <span class="iconText" id="plus12"></span>
       </div>
-  
     </div>
 
-   
     <div id="creditsButtonOverlay">
       <button id="creditButton">Credits</button>
     </div>
@@ -114,6 +108,12 @@
       </div>
     </div>
 
+    <div class="marqueeWrapper">
+      <div class="marquee">
+        <span id="songInfo"></span>
+      </div>
+    </div>
+
     <div id="wrapper">
       <canvas id="skyCanvas"></canvas>
       <canvas id="sunAndMoonCanvas"></canvas>
@@ -123,10 +123,6 @@
       <canvas id="rainCanvas"></canvas>
       <canvas id="iconCanvas"></canvas>
     </div>
-
-
-
-   
 
     <script src="weather.js"></script>
     <script src="credit.js"></script>
