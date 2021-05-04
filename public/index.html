@@ -36,7 +36,7 @@
       <select name="locationSelector" id="locationSelector">
         <option value="location">Select Location</option>
         <option value="mylocation">My location</option>
-        <!-- <option value="karlshamn">Hong Kong</option> -->
+        <option value="hongKong">Hong Kong</option>
         <option value="stockholm">Stockholm</option>
       </select>
       <span class="custom-arrowLocation"></span>
@@ -66,9 +66,9 @@
       <span id="weatherLocation">location</span>
       <span id="weatherDay">day</span>
       <br />
-      <span id="weatherDescription">descriptiom</span>
+      <span id="weatherDescription">description</span>
       <br />
-      <span id="temperature">temp</span>
+      <span id="temperature">temp</span> <span id="tempF"></span>
       <br />
       <span id="windSpeedAndDirection">wind</span>
 
@@ -87,12 +87,7 @@
     <div id="creditsBoxOverlay">
       <div id="creditsBox">
         <button id="closeCredits">close [x]</button>
-        <p>
-          Music:
-          <a target="_blank" href="https://soundcloud.com/antoningvarsson"
-            >Anton</a
-          >
-        </p>
+        <br>
         <p>
           Stockholm artwork:
           <a target="_blank" href="https://www.instagram.com/TofuPixels/"
@@ -114,9 +109,12 @@
       </div>
     </div>
 
+ 
+
     <div id="wrapper">
       <canvas id="skyCanvas"></canvas>
       <canvas id="sunAndMoonCanvas"></canvas>
+      <canvas id="canvas"></canvas> 
       <canvas id="weather"></canvas>
       <canvas id="cityCanvasMain"></canvas>
       <canvas id="cityCanvasBlack"></canvas>
@@ -127,5 +125,7 @@
     <script src="weather.js"></script>
     <script src="credit.js"></script>
     <script src="run.js"></script>
+  
+
   </body>
 </html>

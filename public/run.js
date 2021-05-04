@@ -217,14 +217,15 @@ function setLocation (e){
   let locationInputCountrySelect = "Sweden";
   let selectedLocation = e.target.value;
 
-  if(selectedLocation === "karlshamn") {
-   sessionStorage.setItem("Location", "Karlshamn")
-   sessionStorage.setItem("Latitude", 56.172825)
-    sessionStorage.setItem("Longitude", 14.863209)
+  if(selectedLocation === "hongKong") {
+   sessionStorage.setItem("Location", "hongKong")
+    
+   sessionStorage.setItem("Latitude", 22.253872457574207)
+    sessionStorage.setItem("Longitude", 113.90494773653444)
     locationInputSelect = sessionStorage.Location
     locationInputSelectLongitude = sessionStorage.Longitude
     locationInputSelectLatitude = sessionStorage.Latitude
-    locationInputCountrySelect = "Sweden"
+    locationInputCountrySelect = "HongKong"
     location.reload()
     
   }
@@ -555,57 +556,57 @@ console.log("Is Night? " + isNight)
   
     //200 --> 233
     if(hCast_3_id > 199 & hCast_3_id < 233){
-      iconImgA.src = "http://openweathermap.org/img/wn/11d@2x.png"
+      iconImgA.src = "https://openweathermap.org/img/wn/11d@2x.png"
     }
     if(hCast_6_id > 199 & hCast_6_id < 233){
-      iconImgB.src = "http://openweathermap.org/img/wn/11d@2x.png"
+      iconImgB.src = "https://openweathermap.org/img/wn/11d@2x.png"
     }
     if(hCast_9_id > 199 & hCast_9_id < 233){
-      iconImgC.src = "http://openweathermap.org/img/wn/11d@2x.png"
+      iconImgC.src = "https://openweathermap.org/img/wn/11d@2x.png"
     }
     
     //300 --> 321
     if(hCast_3_id > 299 & hCast_3_id < 322){
-      iconImgA.src = "http://openweathermap.org/img/wn/09d@2x.png"
+      iconImgA.src = "https://openweathermap.org/img/wn/09d@2x.png"
     }
     if(hCast_6_id > 299 & hCast_6_id < 322){
-      iconImgB.src = "http://openweathermap.org/img/wn/09d@2x.png"
+      iconImgB.src = "https://openweathermap.org/img/wn/09d@2x.png"
     }
     if(hCast_9_id > 299 & hCast_9_id < 322){
-      iconImgC.src = "http://openweathermap.org/img/wn/09d@2x.png"
+      iconImgC.src = "https://openweathermap.org/img/wn/09d@2x.png"
     }
     //500 --> 531
     if(hCast_3_id > 499 & hCast_3_id < 522){
-      iconImgA.src = "http://openweathermap.org/img/wn/09d@2x.png"
+      iconImgA.src = "https://openweathermap.org/img/wn/09d@2x.png"
     }
     if(hCast_6_id > 499 & hCast_6_id < 522){
-      iconImgB.src = "http://openweathermap.org/img/wn/09d@2x.png"
+      iconImgB.src = "https://openweathermap.org/img/wn/09d@2x.png"
     }
     if(hCast_9_id > 499 & hCast_9_id < 522){
-      iconImgC.src = "http://openweathermap.org/img/wn/09d@2x.png"
+      iconImgC.src = "https://openweathermap.org/img/wn/09d@2x.png"
     }
     
     
     //600 --> 631
     if(hCast_3_id > 599 & hCast_3_id < 622){
-      iconImgA.src = "http://openweathermap.org/img/wn/13d@2x.png"
+      iconImgA.src = "https://openweathermap.org/img/wn/13d@2x.png"
     }
     if(hCast_6_id > 599 & hCast_6_id < 622){
-      iconImgB.src = "http://openweathermap.org/img/wn/13d@2x.png"
+      iconImgB.src = "https://openweathermap.org/img/wn/13d@2x.png"
     }
     if(hCast_9_id > 599 & hCast_9_id < 622){
-      iconImgC.src = "http://openweathermap.org/img/wn/13d@2x.png"
+      iconImgC.src = "https://openweathermap.org/img/wn/13d@2x.png"
     }
     
     //700 --> 781
     if(hCast_3_id > 699 & hCast_3_id < 782){
-      iconImgA.src = "http://openweathermap.org/img/wn/50d@2x.png"
+      iconImgA.src = "https://openweathermap.org/img/wn/50d@2x.png"
     }
     if(hCast_6_id > 699 & hCast_6_id < 782){
-      iconImgB.src = "http://openweathermap.org/img/wn/50d@2x.png"
+      iconImgB.src = "https://openweathermap.org/img/wn/50d@2x.png"
     }
     if(hCast_9_id > 699 & hCast_9_id < 782){
-      iconImgC.src = "http://openweathermap.org/img/wn/50d@2x.png"
+      iconImgC.src = "https://openweathermap.org/img/wn/50d@2x.png"
     }
     
     //800 --> 800
@@ -687,9 +688,12 @@ console.log("Is Night? " + isNight)
   const cityBlackImage = new Image();
   const cityWindows = new Image();
 
+  let locationDarknessAdjuster;
   console.log(locationInput)
 
   if (locationInput === "Stockholm") {
+    locationDarknessAdjuster = 0
+
      // Load window
     if (currentMonth <= 3) {
       cityImage.src = "Images/Locations/Stockholm/stockholmCityAutumnDay.png";
@@ -709,25 +713,18 @@ console.log("Is Night? " + isNight)
   }
 
 
-
-  if (locationInput === "Karlshamn") {
-    if (currentMonth <= 3) {
-      cityImage.src = "Images/Locations/MyLocation/mylocationCitySunnyDay.png";
-    }
-    if (currentMonth > 2 && currentMonth < 9) {
-      cityImage.src = "Images/Locations/MyLocation/mylocationCitySunnyDay.png";
-    }
-    if (currentMonth > 8 && currentMonth < 12) {
-      cityImage.src = "Images/Locations/MyLocation/mylocationCitySunnyDay.png";
-    }
-    if (currentMonth === 12) {
-      cityImage.src = "Images/Locations/MyLocation/mylocationCitySunnyDay.png";
-    }
-
-    cityBlackImage.src = "Images/Locations/MyLocation/mylocationCityBlackBox.png";
+  if (locationInput === "hongKong") {
+    locationDarknessAdjuster = 0.4
+    if(isMorning === true || isNight === true){
+      cityImage.src = "Images/Locations/HongKong/hongKongNight.png";
+    } else {cityImage.src = "Images/Locations/HongKong/hongKongDay.png";}
+      
+    cityBlackImage.src = "Images/Locations/HongKong/hongKongBlack.png";
   }
 
   if (locationInput === "mylocation") {
+    locationDarknessAdjuster = 0
+
     if (currentMonth <= 3) {
       cityImage.src = "Images/Locations/MyLocation/mylocationCitySunnyDay.png";
     }
@@ -1030,12 +1027,13 @@ console.log("Is Night? " + isNight)
 // console.log(currentTimeInMinutes)
 // console.log(currentSunRiseTimeInMinutes)
 
+
     if (currentTimeInMinutes <= currentSunRiseTimeInMinutes) {
       cityBlackAlpha = mapTo(
         currentTimeInMinutes,
         0,
         currentSunRiseTimeInMinutes+100,
-        0.8,
+        0.8-locationDarknessAdjuster,
         0 
       );
     }
@@ -1050,11 +1048,11 @@ console.log("Is Night? " + isNight)
         currentSunSetTimeInMinutes-100,
         1350,
         0,
-        0.7
+        0.7-locationDarknessAdjuster
       );
     }
     // console.log(cityBlackAlpha)
-
+    
   cityBlackCtx.globalAlpha = cityBlackAlpha;
   }
 
@@ -1162,18 +1160,30 @@ forcastSelector.addEventListener("change", setForecastorCurrent)
       isToday = false
     } 
   
-
-
-
+//RESET CITY IMAGE IF night and day image differ
+    if (locationInput === "hongKong") {
+      locationDarknessAdjuster = 0.6
+      if(isMorning === true || isNight === true){
+        cityImage.src = "Images/Locations/HongKong/hongKongNight.png";
+      } 
+      if(isDay === true) {
+        cityImage.src = "Images/Locations/HongKong/hongKongDay.png";}
+        
+      cityBlackImage.src = "Images/Locations/HongKong/hongKongBlack.png";
+    }
 
 
 
 
 //Manually change location --->
     // weatherLocation.textContent = locationInputSelect
-   
+   let tempF = document.getElementById('tempF')
+
     weatherDescription.textContent = selectedWeatherDescription;
     temperature.textContent = selectedTemp + " °C"
+    tempF.textContent = `(${(selectedTemp*1.8)+32} °F)` 
+    tempF.style.fontSize = '9px'
+    tempF.style.marginLeft = '5px'
     weatherDay.textContent = "Weather " + weatherSelectText;
     windSpeedText.textContent = "Wind speed " + selectedWindSpeed + " m/s"
 
@@ -2198,6 +2208,178 @@ function birdUpdate(){
 
 
 
+
+
+
+//FIRE WORK FOR SPECIAL EVENT
+
+
+
+/* 
+  let canvas, widthFire, heightFire, ctx;
+  let fireworks = [];
+  let particles = [];
+  
+  // function setup() {
+    canvas = document.getElementById("canvas");
+    setSize(canvas);
+    ctx = canvas.getContext("2d");
+    ctx.fillStyle = "#000";
+    ctx.fillRect(0, 0, widthFire, heightFire);
+    window.addEventListener("resize",windowResized);
+    document.addEventListener("click",onClick);
+  // }
+  
+  // setTimeout(setup,1);
+  // setup()
+  
+  
+  function loop(){
+  
+    ctx.globalAlpha = 0.2;
+    ctx.fillStyle = "#000";
+    ctx.drawImage(skyImage,0, 0, widthFire, heightFire);
+    // ctx.clearRect(0,0,widthFire,heightFire)
+    ctx.globalAlpha = 1;
+    for(let i=0; i<fireworks.length; i++){
+      let done = fireworks[i].update();
+      fireworks[i].draw();
+      if(done) fireworks.splice(i, 1);
+    }
+  
+    for(let i=0; i<particles.length; i++){
+      particles[i].update();
+      particles[i].draw();
+      if(particles[i].lifetime>80) particles.splice(i,1);
+    }
+  
+    if(Math.random()<1/60) fireworks.push(new Firework(Math.random()*(widthFire-200)+100));
+  }
+  // setInterval(loop, 10);
+  
+  //setInterval(loop, 100/60);
+  class ParticleFire{
+    constructor(x, y, col){
+      this.x = x;
+      this.y = y;
+      this.col = col;
+      this.vel = randomVec(5);
+      this.lifetime = 0;
+    }
+  
+    update(){
+      this.x += this.vel.x;
+      this.y += this.vel.y;
+      this.vel.y += 0.02;
+      this.vel.x *= 0.99;
+      this.vel.y *= 0.99;
+      this.lifetime++;
+    }
+  
+    draw(){
+      ctx.globalAlpha = Math.max(1-this.lifetime/80, 0);
+      ctx.fillStyle = this.col;
+      ctx.fillRect(this.x, this.y, 2, 2);
+    }
+  }
+  
+  class Firework{
+    constructor(x){
+      this.x = x;
+      this.y = heightFire;
+      this.isBlown = false;
+      this.col = randomCol();
+    }
+  
+    update(){
+      this.y -= 3;
+      if(this.y < 350-Math.sqrt(Math.random()*500)*40){
+        this.isBlown = true;
+        for(let i=0; i<60; i++){
+          particles.push(new ParticleFire(this.x, this.y, this.col))
+        }
+      }
+      return this.isBlown;
+    }
+  
+    draw(){
+      ctx.globalAlpha = 1;
+      ctx.fillStyle = this.col;
+      ctx.fillRect(this.x, this.y, 2, 2);
+    }
+  }
+  
+  function randomCol(){
+    var letter = '0123456789ABCDEF';
+    var nums = [];
+  
+    for(var i=0; i<3; i++){
+      nums[i] = Math.floor(Math.random()*256)+300;
+    }
+  
+    let brightest = 0;
+    for(var i=0; i<3; i++){
+      if(brightest<nums[i]) brightest = nums[i];
+    }
+  
+    brightest /=255;
+    for(var i=0; i<3; i++){
+      nums[i] /= brightest;
+    }
+  
+    let color = "#";
+    for(var i=0; i<3; i++){
+      color += letter[Math.floor(nums[i]/16)];
+      color += letter[Math.floor(nums[i]%16)];
+    }
+    return color;
+  }
+  
+  function randomVec(max){
+    let dir = Math.random()*Math.PI*2;
+    let spd = Math.random()*max;
+    return{x: Math.cos(dir)*spd, y: Math.sin(dir)*spd};
+  }
+  
+  function setSize(canv){
+    canv.style.width = (innerWidth) + "px";
+    canv.style.height = (innerHeight) + "px";
+    widthFire = innerWidth;
+    heightFire = innerHeight;
+  
+    canv.width = innerWidth*window.devicePixelRatio;
+    canv.height = innerHeight*window.devicePixelRatio;
+    canvas.getContext("2d").scale(window.devicePixelRatio, window.devicePixelRatio);
+  }
+  
+  function onClick(e){
+    fireworks.push(new Firework(e.clientX));
+  }
+  
+  function windowResized(){
+    setSize(canvas);
+    ctx.fillStyle = "#fff";
+    ctx.fillRect(0, 0, widthFire, heightFire);
+  }
+  fireworks.push(new Firework(Math.random()*(widthFire-200)+100));
+  
+ 
+*/
+
+// END FIREWORK
+
+
+
+
+
+
+
+
+
+
+
+
+
   
 
 
@@ -2220,6 +2402,7 @@ function birdUpdate(){
  // RUN MOON AND SUN
     sunAndMoon();
 
+    // loop() //LOOPS FIREWORK
 
     for(let i = 0; i < cloudArray.length; i++){
       cloudArray[i].cloudUpdate()
@@ -2291,7 +2474,7 @@ function birdUpdate(){
   const soundbutton = document.getElementById("soundbutton");
   const songInfo = document.getElementById('songInfo')
   
-  let musicA = new Audio("songs/unknown -Soul Prod Music .mp3");
+  let musicA = new Audio("songs/Audiobinger - Lonely Winter.mp3");
   let isPlaying = false;
   
       soundbutton.addEventListener("click", function () {
@@ -2300,16 +2483,35 @@ function birdUpdate(){
             soundbutton.style.background = "rgba(255, 153, 204, 0.5)"
             songInfo.style.display = "block"
             musicA.play()
-            songInfo.textContent = "unknown - Soul Prod Music"
+            songInfo.textContent = '"Lonely Winter" - Audiobinger'
+
+  //-------------> NEW SONG
              musicA.addEventListener('ended',()=>{
-              musicA = new Audio("songs/Pathogen - California Redbud Boombap.mp3");
+              musicA = new Audio("songs/Mello C - Hills.mp3");
                       musicA.load()
                       musicA.play()
-                      songInfo.textContent ="Pathogen - California Redbud Boombap"
-        
-                     
-              
- 
+                      songInfo.textContent ='"Hills" - Mello C'
+
+                      musicA.addEventListener('ended',()=>{
+                        musicA = new Audio("songs/Scott Holmes Music - Urban Haze.mp3");
+                                musicA.load()
+                                musicA.play()
+                                songInfo.textContent ='"Urban Haze" - Scott Holmes'
+                      
+                      musicA.addEventListener('ended',()=>{
+                        musicA = new Audio("songs/Siddhartha Corsus - Sita's Song.mp3");
+                                musicA.load()
+                                musicA.play()
+                                songInfo.textContent ='"Sita Song" - Siddhartha Corsus'
+                      
+                      musicA.addEventListener('ended',()=>{
+                        musicA = new Audio("songs/unknown -Soul Prod Music .mp3");
+                                musicA.load()
+                                musicA.play()
+                                songInfo.textContent ='"unknown" - Soul Prod Music'
+                            })
+                        })
+                    })
                 })
           } else {
             isPlaying = false;

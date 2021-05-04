@@ -19,7 +19,9 @@ body {
 #cityCanvasMain,
 #sunAndMoonCanvas,
 #rainCanvas,
-#iconCanvas {
+#iconCanvas,
+#fireworkCanvas,
+#canvas {
   position: absolute;
   top: 0px;
   left: 0px;
