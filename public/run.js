@@ -822,9 +822,9 @@ console.log("Is Night? " + isNight)
   
   function sunAndMoon() {
     // SUNSET AND SUNRISE
-    if (
-      currentTimeInMinutes > currentSunRiseTimeInMinutes &&
-      currentTimeInMinutes < currentSunSetTimeInMinutes
+    if (isDay === true || isMorning === true
+      // currentTimeInMinutes > currentSunRiseTimeInMinutes &&
+      // currentTimeInMinutes < currentSunSetTimeInMinutes
     ) {
       runSun();
      
@@ -2528,3 +2528,6 @@ function birdUpdate(){
 
 creditsButtonOverlay.addEventListener('click', giveCredit)
 closeCredits.addEventListener('click',closeCreditsFunc)
+
+
+

@@ -2,6 +2,8 @@ require('dotenv').config()
 const { response } = require("express");
 const express = require("express");
 const request = require("request");
+const path = require('path');
+const { dirname } = require('path');
 
 const app = express();
 
@@ -90,7 +92,9 @@ console.log(responseRecieved
 
   });
 
-
+app.get("/artist", (req,res) =>{
+  res.sendFile(path.join (__dirname+'/public/artist.html'))
+})
 
 
 app.listen(5000, () => {
