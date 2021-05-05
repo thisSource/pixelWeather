@@ -714,11 +714,11 @@ console.log("Is Night? " + isNight)
   if (locationInput === "hongKong") {
     locationDarknessAdjuster = 0.4
 
- 
-
     if(isMorning === true || isNight === true){
       cityImage.src = "Images/Locations/HongKong/hongKongNight.png";
-    } else {cityImage.src = "Images/Locations/HongKong/hongKongDay.png";}
+    } 
+    if(isDay === true) {
+      cityImage.src = "Images/Locations/HongKong/hongKongDay.png";}
       
     cityWindows.src = "Images/Locations/MyLocation/emptyWindows.png";
 
@@ -1143,8 +1143,10 @@ forcastSelector.addEventListener("change", setForecastorCurrent)
       selectedWinddirection = forecast_Plus1D_At_1200_DirectionDegrees;
       selectedWindSpeed = forecast_Plus1D_At_1200_WindSpeed;    
       currentTimeInMinutes = 720 //Sets the time to 12.00
-      skyImage.src = "Images/Sky/skySunny.png";
+      skyImage.src = "Images/Sky/skySunny.png";   
       isDay = true
+      isNight = false
+      isMorning = false
       isToday = false
 
     } 
@@ -1166,67 +1168,67 @@ forcastSelector.addEventListener("change", setForecastorCurrent)
 //RESET CITY IMAGE IF night and day image differ
 
 
-    const cityImage = new Image();
-    const cityBlackImage = new Image();
-    const cityWindows = new Image();
-  
-    let locationDarknessAdjuster;
-    console.log(locationInput)
-  
-    if (locationInput === "Stockholm") {
-      locationDarknessAdjuster = 0
-  
-       // Load window
-      if (currentMonth <= 3) {
-        cityImage.src = "Images/Locations/Stockholm/stockholmCityAutumnDay.png";
-      }
-      if (currentMonth > 2 && currentMonth < 9) {
-        cityImage.src = "Images/Locations/Stockholm/stockholmCitySunnyDay.png";
-      }
-      if (currentMonth > 8 && currentMonth < 12) {
-        cityImage.src = "Images/Locations/Stockholm/stockholmCityAutumnDay.png";
-      }
-      if (currentMonth === 12) {
-        cityImage.src = "Images/Locations/Stockholm/stockholmCityAutumnDay.png";
-      }
-      cityWindows.src = "Images/Locations/Stockholm/windows.png";
-  
-      cityBlackImage.src = "Images/Locations/Stockholm/StockholmCityBlackBox.png";
+  // // const cityImage = new Image();
+  // const cityBlackImage = new Image();
+  // const cityWindows = new Image();
+
+  // let locationDarknessAdjuster;
+  // console.log(locationInput)
+
+  if (locationInput === "Stockholm") {
+    locationDarknessAdjuster = 0
+
+     // Load window
+    if (currentMonth <= 3) {
+      cityImage.src = "Images/Locations/Stockholm/stockholmCityAutumnDay.png";
     }
-  
-  
-    if (locationInput === "hongKong") {
-      locationDarknessAdjuster = 0.4
-  
+    if (currentMonth > 2 && currentMonth < 9) {
+      cityImage.src = "Images/Locations/Stockholm/stockholmCitySunnyDay.png";
+    }
+    if (currentMonth > 8 && currentMonth < 12) {
+      cityImage.src = "Images/Locations/Stockholm/stockholmCityAutumnDay.png";
+    }
+    if (currentMonth === 12) {
+      cityImage.src = "Images/Locations/Stockholm/stockholmCityAutumnDay.png";
+    }
+    cityWindows.src = "Images/Locations/Stockholm/windows.png";
+
+    cityBlackImage.src = "Images/Locations/Stockholm/StockholmCityBlackBox.png";
+  }
+
+
+  if (locationInput === "hongKong") {
+    locationDarknessAdjuster = 0.4
+
+    if(isMorning === true || isNight === true){
+      cityImage.src = "Images/Locations/HongKong/hongKongNight.png";
+    } if(isDay === true){ 
+      cityImage.src = "Images/Locations/HongKong/hongKongDay.png";}
+      
+    cityWindows.src = "Images/Locations/MyLocation/emptyWindows.png";
+
+    cityBlackImage.src = "Images/Locations/HongKong/hongKongBlack.png";
+  }
+
+  if (locationInput === "mylocation") {
+    locationDarknessAdjuster = 0
+
+    if (currentMonth <= 3) {
+      cityImage.src = "Images/Locations/MyLocation/mylocationCitySunnyDay.png";
+    }
+    if (currentMonth > 2 && currentMonth < 9) {
+      cityImage.src = "Images/Locations/MyLocation/mylocationCitySunnyDay.png";
+    }
+    if (currentMonth > 8 && currentMonth < 12) {
+      cityImage.src = "Images/Locations/MyLocation/mylocationCitySunnyDay.png";
+    }
+    if (currentMonth === 12) {
+      cityImage.src = "Images/Locations/MyLocation/mylocationCitySunnyDay.png";
+    }
+    cityWindows.src = "Images/Locations/MyLocation/emptyWindows.png";
+    cityBlackImage.src = "Images/Locations/MyLocation/mylocationCityBlackBox.png";
+  }
    
-  
-      if(isMorning === true || isNight === true){
-        cityImage.src = "Images/Locations/HongKong/hongKongNight.png";
-      } else {cityImage.src = "Images/Locations/HongKong/hongKongDay.png";}
-        
-      cityWindows.src = "Images/Locations/MyLocation/emptyWindows.png";
-  
-      cityBlackImage.src = "Images/Locations/HongKong/hongKongBlack.png";
-    }
-  
-    if (locationInput === "mylocation") {
-      locationDarknessAdjuster = 0
-  
-      if (currentMonth <= 3) {
-        cityImage.src = "Images/Locations/MyLocation/mylocationCitySunnyDay.png";
-      }
-      if (currentMonth > 2 && currentMonth < 9) {
-        cityImage.src = "Images/Locations/MyLocation/mylocationCitySunnyDay.png";
-      }
-      if (currentMonth > 8 && currentMonth < 12) {
-        cityImage.src = "Images/Locations/MyLocation/mylocationCitySunnyDay.png";
-      }
-      if (currentMonth === 12) {
-        cityImage.src = "Images/Locations/MyLocation/mylocationCitySunnyDay.png";
-      }
-      cityWindows.src = "Images/Locations/MyLocation/emptyWindows.png";
-      cityBlackImage.src = "Images/Locations/MyLocation/mylocationCityBlackBox.png";
-    }
 
 
 
