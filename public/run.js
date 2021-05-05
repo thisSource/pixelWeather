@@ -715,11 +715,29 @@ console.log("Is Night? " + isNight)
 
   if (locationInput === "hongKong") {
     locationDarknessAdjuster = 0.4
-    if(isMorning === true || isNight === true){
-      cityImage.src = "Images/Locations/HongKong/hongKongNight.png";
-    } else {cityImage.src = "Images/Locations/HongKong/hongKongDay.png";}
+
+    locationDarknessAdjuster = 0
+
+    // Load window
+   if (currentMonth <= 3) {
+     cityImage.src = "Images/Locations/HongKong/hongKongDay.png";
+   }
+   if (currentMonth > 2 && currentMonth < 9) {
+     cityImage.src = "Images/Locations/HongKong/hongKongDay.png";
+   }
+   if (currentMonth > 8 && currentMonth < 12) {
+     cityImage.src = "Images/Locations/HongKong/hongKongDay.png";
+   }
+   if (currentMonth === 12) {
+     cityImage.src = "Images/Locations/HongKong/hongKongDay.png";
+   }
+
+   cityBlackImage.src = "Images/Locations/HongKong/hongKongBlack.png";
+    // if(isMorning === true || isNight === true){
+    //   cityImage.src = "Images/Locations/HongKong/hongKongNight.png";
+    // } else {cityImage.src = "Images/Locations/HongKong/hongKongDay.png";}
       
-    cityBlackImage.src = "Images/Locations/HongKong/hongKongBlack.png";
+    // cityBlackImage.src = "Images/Locations/HongKong/hongKongBlack.png";
   }
 
   if (locationInput === "mylocation") {
@@ -1161,16 +1179,16 @@ forcastSelector.addEventListener("change", setForecastorCurrent)
     } 
   
 //RESET CITY IMAGE IF night and day image differ
-    if (locationInput === "hongKong") {
-      locationDarknessAdjuster = 0.6
-      if(isMorning === true || isNight === true){
-        cityImage.src = "Images/Locations/HongKong/hongKongNight.png";
-      } 
-      if(isDay === true) {
-        cityImage.src = "Images/Locations/HongKong/hongKongDay.png";}
+    // if (locationInput === "hongKong") {
+    //   locationDarknessAdjuster = 0.6
+    //   if(isMorning === true || isNight === true){
+    //     cityImage.src = "Images/Locations/HongKong/hongKongNight.png";
+    //   } 
+    //   if(isDay === true) {
+    //     cityImage.src = "Images/Locations/HongKong/hongKongDay.png";}
         
-      cityBlackImage.src = "Images/Locations/HongKong/hongKongBlack.png";
-    }
+    //   cityBlackImage.src = "Images/Locations/HongKong/hongKongBlack.png";
+    // }
 
 
 
