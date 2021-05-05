@@ -1181,7 +1181,7 @@ forcastSelector.addEventListener("change", setForecastorCurrent)
 
     weatherDescription.textContent = selectedWeatherDescription;
     temperature.textContent = selectedTemp + " °C"
-    tempF.textContent = `(${(selectedTemp*1.8)+32} °F)` 
+    tempF.textContent = `(${((selectedTemp*1.8)+32).toFixed(0)} °F)` 
     tempF.style.fontSize = '9px'
     tempF.style.marginLeft = '5px'
     weatherDay.textContent = "Weather " + weatherSelectText;
