@@ -2275,7 +2275,7 @@ function birdUpdate(){
 
 
 
-/* 
+ 
   let canvas, widthFire, heightFire, ctx;
   let fireworks = [];
   let particles = [];
@@ -2424,7 +2424,7 @@ function birdUpdate(){
   fireworks.push(new Firework(Math.random()*(widthFire-200)+100));
   
  
-*/
+
 
 // END FIREWORK
 
@@ -2462,7 +2462,7 @@ function birdUpdate(){
  // RUN MOON AND SUN
     sunAndMoon();
 
-    // loop() //LOOPS FIREWORK
+    loop() //LOOPS FIREWORK
 
     for(let i = 0; i < cloudArray.length; i++){
       cloudArray[i].cloudUpdate()
@@ -2534,7 +2534,23 @@ function birdUpdate(){
   const soundbutton = document.getElementById("soundbutton");
   const songInfo = document.getElementById('songInfo')
   
-  let musicA = new Audio("songs/Audiobinger - Lonely Winter.mp3");
+  function getRandomArbitrary(min, max) {
+    return Math.random() * (max - min) + min;
+  }
+
+  let arrayOfSongs = [
+    ['Audiobinger - Lonely Winter.mp3', 'Lonely Winter" - Audiobinger'],
+    ['Mello C - Hills.mp3', '"Hills" - Mello C'],
+    ['Scott Holmes Music - Urban Haze.mp3','"Urban Haze" - Scott Holmes'],
+    ["Siddhartha Corsus - Sita's Song.mp3", '"Sita Song" - Siddhartha Corsus'],
+    ['unknown -Soul Prod Music .mp3', '"unknown" - Soul Prod Music']
+   ]
+  
+  let songNumber = (Math.random() * (4 - 0) + 0).toFixed(0);
+
+  console.log(arrayOfSongs[songNumber][1])
+  
+  let musicA = new Audio(`songs/${arrayOfSongs[songNumber][0]}`);
   let isPlaying = false;
   
       soundbutton.addEventListener("click", function () {
@@ -2543,34 +2559,56 @@ function birdUpdate(){
             soundbutton.style.background = "rgba(255, 153, 204, 0.5)"
             songInfo.style.display = "block"
             musicA.play()
-            songInfo.textContent = '"Lonely Winter" - Audiobinger'
+            songInfo.textContent = arrayOfSongs[songNumber][1]
 
   //-------------> NEW SONG
              musicA.addEventListener('ended',()=>{
-              musicA = new Audio("songs/Mello C - Hills.mp3");
+              songNumber = (Math.random() * (4 - 0) + 0).toFixed(0);
+              console.log(arrayOfSongs[songNumber][1])
+              musicA = new Audio(`songs/${arrayOfSongs[songNumber][0]}`);
                       musicA.load()
                       musicA.play()
-                      songInfo.textContent ='"Hills" - Mello C'
+                      songInfo.textContent = arrayOfSongs[songNumber][1]
+  //-------------> NEW SONG
 
                       musicA.addEventListener('ended',()=>{
-                        musicA = new Audio("songs/Scott Holmes Music - Urban Haze.mp3");
+                        songNumber = (Math.random() * (4 - 0) + 0).toFixed(0);
+                        console.log(arrayOfSongs[songNumber][1])
+                        musicA = new Audio(`songs/${arrayOfSongs[songNumber][0]}`);
                                 musicA.load()
                                 musicA.play()
-                                songInfo.textContent ='"Urban Haze" - Scott Holmes'
-                      
-                      musicA.addEventListener('ended',()=>{
-                        musicA = new Audio("songs/Siddhartha Corsus - Sita's Song.mp3");
-                                musicA.load()
-                                musicA.play()
-                                songInfo.textContent ='"Sita Song" - Siddhartha Corsus'
-                      
-                      musicA.addEventListener('ended',()=>{
-                        musicA = new Audio("songs/unknown -Soul Prod Music .mp3");
-                                musicA.load()
-                                musicA.play()
-                                songInfo.textContent ='"unknown" - Soul Prod Music'
-                            })
-                        })
+                                songInfo.textContent = arrayOfSongs[songNumber][1]
+
+  //-------------> NEW SONG
+
+                                musicA.addEventListener('ended',()=>{
+                                  songNumber = (Math.random() * (4 - 0) + 0).toFixed(0);
+                                  console.log(arrayOfSongs[songNumber][1])
+                                  musicA = new Audio(`songs/${arrayOfSongs[songNumber][0]}`);
+                                          musicA.load()
+                                          musicA.play()
+                                          songInfo.textContent = arrayOfSongs[songNumber][1]
+  //-------------> NEW SONG
+
+                                          musicA.addEventListener('ended',()=>{
+                                            songNumber = (Math.random() * (4 - 0) + 0).toFixed(0);
+                                            console.log(arrayOfSongs[songNumber][1])
+                                            musicA = new Audio(`songs/${arrayOfSongs[songNumber][0]}`);
+                                                    musicA.load()
+                                                    musicA.play()
+                                                    songInfo.textContent = arrayOfSongs[songNumber][1]
+  //-------------> NEW SONG
+
+                                                    musicA.addEventListener('ended',()=>{
+                                                      songNumber = (Math.random() * (4 - 0) + 0).toFixed(0);
+                                                      console.log(arrayOfSongs[songNumber][1])
+                                                      musicA = new Audio(`songs/${arrayOfSongs[songNumber][0]}`);
+                                                              musicA.load()
+                                                              musicA.play()
+                                                              songInfo.textContent = arrayOfSongs[songNumber][1]
+                                                  })
+                                        })
+                              })
                     })
                 })
           } else {
