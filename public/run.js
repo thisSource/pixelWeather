@@ -241,6 +241,17 @@ function setLocation (e){
     location.reload()
   } 
 
+  if(selectedLocation === "washington") {
+    sessionStorage.setItem("Location", "Washington")
+    sessionStorage.setItem("Latitude", 38.88978443210114)
+    sessionStorage.setItem("Longitude", -77.03523618408674)
+    locationInputSelect = sessionStorage.Location
+    locationInputSelectLongitude = sessionStorage.Longitude
+    locationInputSelectLatitude = sessionStorage.Latitude
+    locationInputCountrySelect = "USA"
+    location.reload()
+  } 
+
     if (selectedLocation === 'mylocation'){
       getLocation()
 
@@ -373,13 +384,13 @@ const currentTimeData = '/time';
 
 
 
+  //FORECAST
 
   //Fetch 5-day 3h Weather forcast
   let responseForcastWeather = await fetch(forcastURL);
   let jsonForcastWeather = await responseForcastWeather.json();
 
 
-  //FORECAST
 //Fetch h forcast
 let responseHCast = await fetch('/forcastCurrent')
 let jsonHCast = await responseHCast.json()
@@ -630,7 +641,6 @@ console.log("Is Night? " + isNight)
     
     
     //801 --> 806
-    console.log(forCastTimeRaw_3)
     if(hCast_3_id > 800 & hCast_3_id  < 806){
       if(forCastTimeRaw_3.getHours() > 5 && forCastTimeRaw_3.getHours() < 22 ){
         iconImgA.src = "Images/Icons/02d@2x.png"
@@ -725,6 +735,20 @@ console.log("Is Night? " + isNight)
     cityBlackImage.src = "Images/Locations/HongKong/hongKongBlack.png";
   }
 
+  if (locationInput === "washington") {
+    locationDarknessAdjuster = 0
+
+    if(isMorning === true || isNight === true){
+      cityImage.src = "Images/Locations/Washington/washingtonDay.png";
+    } 
+    if(isDay === true) {
+      cityImage.src = "Images/Locations/Washington/washingtonDay.png";}
+      
+    cityWindows.src = "Images/Locations/MyLocation/emptyWindows.png";
+
+    cityBlackImage.src = "Images/Locations/Washington/washingtonBlack.png";
+  }
+
   if (locationInput === "mylocation") {
     locationDarknessAdjuster = 0
 
@@ -751,7 +775,6 @@ console.log("Is Night? " + isNight)
   if(isMorning === true){
     skyImage.src = "Images/Sky/morningSky.png";
   }
-
   if(isDay === true){
     skyImage.src = "Images/Sky/skySunny.png";
   }
@@ -1035,7 +1058,7 @@ console.log("Is Night? " + isNight)
         currentTimeInMinutes,
         0,
         currentSunRiseTimeInMinutes+100,
-        0.8-locationDarknessAdjuster,
+        0.6-locationDarknessAdjuster,
         0 
       );
     }
@@ -1050,7 +1073,7 @@ console.log("Is Night? " + isNight)
         currentSunSetTimeInMinutes-100,
         1350,
         0,
-        0.7-locationDarknessAdjuster
+        0.6-locationDarknessAdjuster
       );
     }
     // console.log(cityBlackAlpha)
@@ -1101,19 +1124,19 @@ forcastSelector.addEventListener("change", setForecastorCurrent)
       isToday = true
 
       // currentTimeInMinutes = 1200
-      if (currentTimeInMinutes <= currentSunRiseTimeInMinutes) {
+      if (currentTimeInMinutes <= 450) {
         isMorning = true;
         isDay = false;
         isNight = false;
        }
        
-       if (currentTimeInMinutes > currentSunRiseTimeInMinutes && currentTimeInMinutes < currentSunSetTimeInMinutes ) {
+       if (currentTimeInMinutes > 450 && 1200 < currentSunSetTimeInMinutes ) {
          isMorning = false;
          isDay = true;
          isNight = false;
        }
        
-       if (currentTimeInMinutes > currentSunSetTimeInMinutes) {
+       if (currentTimeInMinutes > 1200) {
          isMorning = false;
          isDay = false;
          isNight = true;
@@ -1208,6 +1231,22 @@ forcastSelector.addEventListener("change", setForecastorCurrent)
     cityWindows.src = "Images/Locations/MyLocation/emptyWindows.png";
 
     cityBlackImage.src = "Images/Locations/HongKong/hongKongBlack.png";
+  }
+
+  
+
+  if (locationInput === "Washington") {
+    locationDarknessAdjuster = 0
+
+    if(isMorning === true || isNight === true){
+      cityImage.src = "Images/Locations/Washington/washingtonDay.png";
+    } 
+    if(isDay === true) {
+      cityImage.src = "Images/Locations/Washington/washingtonDay.png";}
+      
+    cityWindows.src = "Images/Locations/MyLocation/emptyWindows.png";
+
+    cityBlackImage.src = "Images/Locations/Washington/washingtonBlack.png";
   }
 
   if (locationInput === "mylocation") {
@@ -1320,8 +1359,7 @@ function weatherLight(r,g,b,a){
 
    //Set thunder bool
    let isThunder = false
-
-  //  weatherId = 804
+  //  weatherId = 800
 
   //WEATHER TYPES
   //----------------------------------------------------------------------------------------------------------//
@@ -2276,152 +2314,152 @@ function birdUpdate(){
 
 
  
-  let canvas, widthFire, heightFire, ctx;
-  let fireworks = [];
-  let particles = [];
+  // let canvas, widthFire, heightFire, ctx;
+  // let fireworks = [];
+  // let particles = [];
   
   // function setup() {
-    canvas = document.getElementById("canvas");
-    setSize(canvas);
-    ctx = canvas.getContext("2d");
-    ctx.fillStyle = "#000";
-    ctx.fillRect(0, 0, widthFire, heightFire);
-    window.addEventListener("resize",windowResized);
-    document.addEventListener("click",onClick);
+  //   canvas = document.getElementById("canvas");
+  //   setSize(canvas);
+  //   ctx = canvas.getContext("2d");
+  //   ctx.fillStyle = "#000";
+  //   ctx.fillRect(0, 0, widthFire, heightFire);
+  //   window.addEventListener("resize",windowResized);
+  //   document.addEventListener("click",onClick);
   // }
   
   // setTimeout(setup,1);
   // setup()
   
   
-  function loop(){
+  // function loop(){
   
-    ctx.globalAlpha = 0.2;
-    ctx.fillStyle = "#000";
-    ctx.drawImage(skyImage,0, 0, widthFire, heightFire);
-    // ctx.clearRect(0,0,widthFire,heightFire)
-    ctx.globalAlpha = 1;
-    for(let i=0; i<fireworks.length; i++){
-      let done = fireworks[i].update();
-      fireworks[i].draw();
-      if(done) fireworks.splice(i, 1);
-    }
+  //   ctx.globalAlpha = 0.2;
+  //   ctx.fillStyle = "#000";
+  //   ctx.drawImage(skyImage,0, 0, widthFire, heightFire);
+  //   // ctx.clearRect(0,0,widthFire,heightFire)
+  //   ctx.globalAlpha = 1;
+  //   for(let i=0; i<fireworks.length; i++){
+  //     let done = fireworks[i].update();
+  //     fireworks[i].draw();
+  //     if(done) fireworks.splice(i, 1);
+  //   }
   
-    for(let i=0; i<particles.length; i++){
-      particles[i].update();
-      particles[i].draw();
-      if(particles[i].lifetime>80) particles.splice(i,1);
-    }
+  //   for(let i=0; i<particles.length; i++){
+  //     particles[i].update();
+  //     particles[i].draw();
+  //     if(particles[i].lifetime>80) particles.splice(i,1);
+  //   }
   
-    if(Math.random()<1/60) fireworks.push(new Firework(Math.random()*(widthFire-200)+100));
-  }
-  // setInterval(loop, 10);
+  //   if(Math.random()<1/60) fireworks.push(new Firework(Math.random()*(widthFire-200)+100));
+  // }
+  // // setInterval(loop, 10);
   
-  //setInterval(loop, 100/60);
-  class ParticleFire{
-    constructor(x, y, col){
-      this.x = x;
-      this.y = y;
-      this.col = col;
-      this.vel = randomVec(5);
-      this.lifetime = 0;
-    }
+  // //setInterval(loop, 100/60);
+  // class ParticleFire{
+  //   constructor(x, y, col){
+  //     this.x = x;
+  //     this.y = y;
+  //     this.col = col;
+  //     this.vel = randomVec(5);
+  //     this.lifetime = 0;
+  //   }
   
-    update(){
-      this.x += this.vel.x;
-      this.y += this.vel.y;
-      this.vel.y += 0.02;
-      this.vel.x *= 0.99;
-      this.vel.y *= 0.99;
-      this.lifetime++;
-    }
+  //   update(){
+  //     this.x += this.vel.x;
+  //     this.y += this.vel.y;
+  //     this.vel.y += 0.02;
+  //     this.vel.x *= 0.99;
+  //     this.vel.y *= 0.99;
+  //     this.lifetime++;
+  //   }
   
-    draw(){
-      ctx.globalAlpha = Math.max(1-this.lifetime/80, 0);
-      ctx.fillStyle = this.col;
-      ctx.fillRect(this.x, this.y, 2, 2);
-    }
-  }
+  //   draw(){
+  //     ctx.globalAlpha = Math.max(1-this.lifetime/80, 0);
+  //     ctx.fillStyle = this.col;
+  //     ctx.fillRect(this.x, this.y, 2, 2);
+  //   }
+  // }
   
-  class Firework{
-    constructor(x){
-      this.x = x;
-      this.y = heightFire;
-      this.isBlown = false;
-      this.col = randomCol();
-    }
+  // class Firework{
+  //   constructor(x){
+  //     this.x = x;
+  //     this.y = heightFire;
+  //     this.isBlown = false;
+  //     this.col = randomCol();
+  //   }
   
-    update(){
-      this.y -= 3;
-      if(this.y < 350-Math.sqrt(Math.random()*500)*40){
-        this.isBlown = true;
-        for(let i=0; i<60; i++){
-          particles.push(new ParticleFire(this.x, this.y, this.col))
-        }
-      }
-      return this.isBlown;
-    }
+  //   update(){
+  //     this.y -= 3;
+  //     if(this.y < 350-Math.sqrt(Math.random()*500)*40){
+  //       this.isBlown = true;
+  //       for(let i=0; i<60; i++){
+  //         particles.push(new ParticleFire(this.x, this.y, this.col))
+  //       }
+  //     }
+  //     return this.isBlown;
+  //   }
   
-    draw(){
-      ctx.globalAlpha = 1;
-      ctx.fillStyle = this.col;
-      ctx.fillRect(this.x, this.y, 2, 2);
-    }
-  }
+  //   draw(){
+  //     ctx.globalAlpha = 1;
+  //     ctx.fillStyle = this.col;
+  //     ctx.fillRect(this.x, this.y, 2, 2);
+  //   }
+  // }
   
-  function randomCol(){
-    var letter = '0123456789ABCDEF';
-    var nums = [];
+  // function randomCol(){
+  //   var letter = '0123456789ABCDEF';
+  //   var nums = [];
   
-    for(var i=0; i<3; i++){
-      nums[i] = Math.floor(Math.random()*256)+300;
-    }
+  //   for(var i=0; i<3; i++){
+  //     nums[i] = Math.floor(Math.random()*256)+300;
+  //   }
   
-    let brightest = 0;
-    for(var i=0; i<3; i++){
-      if(brightest<nums[i]) brightest = nums[i];
-    }
+  //   let brightest = 0;
+  //   for(var i=0; i<3; i++){
+  //     if(brightest<nums[i]) brightest = nums[i];
+  //   }
   
-    brightest /=255;
-    for(var i=0; i<3; i++){
-      nums[i] /= brightest;
-    }
+  //   brightest /=255;
+  //   for(var i=0; i<3; i++){
+  //     nums[i] /= brightest;
+  //   }
   
-    let color = "#";
-    for(var i=0; i<3; i++){
-      color += letter[Math.floor(nums[i]/16)];
-      color += letter[Math.floor(nums[i]%16)];
-    }
-    return color;
-  }
+  //   let color = "#";
+  //   for(var i=0; i<3; i++){
+  //     color += letter[Math.floor(nums[i]/16)];
+  //     color += letter[Math.floor(nums[i]%16)];
+  //   }
+  //   return color;
+  // }
   
-  function randomVec(max){
-    let dir = Math.random()*Math.PI*2;
-    let spd = Math.random()*max;
-    return{x: Math.cos(dir)*spd, y: Math.sin(dir)*spd};
-  }
+  // function randomVec(max){
+  //   let dir = Math.random()*Math.PI*2;
+  //   let spd = Math.random()*max;
+  //   return{x: Math.cos(dir)*spd, y: Math.sin(dir)*spd};
+  // }
   
-  function setSize(canv){
-    canv.style.width = (innerWidth) + "px";
-    canv.style.height = (innerHeight) + "px";
-    widthFire = innerWidth;
-    heightFire = innerHeight;
+  // function setSize(canv){
+  //   canv.style.width = (innerWidth) + "px";
+  //   canv.style.height = (innerHeight) + "px";
+  //   widthFire = innerWidth;
+  //   heightFire = innerHeight;
   
-    canv.width = innerWidth*window.devicePixelRatio;
-    canv.height = innerHeight*window.devicePixelRatio;
-    canvas.getContext("2d").scale(window.devicePixelRatio, window.devicePixelRatio);
-  }
+  //   canv.width = innerWidth*window.devicePixelRatio;
+  //   canv.height = innerHeight*window.devicePixelRatio;
+  //   canvas.getContext("2d").scale(window.devicePixelRatio, window.devicePixelRatio);
+  // }
   
-  function onClick(e){
-    fireworks.push(new Firework(e.clientX));
-  }
+  // function onClick(e){
+  //   fireworks.push(new Firework(e.clientX));
+  // }
   
-  function windowResized(){
-    setSize(canvas);
-    ctx.fillStyle = "#fff";
-    ctx.fillRect(0, 0, widthFire, heightFire);
-  }
-  fireworks.push(new Firework(Math.random()*(widthFire-200)+100));
+  // function windowResized(){
+  //   setSize(canvas);
+  //   ctx.fillStyle = "#fff";
+  //   ctx.fillRect(0, 0, widthFire, heightFire);
+  // }
+  // fireworks.push(new Firework(Math.random()*(widthFire-200)+100));
   
  
 
@@ -2448,6 +2486,7 @@ function birdUpdate(){
   //UPDATE / DRAW / ANIMATE
   //----------------------------------------------------------------------------------------------------------//
   (function update() {
+    // clear rects
     rainCtx.clearRect(0, 0, window.innerWidth, window.innerHeight);
     weatherCtx.clearRect(0, 0, window.innerWidth, window.innerHeight);
     sunAndMoonCtx.clearRect(0, 0, window.innerWidth, window.innerHeight);
@@ -2455,14 +2494,13 @@ function birdUpdate(){
     cityBlackCtx.clearRect(0, 0, window.innerWidth, window.innerHeight);
     skyCtx.clearRect(0,0, window.innerWidth, window.innerHeight)
     iconCtx.clearRect(0,0, window.innerWidth, window.innerHeight)
-    //SET ICON
     //RUN SKY
     runSky();
     //RUN WEATHER
  // RUN MOON AND SUN
     sunAndMoon();
 
-    loop() //LOOPS FIREWORK
+   
 
     for(let i = 0; i < cloudArray.length; i++){
       cloudArray[i].cloudUpdate()
@@ -2510,23 +2548,29 @@ function birdUpdate(){
       snowParticlesArray[i].drawSnow();
      }
 
-
+    //SET ICON
       if(isToday === true){
         drawIcons()
       }
 
-
+  //LOOPS FIREWORK
+  // loop()
     requestAnimationFrame(update);
   })();
 } // LAST LINE SET FORECAST TRUE OR FALSE
 // SET ICON
 
-
-
-
 })(); //LAST LINE OF WEATHER AND TIME SYSTEM
 } // LAST LINE SET LOCATION
 
+
+
+
+
+       //----------------------------------------------------------------------------------------------------------//
+
+// OTHER FUNCTIONS
+       //----------------------------------------------------------------------------------------------------------//
 
        //----------------------------------------------------------------------------------------------------------//
   //AUDIO FUNCTIONS
