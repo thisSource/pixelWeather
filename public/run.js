@@ -252,6 +252,17 @@ function setLocation (e){
     location.reload()
   } 
 
+  if(selectedLocation === "la") {
+    sessionStorage.setItem("Location", "la")
+    sessionStorage.setItem("Latitude", 33.99751362917054)
+    sessionStorage.setItem("Longitude", -118.2197155818907), 
+    locationInputSelect = sessionStorage.Location
+    locationInputSelectLongitude = sessionStorage.Longitude
+    locationInputSelectLatitude = sessionStorage.Latitude
+    locationInputCountrySelect = "USA"
+    location.reload()
+  } 
+
     if (selectedLocation === 'mylocation'){
       getLocation()
 
@@ -337,6 +348,8 @@ const currentTimeData = '/time';
   //Fetch current Weather
   let responseCurrentWeather = await fetch(currentWeatherURL);
   let jsonCurrentWeather = await responseCurrentWeather.json();
+  console.log(jsonCurrentWeather)
+
   weatherLocation.textContent = jsonCurrentWeather.name
   //CURRENT WEATHER
   //current weather reusltus
@@ -747,6 +760,20 @@ console.log("Is Night? " + isNight)
     cityWindows.src = "Images/Locations/MyLocation/emptyWindows.png";
 
     cityBlackImage.src = "Images/Locations/Washington/washingtonBlack.png";
+  }
+
+  if (locationInput === "la") {
+    locationDarknessAdjuster = 0
+
+    if(isMorning === true || isNight === true){
+      cityImage.src = "Images/Locations/LA/LADay.png";
+    } 
+    if(isDay === true) {
+      cityImage.src = "Images/Locations/LA/LADay.png";}
+      
+    cityWindows.src = "Images/Locations/MyLocation/emptyWindows.png";
+
+    cityBlackImage.src = "Images/Locations/LA/LABlack.png";
   }
 
   if (locationInput === "mylocation") {
@@ -1247,6 +1274,20 @@ forcastSelector.addEventListener("change", setForecastorCurrent)
     cityWindows.src = "Images/Locations/MyLocation/emptyWindows.png";
 
     cityBlackImage.src = "Images/Locations/Washington/washingtonBlack.png";
+  }
+
+  if (locationInput === "la") {
+    locationDarknessAdjuster = 0
+
+    if(isMorning === true || isNight === true){
+      cityImage.src = "Images/Locations/LA/LADay.png";
+    } 
+    if(isDay === true) {
+      cityImage.src = "Images/Locations/LA/LADay.png";}
+      
+    cityWindows.src = "Images/Locations/MyLocation/emptyWindows.png";
+
+    cityBlackImage.src = "Images/Locations/LA/LABlack.png";
   }
 
   if (locationInput === "mylocation") {
