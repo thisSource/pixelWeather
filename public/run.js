@@ -2624,11 +2624,11 @@ function birdUpdate(){
   }
 
   let arrayOfSongs = [
-    ['A01_White_and_Blue_4416_210625_MASTER.mp3', 'A01_White_and_Blue_4416_210625_MASTER'],
-    ['A02_Anton_Project_2_Weather_B-sida_4416_210625_MASTER.mp3', 'A02_Anton_Project_2_Weather_B-sida_4416_210625_MASTER'],
-    ['B01_New_Weather_4416_210625_MASTER.mp3','B01_New_Weather_4416_210625_MASTER'],
-    ['A02_Anton_Project_2_Weather_B-sida_4416_210625_MASTER.mp3', 'A02_Anton_Project_2_Weather_B-sida_4416_210625_MASTER'],
-    ['B02_Weather_mood_1_(bells_n_birds)_4416_210625_MASTER.mp3', 'B02_Weather_mood_1_(bells_n_birds)_4416_210625_MASTER']
+    ['A01_White_and_Blue_4416_210625_MASTER.mp3', 'White & Blue - Anton Ingvarsson'],
+    ['A02_Anton_Project_2_Weather_B-sida_4416_210625_MASTER.mp3', 'Forecast - Anton Ingvarsson'],
+    ['B01_New_Weather_4416_210625_MASTER.mp3','Rainbow Mycelium - Anton Ingvarsson'],
+    ['A02_Anton_Project_2_Weather_B-sida_4416_210625_MASTER.mp3', 'Rainbow Mycelium - Anton Ingvarsson'],
+    ['B02_Weather_mood_1_(bells_n_birds)_4416_210625_MASTER.mp3', 'Summertown - Anton Ingvarsson']
    ]
   
   let songNumber = (Math.random() * (4 - 0) + 0).toFixed(0);
