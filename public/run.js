@@ -2624,11 +2624,11 @@ function birdUpdate(){
   }
 
   let arrayOfSongs = [
-    ['Audiobinger - Lonely Winter.mp3', 'Lonely Winter" - Audiobinger'],
-    ['Mello C - Hills.mp3', '"Hills" - Mello C'],
-    ['Scott Holmes Music - Urban Haze.mp3','"Urban Haze" - Scott Holmes'],
-    ["Siddhartha Corsus - Sita's Song.mp3", '"Sita Song" - Siddhartha Corsus'],
-    ['unknown -Soul Prod Music .mp3', '"unknown" - Soul Prod Music']
+    ['A01_White_and_Blue_4416_210625_MASTER.mp3', 'A01_White_and_Blue_4416_210625_MASTER'],
+    ['A02_Anton_Project_2_Weather_B-sida_4416_210625_MASTER.mp3', 'A02_Anton_Project_2_Weather_B-sida_4416_210625_MASTER'],
+    ['B01_New_Weather_4416_210625_MASTER.mp3','B01_New_Weather_4416_210625_MASTER'],
+    ['A02_Anton_Project_2_Weather_B-sida_4416_210625_MASTER.mp3', 'A02_Anton_Project_2_Weather_B-sida_4416_210625_MASTER'],
+    ['B02_Weather_mood_1_(bells_n_birds)_4416_210625_MASTER.mp3', 'B02_Weather_mood_1_(bells_n_birds)_4416_210625_MASTER']
    ]
   
   let songNumber = (Math.random() * (4 - 0) + 0).toFixed(0);
