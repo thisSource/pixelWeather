@@ -206,9 +206,9 @@ function setLocation (e){
   let locationInputSelectLongitude;
   let locationInputSelectLatitude;
   if( sessionStorage.Location === undefined){
-    locationInputSelect = "Stockholm"
-    locationInputSelectLongitude =  18.110014
-    locationInputSelectLatitude = 59.336889
+    locationInputSelect = "kyiv"
+    locationInputSelectLongitude =  50.42662738426463
+    locationInputSelectLatitude = 30.56303064690026
 
   } else {locationInputSelect = sessionStorage.Location
           locationInputSelectLatitude = sessionStorage.Latitude
