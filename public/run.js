@@ -263,6 +263,17 @@ function setLocation (e){
     location.reload()
   } 
 
+  if(selectedLocation === "kyiv") {
+    sessionStorage.setItem("Location", "kyiv")
+    sessionStorage.setItem("Latitude", 50.42662738426463)
+    sessionStorage.setItem("Longitude", 30.56303064690026), 
+    locationInputSelect = sessionStorage.Location
+    locationInputSelectLongitude = sessionStorage.Longitude
+    locationInputSelectLatitude = sessionStorage.Latitude
+    locationInputCountrySelect = "UA"
+    location.reload()
+  } 
+
     if (selectedLocation === 'mylocation'){
       getLocation()
 
@@ -774,6 +785,21 @@ console.log("Is Night? " + isNight)
     cityWindows.src = "Images/Locations/MyLocation/emptyWindows.png";
 
     cityBlackImage.src = "Images/Locations/LA/LABlack.png";
+  }
+
+  
+  if (locationInput === "kyiv") {
+    locationDarknessAdjuster = 0
+
+    if(isMorning === true || isNight === true){
+      cityImage.src = "Images/Locations/Kyiv/kyivDay.png";
+    } 
+    if(isDay === true) {
+      cityImage.src = "Images/Locations/Kyiv/kyivDay.png";}
+      
+    cityWindows.src = "Images/Locations/MyLocation/emptyWindows.png";
+
+    cityBlackImage.src = "Images/Locations/Kyiv/kyivDay.png";
   }
 
   if (locationInput === "mylocation") {
@@ -1288,6 +1314,20 @@ forcastSelector.addEventListener("change", setForecastorCurrent)
     cityWindows.src = "Images/Locations/MyLocation/emptyWindows.png";
 
     cityBlackImage.src = "Images/Locations/LA/LABlack.png";
+  }
+
+  if (locationInput === "kyiv") {
+    locationDarknessAdjuster = 0
+
+    if(isMorning === true || isNight === true){
+      cityImage.src = "Images/Locations/Kyiv/kyivDay.png";
+    } 
+    if(isDay === true) {
+      cityImage.src = "Images/Locations/Kyiv/kyivDay.png";}
+      
+    cityWindows.src = "Images/Locations/MyLocation/emptyWindows.png";
+
+    cityBlackImage.src = "Images/Locations/Kyiv/kyivDay.png";
   }
 
   if (locationInput === "mylocation") {
